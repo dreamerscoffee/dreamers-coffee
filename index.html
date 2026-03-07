@@ -138,6 +138,8 @@ img { display: block; width: 100%; }
   transition: all 0.2s;
   cursor: pointer;
   font-family: var(--font-display);
+  text-decoration: none;
+  display: inline-block;
 }
 
 .cat-nav-item:hover, .cat-nav-item.active {
@@ -196,7 +198,7 @@ img { display: block; width: 100%; }
   margin-bottom: 1.5rem;
 }
 
-.hero-title em { font-style: italic; }
+.hero-title em { font-style: normal; }
 
 .hero-desc {
   font-size: 13px;
@@ -489,7 +491,7 @@ img { display: block; width: 100%; }
   margin-bottom: 1.5rem;
 }
 
-.sub-title em { font-style: italic; color: var(--brown-light); }
+.sub-title em { font-style: normal; color: var(--brown-light); }
 
 .sub-desc {
   font-size: 13px;
@@ -987,10 +989,6 @@ footer {
   <div class="nav-inner">
     <a class="nav-logo" href="#">DREAMERS COFFEE</a>
     <div class="nav-right">
-      <button class="nav-icon-btn" onclick="toggleSearch()">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <span>SEARCH</span>
-      </button>
       <button class="nav-icon-btn" onclick="toggleCart()">
         <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         <span>CART</span>
@@ -1003,12 +1001,10 @@ footer {
 <!-- CATEGORY NAV -->
 <nav class="cat-nav">
   <div class="cat-nav-inner">
-    <span class="cat-nav-item active">珈琲豆</span>
-    <span class="cat-nav-item">定期便</span>
-    <span class="cat-nav-item">レシピ</span>
-    <span class="cat-nav-item">ブログ</span>
-    <span class="cat-nav-item">プロフィール</span>
-    <span class="cat-nav-item">コンタクト</span>
+    <a class="cat-nav-item active" href="#products">BEANS</a>
+    <a class="cat-nav-item" href="#subscription">SUBSCRIPTION</a>
+    <a class="cat-nav-item" href="#recipe">RECIPE</a>
+    <a class="cat-nav-item" href="#profile">ABOUT</a>
   </div>
 </nav>
 
@@ -1022,7 +1018,7 @@ footer {
         alt="DREAMERS COFFEE">
       <div class="hero-slide-content">
         <p class="hero-tag">SPECIALTY COFFEE — TOYODA, AICHI</p>
-        <h1 class="hero-title">珈琲が運ぶ、<br><em>心の<br>ゆとり。</em></h1>
+        <h1 class="hero-title">珈琲が運ぶ、<br>心の<br>ゆとり。</h1>
         <p class="hero-desc">DREAMERS COFFEEは、愛知県豊田市発のスペシャルティコーヒー専門店。一杯一杯に「ゆとり・彩り・つながり」を込めてお届けします。</p>
         <a href="#products" class="btn-shop">SHOP NOW</a>
       </div>
@@ -1036,7 +1032,7 @@ footer {
         alt="定期便">
       <div class="hero-slide-content">
         <p class="hero-tag">SUBSCRIPTION — 毎月お届け</p>
-        <h1 class="hero-title">毎月届く、<br><em>特別な<br>一杯。</em></h1>
+        <h1 class="hero-title">毎月届く、<br>特別な<br>一杯。</h1>
         <p class="hero-desc">定期便で毎月厳選したスペシャルティコーヒーをお届け。縛りなし、いつでも変更・解約OK。</p>
         <a href="#subscription" class="btn-shop">定期便を見る</a>
       </div>
@@ -1050,7 +1046,7 @@ footer {
         alt="珈琲バッグ">
       <div class="hero-slide-content">
         <p class="hero-tag">DRIP BAGS — 手軽においしく</p>
-        <h1 class="hero-title">どこでも<br><em>カフェの<br>味を。</em></h1>
+        <h1 class="hero-title">どこでも<br>カフェの<br>味を。</h1>
         <p class="hero-desc">珈琲バッグなら、どこでも手軽にスペシャルティコーヒーの風味を楽しめます。</p>
         <a href="#products" class="btn-shop">珈琲バッグを見る</a>
       </div>
@@ -1149,70 +1145,12 @@ footer {
   </div>
 </section>
 
-<!-- BESTSELLER -->
-<section style="background: var(--brown-mist); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
-  <div class="section reveal">
-    <div class="section-head">
-      <div>
-        <div class="section-title-ja">ベストセラー</div>
-        <div class="section-title-en">BESTSELLERS</div>
-      </div>
-      <a href="#" class="view-all">続きを見る →</a>
-    </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 3rem;">
-      <div>
-        <div class="bestseller-item"><div class="bs-rank">1</div><img class="bs-img" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=200&q=80" alt=""><div class="bs-info"><div class="bs-name">珈琲バッグ 5袋セット</div><div class="bs-price">¥1,200</div></div></div>
-        <div class="bestseller-item"><div class="bs-rank">2</div><img class="bs-img" src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=200&q=80" alt=""><div class="bs-info"><div class="bs-name">珈琲豆 100g（シングルオリジン）</div><div class="bs-price">¥980〜</div></div></div>
-        <div class="bestseller-item"><div class="bs-rank">3</div><img class="bs-img" src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=200&q=80" alt=""><div class="bs-info"><div class="bs-name">お試しセット</div><div class="bs-price">¥2,500</div></div></div>
-      </div>
-      <div>
-        <div class="bestseller-item"><div class="bs-rank">4</div><img class="bs-img" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&q=80" alt=""><div class="bs-info"><div class="bs-name">珈琲豆 150g（ブレンド）</div><div class="bs-price">¥1,380〜</div></div></div>
-        <div class="bestseller-item"><div class="bs-rank">5</div><img class="bs-img" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=200&q=80" alt=""><div class="bs-info"><div class="bs-name">【定期便】毎月珈琲豆お届けプラン</div><div class="bs-price">¥980〜 / 月</div></div></div>
-        <div class="bestseller-item"><div class="bs-rank">6</div><img class="bs-img" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=200&q=80" alt=""><div class="bs-info"><div class="bs-name">珈琲バッグ 10袋セット</div><div class="bs-price">¥2,200</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CATEGORY -->
-<section class="section reveal">
-  <div class="section-head">
-    <div>
-      <div class="section-title-ja">カテゴリーから探す</div>
-      <div class="section-title-en">CATEGORY</div>
-    </div>
-  </div>
-  <div class="category-grid">
-    <div class="category-card">
-      <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=600&q=80" alt="珈琲豆">
-      <div class="category-card-overlay">
-        <div class="category-card-name-ja">珈琲豆</div>
-        <div class="category-card-name-en">COFFEE BEANS</div>
-      </div>
-    </div>
-    <div class="category-card">
-      <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80" alt="珈琲バッグ">
-      <div class="category-card-overlay">
-        <div class="category-card-name-ja">珈琲バッグ</div>
-        <div class="category-card-name-en">DRIP BAGS</div>
-      </div>
-    </div>
-    <div class="category-card">
-      <img src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=600&q=80" alt="お試しセット">
-      <div class="category-card-overlay">
-        <div class="category-card-name-ja">お試しセット</div>
-        <div class="category-card-name-en">STARTER SET</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- SUBSCRIPTION -->
 <div class="sub-banner" id="subscription">
   <div class="sub-banner-inner reveal">
     <div>
       <p style="font-family:var(--font-display);font-size:10px;letter-spacing:.35em;color:var(--brown-light);margin-bottom:1rem;">SUBSCRIPTION — 定期便</p>
-      <h2 class="sub-title">毎月届く、<br><em>特別な一杯。</em></h2>
+      <h2 class="sub-title">毎月届く、<br>特別な一杯。</h2>
       <p class="sub-desc">定期便なら毎月厳選したスペシャルティコーヒーをお届け。珈琲選びの手間なく、いつでも新鮮なコーヒーをお楽しみいただけます。</p>
       <ul class="sub-features-list">
         <li><span class="sub-check">✓</span>毎月自動でお届け（手間なし）</li>
@@ -1227,12 +1165,12 @@ footer {
   </div>
 </div>
 
-<!-- BLOG -->
-<section class="section reveal">
+<!-- RECIPE -->
+<section class="section reveal" id="recipe">
   <div class="section-head">
     <div>
-      <div class="section-title-ja">ブログ・お知らせ</div>
-      <div class="section-title-en">JOURNAL</div>
+      <div class="section-title-ja">レシピ・ブログ</div>
+      <div class="section-title-en">RECIPE & BLOG</div>
     </div>
     <a href="#" class="view-all">続きを見る →</a>
   </div>
@@ -1261,8 +1199,8 @@ footer {
   </div>
 </section>
 
-<!-- ABOUT -->
-<div style="background:var(--brown-mist); border-top:1px solid var(--border);">
+<!-- ABOUT / PROFILE -->
+<div id="profile" style="background:var(--brown-mist); border-top:1px solid var(--border);">
   <div class="reveal" style="max-width:1320px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
     <div>
       <div class="info-title">ABOUT DREAMERS COFFEE</div>
@@ -1288,10 +1226,6 @@ footer {
     <div>
       <div class="footer-brand-logo">DREAMERS COFFEE</div>
       <p class="footer-brand-desc">愛知県豊田市発のスペシャルティコーヒー専門店。珈琲を通じて、あなたの日常に「ゆとり・彩り・つながり」を。</p>
-      <div class="footer-newsletter">
-        <input type="email" placeholder="メールアドレスを入力">
-        <button>登録</button>
-      </div>
       <div class="footer-social">
         <a href="https://www.instagram.com/dreamers_coffee/" target="_blank">
           <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.5)" stroke="none"/></svg>
@@ -1303,26 +1237,6 @@ footer {
           <svg viewBox="0 0 24 24"><path d="M22.5 6.5s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C15.9 2.2 12 2.2 12 2.2s-3.9 0-6.3.2c-.6.1-1.9.1-3 1.3-.9.8-1.2 2.8-1.2 2.8S1.2 8.8 1.2 11v2c0 2.2.3 4.5.3 4.5s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C8 21.8 12 21.8 12 21.8s3.9 0 6.3-.3c.6-.1 1.9-.1 3-1.2.9-.8 1.2-2.8 1.2-2.8s.3-2.2.3-4.5v-2c0-2.2-.3-4.5-.3-4.5zM9.7 15.5V8.4l6.6 3.6-6.6 3.5z"/></svg>
         </a>
       </div>
-    </div>
-    <div>
-      <div class="footer-col-title">SHOP</div>
-      <ul class="footer-links">
-        <li><a href="#">すべての商品</a></li>
-        <li><a href="#">珈琲豆</a></li>
-        <li><a href="#">珈琲バッグ</a></li>
-        <li><a href="#">お試しセット</a></li>
-        <li><a href="#">定期便</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">ABOUT</div>
-      <ul class="footer-links">
-        <li><a href="#">PROFILE</a></li>
-        <li><a href="#">CONCEPT</a></li>
-        <li><a href="#">RECIPE</a></li>
-        <li><a href="#">SCHEDULE</a></li>
-        <li><a href="#">CONTACT</a></li>
-      </ul>
     </div>
     <div>
       <div class="footer-col-title">INFORMATION</div>
