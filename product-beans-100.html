@@ -31,6 +31,14 @@ img{display:block;width:100%;}
 .product-detail{margin-bottom:2rem;}
 .product-detail-title{font-size:10px;letter-spacing:0.2em;color:var(--text-light);margin-bottom:0.8rem;border-bottom:1px solid var(--border);padding-bottom:0.5rem;}
 .product-detail-item{display:flex;justify-content:space-between;font-size:12px;color:var(--text-mid);padding:0.5rem 0;border-bottom:1px dashed var(--border);}
+/* 種類選択 */
+.variety-section{margin-bottom:2rem;}
+.variety-label{font-size:10px;letter-spacing:0.2em;color:var(--text-light);margin-bottom:0.8rem;border-bottom:1px solid var(--border);padding-bottom:0.5rem;}
+.variety-selected{font-size:12px;color:var(--brown);margin-bottom:0.8rem;}
+.variety-grid{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.variety-btn{border:1px solid var(--border);background:none;padding:7px 14px;font-size:11px;font-family:var(--font-sans);color:var(--text-mid);cursor:pointer;transition:all 0.2s;letter-spacing:0.05em;}
+.variety-btn:hover{border-color:var(--brown);color:var(--brown);}
+.variety-btn.active{border-color:var(--brown-deep);background:var(--brown-deep);color:white;}
 .btn-buy{display:block;width:100%;background:var(--brown-deep);color:white;font-size:12px;letter-spacing:0.2em;padding:16px;text-align:center;margin-top:2rem;transition:background 0.3s;border:none;cursor:pointer;}
 .btn-buy:hover{background:var(--brown);}
 .related{background:var(--brown-mist);border-top:1px solid var(--border);}
@@ -62,16 +70,31 @@ img{display:block;width:100%;}
     <p class="product-tag">SINGLE ORIGIN</p>
     <h1 class="product-name">珈琲豆 105g（7日分）</h1>
     <div class="product-price">¥980<span>〜（税込・送料別）</span></div>
-    <p class="product-desc">産地の個性をストレートに楽しめるシングルオリジン。その月のおすすめ豆を丁寧に焙煎してお届けします。フルーティーな酸味とほのかな甘みが特徴です。</p>
+    <p class="product-desc" id="bean-desc">上の種類を選ぶと、その豆のフレーバーや詳細情報が表示されます。</p>
     <div class="product-detail">
-      <div class="product-detail-title">商品詳細</div>
+      <div class="product-detail-title">共通情報</div>
       <div class="product-detail-item"><span>内容量</span><span>105g（3種類 各35g）</span></div>
-      <div class="product-detail-item"><span>種類</span><span>シングルオリジン（月替わり）</span></div>
-      <div class="product-detail-item"><span>焙煎度</span><span>浅煎り〜中煎り</span></div>
       <div class="product-detail-item"><span>挽き方</span><span>ホール豆</span></div>
       <div class="product-detail-item"><span>賞味期限</span><span>焙煎日より30日</span></div>
     </div>
-    <a href="#" class="btn-buy">購入する →</a>
+    <div class="product-detail" id="bean-detail" style="display:none;">
+      <div class="product-detail-title">選択中の豆の詳細</div>
+      <div id="bean-table"></div>
+    </div>
+        <div class="variety-section">
+      <div class="variety-label">種類を選ぶ</div>
+      <div class="variety-selected">選択中：<span id="selected-variety">未選択</span></div>
+      <div class="variety-grid">
+        <button class="variety-btn" onclick="selectVariety(this, 'グアテマラ')">グアテマラ</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'メキシコ')">メキシコ</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'パプアニューギニア')">パプアニューギニア</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'ペルー')">ペルー</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'ミャンマー')">ミャンマー</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'インドネシア')">インドネシア</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'デカフェ')">デカフェ</button>
+      </div>
+    </div>
+    <a href="#" class="btn-buy">購入する</a>
   </div>
 </div>
 <div class="related">
@@ -97,5 +120,74 @@ img{display:block;width:100%;}
   <div class="footer-mini-logo">DREAMERS COFFEE</div>
   <div class="footer-mini-copy">© 2026 DREAMERS COFFEE. All rights reserved.</div>
 </div>
+<script>
+const BEANS = {
+  'グアテマラ': {
+    flavor: 'みかんやオレンジのような優しい酸味と柔らかな甘さ、ややカカオっぽいコクが特徴の珈琲に仕上げています。',
+    producer: 'パストレス水洗工場周辺の小規模農家',
+    region: 'グアテマラ サカテペケス県 アンティグア',
+    altitude: '1,500〜1,700m',
+    variety: 'ブルボン、カツアイ等',
+    process: 'ウォッシュト',
+    note: '農薬不使用'
+  },
+  'ペルー': {
+    flavor: 'いちごみたいな柔らかい酸味や焼きりんごの甘酸っぱさとほろ苦さがバランスの良いティーライクな珈琲に仕上げています。',
+    producer: 'TUNKIMAYU COFFEE / ANEAN AMAZON COFFEE',
+    region: 'ペルー',
+    altitude: '1,800〜2,100m',
+    variety: 'アラビカ種（レッドブルボン）',
+    process: '72時間発酵、ウォッシュト',
+    note: 'トップスペシャルティコーヒー、栽培期間中農薬不使用'
+  },
+  'メキシコ': {
+    flavor: 'ライムやグリーンアップルのような爽やかな酸味とカカオやナッツ類のようなコクが感じられる珈琲に仕上げています。',
+    producer: 'マヤビニック生産者協同組合',
+    region: 'メキシコ チアパス州',
+    altitude: '1,000〜1,700m',
+    variety: 'アラビカ種（ティピカ、ムンドヌーボ他）',
+    process: 'ウォッシュト',
+    note: '有機JAS認証、フェアトレード、農薬不使用'
+  },
+  'パプアニューギニア': null,
+  'ミャンマー': null,
+  'インドネシア': null,
+  'デカフェ': null
+};
+
+function selectVariety(btn, name) {
+  document.querySelectorAll(".variety-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("selected-variety").textContent = name;
+
+  const data = BEANS[name];
+  const detailBox = document.getElementById("bean-detail");
+  const descEl = document.getElementById("bean-desc");
+
+  if (!data) {
+    detailBox.style.display = "none";
+    descEl.textContent = "詳細情報は近日公開予定です。";
+    return;
+  }
+
+  descEl.textContent = data.flavor;
+
+  const fields = [
+    ["生産者", data.producer],
+    ["産地", data.region],
+    ["標高", data.altitude],
+    ["品種", data.variety],
+    ["精製", data.process],
+    ["その他", data.note]
+  ];
+
+  const table = document.getElementById("bean-table");
+  table.innerHTML = fields.map(([k, v]) =>
+    `<div class="product-detail-item"><span>${k}</span><span>${v}</span></div>`
+  ).join("");
+
+  detailBox.style.display = "block";
+}
+</script>
 </body>
 </html>
