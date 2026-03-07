@@ -151,15 +151,12 @@ img { display: block; width: 100%; }
 .hero-slider {
   position: relative;
   overflow: hidden;
-  background: var(--brown-mist);
 }
 
 .hero-slide {
-  display: none;
+  display: block;
   position: relative;
 }
-
-.hero-slide.active { display: block; }
 
 .hero-slide-inner {
   display: grid;
@@ -1174,10 +1171,19 @@ footer {
         愛知県豊田市を拠点に活動するスペシャルティコーヒーの専門店。<br>
         店主・Okada Koheiが「珈琲を通じてゆとり・彩り・つながりを」という想いで一杯一杯を届けています。
       </p>
-      <div style="display:flex;gap:.8rem;margin-top:1.5rem;">
-        <a href="https://www.instagram.com/dreamers_coffee/" target="_blank" style="font-size:11px;color:var(--brown);border-bottom:1px solid var(--brown-pale);padding-bottom:2px;">INSTAGRAM</a>
-        <a href="https://x.com/_ko_hey__" target="_blank" style="font-size:11px;color:var(--brown);border-bottom:1px solid var(--brown-pale);padding-bottom:2px;">X / TWITTER</a>
-        <a href="https://note.com/dreamers_coffee" target="_blank" style="font-size:11px;color:var(--brown);border-bottom:1px solid var(--brown-pale);padding-bottom:2px;">NOTE</a>
+      <div style="display:flex;gap:1rem;margin-top:1.5rem;">
+        <a href="https://www.instagram.com/dreamers_coffee/" target="_blank" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);color:var(--brown);transition:all 0.2s;" onmouseover="this.style.background='var(--brown)';this.style.color='white'" onmouseout="this.style.background='';this.style.color='var(--brown)'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://x.com/_ko_hey__" target="_blank" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);color:var(--brown);transition:all 0.2s;" onmouseover="this.style.background='var(--brown)';this.style.color='white'" onmouseout="this.style.background='';this.style.color='var(--brown)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M20 4L4 20"/></svg>
+        </a>
+        <a href="https://www.youtube.com/channel/UCCZaImDVqZxZsEf7UQ-_UKg" target="_blank" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);color:var(--brown);transition:all 0.2s;" onmouseover="this.style.background='var(--brown)';this.style.color='white'" onmouseout="this.style.background='';this.style.color='var(--brown)'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.5 6.5s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C15.9 2.2 12 2.2 12 2.2s-3.9 0-6.3.2c-.6.1-1.9.1-3 1.3-.9.8-1.2 2.8-1.2 2.8S1.2 8.8 1.2 11v2c0 2.2.3 4.5.3 4.5s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C8 21.8 12 21.8 12 21.8s3.9 0 6.3-.3c.6-.1 1.9-.1 3-1.2.9-.8 1.2-2.8 1.2-2.8s.3-2.2.3-4.5v-2c0-2.2-.3-4.5-.3-4.5zM9.7 15.5V8.4l6.6 3.6-6.6 3.5z"/></svg>
+        </a>
+        <a href="https://note.com/dreamers_coffee" target="_blank" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);color:var(--brown);font-size:13px;font-weight:500;letter-spacing:0;transition:all 0.2s;" onmouseover="this.style.background='var(--brown)';this.style.color='white'" onmouseout="this.style.background='';this.style.color='var(--brown)'">
+          n
+        </a>
       </div>
       <a href="about.html" style="display:inline-block;margin-top:1.5rem;font-size:11px;letter-spacing:.15em;color:var(--white);background:var(--brown);padding:10px 24px;">プロフィールを見る →</a>
     </div>
@@ -1315,20 +1321,6 @@ function renderCart() {
 }
 
 // ── SLIDER ──
-let currentSlide = 0;
-const slides = document.querySelectorAll('.hero-slide');
-const dots = document.querySelectorAll('.slider-dot');
-
-function goSlide(n) {
-  slides[currentSlide].classList.remove('active');
-  dots[currentSlide].classList.remove('active');
-  currentSlide = n;
-  slides[currentSlide].classList.add('active');
-  dots[currentSlide].classList.add('active');
-}
-
-setInterval(() => goSlide((currentSlide + 1) % slides.length), 5000);
-
 // ── CATEGORY NAV ──
 document.querySelectorAll('.cat-nav-item').forEach(item => {
   item.addEventListener('click', function() {
