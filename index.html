@@ -963,19 +963,74 @@ footer {
 }
 
 @media (max-width: 768px) {
+  /* NAV */
+  .nav-inner { padding: 0 1rem; height: 54px; }
+  .nav-logo { font-size: 0.7rem; letter-spacing: 0.15em; }
+  .cat-nav-inner { gap: 0; justify-content: space-between; }
+  .cat-nav-item { font-size: 10px; padding: 12px 8px; letter-spacing: 0.03em; }
+
+  /* HERO */
   .hero-slide-inner { grid-template-columns: 1fr; }
-  .hero-slide-img { height: 260px; }
-  .hero-slide-content { padding: 2.5rem 1.5rem; }
-  .hero-title { font-size: 2.4rem; }
-  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  .category-grid { grid-template-columns: repeat(2, 1fr); }
-  .blog-grid { grid-template-columns: 1fr; }
-  .sub-banner-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .info-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-slide-img { height: 240px; }
+  .hero-slide-content { padding: 1.8rem 1.2rem; background: var(--brown-mist); }
+  .hero-title { font-size: 1.4rem; white-space: normal; }
+  .hero-desc { font-size: 12px; line-height: 1.9; }
+  .hero-tag { font-size: 9px; }
+  .hero-slide-content a { display: inline-block !important; width: auto !important; }
+
+  /* SECTION */
+  .section { padding: 2.5rem 1.2rem; }
+  .section-head { margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.8rem; }
+  .section-title-ja { font-size: 1.4rem; }
+
+  /* PRODUCTS */
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  .product-card-body { padding: 0.7rem; }
+  .product-card-name { font-size: 11px; }
+  .product-card-price { font-size: 11px; }
+
+  /* SUBSCRIPTION */
+  .sub-banner-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .sub-title { font-size: 1.7rem; }
+  .sub-desc { font-size: 12px; }
+  .sub-img-wrap { display: none; }
+  .sub-banner { padding: 3rem 1.2rem; }
+
+  /* INFO */
+  .info-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .info-section { padding: 2rem 1.2rem; }
+  .info-list li { flex-wrap: wrap; gap: 0.3rem; }
+  .info-date { font-size: 11px; min-width: auto; }
+  .info-text { font-size: 12px; }
+
+  /* RECIPE/BLOG inline grid */
+  [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+  [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+  [style*="grid-template-columns:100px 1fr"] { grid-template-columns: 80px 1fr !important; }
+
+  /* ABOUT */
+  [style*="grid-template-columns:1fr 1fr;gap:4rem"] { grid-template-columns: 1fr !important; gap: 2rem !important; padding: 2rem 1.2rem !important; }
+
+  /* FOOTER */
   .footer-top { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .footer-legal { flex-direction: column; gap: 0.5rem; text-align: center; }
   .cart-drawer { width: 100%; }
-  .nav-inner { padding: 0 1rem; }
+}
+
+/* iPhone SE (375px以下) 追加調整 */
+@media (max-width: 390px) {
+  .nav-inner { height: 50px; }
+  .nav-logo { font-size: 0.6rem; letter-spacing: 0.08em; }
+  .cat-nav-item { font-size: 9px; padding: 11px 6px; }
+  .hero-title { font-size: 1.2rem; white-space: normal; }
+  .hero-slide-img { height: 200px; }
+  .product-grid { gap: 0.5rem; }
+  .product-card-name { font-size: 10px; }
+  .product-card-price { font-size: 10px; }
+  .section { padding: 2rem 1rem; }
+  .sub-title { font-size: 1.4rem; }
+  .section-title-ja { font-size: 1.2rem; }
 }
 </style>
 </head>
@@ -1121,7 +1176,7 @@ footer {
       <div class="section-title-en">レシピ</div>
     </div>
   </div>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+  <div class="recipe-grid-wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
     <!-- レシピ大カード -->
     <div>
       <a href="recipe.html" class="blog-card" style="display:block;">
@@ -1156,7 +1211,7 @@ footer {
 
 <!-- ABOUT / PROFILE -->
 <div id="profile" style="background:var(--brown-mist); border-top:1px solid var(--border);">
-  <div class="reveal" style="max-width:1320px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+  <div class="about-grid reveal" style="max-width:1320px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
     <div>
       <div class="info-title">ABOUT</div>
       <p style="font-size:13px;color:var(--text-mid);line-height:2.1;margin-top:0.5rem;">
