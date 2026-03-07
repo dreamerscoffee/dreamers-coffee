@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RECIPE — DREAMERS COFFEE</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7; --white: #FFFFFF;
+  --brown-deep: #2C1A0E; --brown: #5C3A1E; --brown-mid: #8B5E3C;
+  --brown-light: #C49A6C; --brown-pale: #E8D5BE; --brown-mist: #F2EAE0;
+  --text: #2C1A0E; --text-mid: #7A5C47; --text-light: #A8937E;
+  --border: #E0D0BC;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Noto Sans JP', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); background: var(--bg); color: var(--text); font-weight: 300; font-size: 14px; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; }
+
+/* NAV */
+.nav-wrap { position: sticky; top: 0; z-index: 200; background: var(--white); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 2rem; height: 64px; }
+.nav-logo { grid-column: 2; font-size: 1rem; letter-spacing: 0.3em; color: var(--brown-deep); font-weight: 400; }
+.nav-back { grid-column: 1; font-size: 11px; letter-spacing: 0.1em; color: var(--text-light); display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+.nav-back:hover { color: var(--brown); }
+
+/* HERO */
+.hero { background: var(--brown-deep); padding: 6rem 2rem; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?w=1400&q=60') center/cover; opacity: 0.2; }
+.hero-inner { position: relative; z-index: 1; }
+.hero-tag { font-size: 10px; letter-spacing: 0.4em; color: var(--brown-light); margin-bottom: 1.5rem; }
+.hero-title { font-family: var(--font-serif); font-size: 3.2rem; font-weight: 300; color: white; line-height: 1.25; margin-bottom: 1.5rem; }
+.hero-desc { font-size: 13px; color: rgba(255,255,255,0.6); max-width: 460px; margin: 0 auto; line-height: 2; }
+
+/* SECTION */
+.section { max-width: 1000px; margin: 0 auto; padding: 5rem 2rem; }
+.section-label { font-size: 10px; letter-spacing: 0.4em; color: var(--brown-light); margin-bottom: 0.8rem; }
+.section-title { font-family: var(--font-serif); font-size: 2rem; font-weight: 400; color: var(--brown-deep); margin-bottom: 0.8rem; }
+.section-desc { font-size: 13px; color: var(--text-mid); margin-bottom: 3rem; line-height: 2; }
+
+/* RECIPE GRID */
+.recipe-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+.recipe-card { background: var(--white); border: 1px solid var(--border); overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+.recipe-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(44,26,14,0.1); }
+.recipe-img-wrap { aspect-ratio: 16/9; overflow: hidden; }
+.recipe-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.recipe-card:hover .recipe-img-wrap img { transform: scale(1.04); }
+.recipe-body { padding: 1.8rem 2rem; }
+.recipe-tag { font-size: 10px; letter-spacing: 0.2em; color: var(--brown-light); margin-bottom: 0.5rem; }
+.recipe-name { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; color: var(--brown-deep); margin-bottom: 0.8rem; }
+.recipe-meta { display: flex; gap: 1.5rem; margin-bottom: 1rem; }
+.recipe-meta-item { font-size: 11px; color: var(--text-light); display: flex; align-items: center; gap: 0.3rem; }
+.recipe-desc { font-size: 12px; color: var(--text-mid); line-height: 2; }
+
+/* RECIPE DETAIL (modal style inline) */
+.recipe-detail { display: none; background: var(--brown-mist); border-top: 3px solid var(--brown-light); }
+.recipe-detail.open { display: block; }
+.recipe-detail-inner { max-width: 1000px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.detail-section-title { font-size: 11px; letter-spacing: 0.2em; color: var(--brown-light); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+.ingredient-list { list-style: none; }
+.ingredient-list li { font-size: 13px; color: var(--text-mid); padding: 0.5rem 0; border-bottom: 1px dashed var(--border); display: flex; justify-content: space-between; }
+.steps-list { list-style: none; counter-reset: step; }
+.steps-list li { font-size: 13px; color: var(--text-mid); padding: 0.8rem 0 0.8rem 2.5rem; border-bottom: 1px solid var(--border); position: relative; line-height: 1.9; counter-increment: step; }
+.steps-list li::before { content: counter(step); position: absolute; left: 0; top: 0.8rem; width: 22px; height: 22px; border-radius: 50%; background: var(--brown-pale); color: var(--brown); font-size: 11px; display: flex; align-items: center; justify-content: center; font-weight: 500; }
+.close-detail { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 11px; color: var(--text-light); margin-top: 1.5rem; cursor: pointer; letter-spacing: 0.1em; }
+.close-detail:hover { color: var(--brown); }
+
+/* TIPS */
+.tips-section { background: var(--brown-mist); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.tips-inner { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; }
+.tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+.tip-item { padding: 1.8rem; background: var(--white); border: 1px solid var(--border); }
+.tip-num { font-family: var(--font-serif); font-size: 2rem; color: var(--brown-pale); margin-bottom: 0.8rem; }
+.tip-title { font-size: 13px; font-weight: 500; color: var(--brown-deep); margin-bottom: 0.5rem; }
+.tip-desc { font-size: 12px; color: var(--text-light); line-height: 1.9; }
+
+/* CTA */
+.cta { background: var(--brown-deep); text-align: center; padding: 5rem 2rem; color: white; }
+.cta-title { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; margin-bottom: 1.2rem; }
+.cta-desc { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; line-height: 2; }
+.btn-cta { display: inline-flex; align-items: center; gap: 0.8rem; background: var(--brown-light); color: var(--brown-deep); font-size: 11px; letter-spacing: 0.2em; padding: 15px 36px; font-weight: 500; transition: background 0.3s; }
+.btn-cta:hover { background: #D4AA80; }
+
+/* FOOTER */
+.footer-mini { background: #100C09; padding: 2rem; text-align: center; }
+.footer-mini-logo { font-size: 0.9rem; letter-spacing: 0.3em; color: var(--brown-light); margin-bottom: 0.8rem; }
+.footer-mini-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 2.2rem; }
+  .recipe-grid { grid-template-columns: 1fr; }
+  .recipe-detail-inner { grid-template-columns: 1fr; }
+  .tips-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <a class="nav-back" href="index.html">← ホームに戻る</a>
+    <a class="nav-logo" href="index.html">DREAMERS COFFEE</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-inner reveal">
+    <p class="hero-tag">RECIPE — レシピ</p>
+    <h1 class="hero-title">自宅で楽しむ、<br>本格の一杯。</h1>
+    <p class="hero-desc">道具や淹れ方のコツを知れば、毎日の珈琲がもっと豊かになります。</p>
+  </div>
+</section>
+
+<section class="section reveal">
+  <p class="section-label">RECIPES</p>
+  <h2 class="section-title">レシピ一覧</h2>
+  <p class="section-desc">タップして詳しい手順を確認できます。</p>
+
+  <div class="recipe-grid">
+
+    <!-- ドリップ -->
+    <div>
+      <div class="recipe-card" onclick="toggleRecipe('drip')">
+        <div class="recipe-img-wrap">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700&q=80" alt="ドリップ">
+        </div>
+        <div class="recipe-body">
+          <div class="recipe-tag">BASIC</div>
+          <div class="recipe-name">ハンドドリップ</div>
+          <div class="recipe-meta">
+            <div class="recipe-meta-item">⏱ 約5分</div>
+            <div class="recipe-meta-item">☕ 1〜2杯分</div>
+          </div>
+          <div class="recipe-desc">ペーパードリップで丁寧に淹れる基本のレシピ。豆の風味を最大限に引き出します。</div>
+        </div>
+      </div>
+      <div class="recipe-detail" id="detail-drip">
+        <div class="recipe-detail-inner">
+          <div>
+            <div class="detail-section-title">INGREDIENTS — 材料（1杯分）</div>
+            <ul class="ingredient-list">
+              <li><span>珈琲豆（中細挽き）</span><span>15g</span></li>
+              <li><span>お湯（92〜93℃）</span><span>240ml</span></li>
+              <li><span>ペーパーフィルター</span><span>1枚</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="detail-section-title">STEPS — 手順</div>
+            <ol class="steps-list">
+              <li>フィルターをドリッパーにセットし、お湯で温める（温めたお湯は捨てる）</li>
+              <li>挽いた豆をフィルターに入れ、表面を平らにする</li>
+              <li>お湯を少量（30ml程度）注ぎ、30秒蒸らす</li>
+              <li>中心から外側へゆっくり円を描くようにお湯を注ぐ（計240ml）</li>
+              <li>3〜4分で抽出完了。すぐに飲むのがおすすめ</li>
+            </ol>
+            <div class="close-detail" onclick="toggleRecipe('drip')">▲ 閉じる</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- アイスコーヒー -->
+    <div>
+      <div class="recipe-card" onclick="toggleRecipe('ice')">
+        <div class="recipe-img-wrap">
+          <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=700&q=80" alt="アイスコーヒー">
+        </div>
+        <div class="recipe-body">
+          <div class="recipe-tag">SUMMER</div>
+          <div class="recipe-name">アイスコーヒー</div>
+          <div class="recipe-meta">
+            <div class="recipe-meta-item">⏱ 約5分</div>
+            <div class="recipe-meta-item">☕ 1杯分</div>
+          </div>
+          <div class="recipe-desc">急冷式でクリアな味わいに。スペシャルティコーヒーの甘みと酸味が引き立ちます。</div>
+        </div>
+      </div>
+      <div class="recipe-detail" id="detail-ice">
+        <div class="recipe-detail-inner">
+          <div>
+            <div class="detail-section-title">INGREDIENTS — 材料（1杯分）</div>
+            <ul class="ingredient-list">
+              <li><span>珈琲豆（中細挽き）</span><span>20g</span></li>
+              <li><span>お湯（93℃）</span><span>180ml</span></li>
+              <li><span>氷</span><span>たっぷり</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="detail-section-title">STEPS — 手順</div>
+            <ol class="steps-list">
+              <li>グラスに氷をたっぷり入れておく</li>
+              <li>豆を少し多め（20g）に量り、中細挽きにする</li>
+              <li>通常より濃いめ（180ml）で抽出する</li>
+              <li>抽出したコーヒーを氷の入ったグラスに直接注ぐ</li>
+              <li>素早くかき混ぜて急冷する。氷が溶けすぎる前に飲む</li>
+            </ol>
+            <div class="close-detail" onclick="toggleRecipe('ice')">▲ 閉じる</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- フレンチプレス -->
+    <div>
+      <div class="recipe-card" onclick="toggleRecipe('french')">
+        <div class="recipe-img-wrap">
+          <img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=700&q=80" alt="フレンチプレス">
+        </div>
+        <div class="recipe-body">
+          <div class="recipe-tag">FULL BODY</div>
+          <div class="recipe-name">フレンチプレス</div>
+          <div class="recipe-meta">
+            <div class="recipe-meta-item">⏱ 約8分</div>
+            <div class="recipe-meta-item">☕ 1〜2杯分</div>
+          </div>
+          <div class="recipe-desc">豆の油分ごと抽出するのでコクが深い。道具さえあれば簡単に本格コーヒーが楽しめます。</div>
+        </div>
+      </div>
+      <div class="recipe-detail" id="detail-french">
+        <div class="recipe-detail-inner">
+          <div>
+            <div class="detail-section-title">INGREDIENTS — 材料（1杯分）</div>
+            <ul class="ingredient-list">
+              <li><span>珈琲豆（粗挽き）</span><span>15g</span></li>
+              <li><span>お湯（93℃）</span><span>240ml</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="detail-section-title">STEPS — 手順</div>
+            <ol class="steps-list">
+              <li>粗めに挽いた豆をフレンチプレスに入れる</li>
+              <li>93℃のお湯を注ぎ、スプーンで軽く混ぜる</li>
+              <li>フタをして4分間待つ（プレスは押さない）</li>
+              <li>ゆっくりとプレスを押し下げる</li>
+              <li>すぐにカップに注ぐ（抽出が進みすぎないように）</li>
+            </ol>
+            <div class="close-detail" onclick="toggleRecipe('french')">▲ 閉じる</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 珈琲バッグ -->
+    <div>
+      <div class="recipe-card" onclick="toggleRecipe('bag')">
+        <div class="recipe-img-wrap">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=700&q=80" alt="珈琲バッグ">
+        </div>
+        <div class="recipe-body">
+          <div class="recipe-tag">EASY</div>
+          <div class="recipe-name">珈琲バッグの使い方</div>
+          <div class="recipe-meta">
+            <div class="recipe-meta-item">⏱ 約3分</div>
+            <div class="recipe-meta-item">☕ 1杯分</div>
+          </div>
+          <div class="recipe-desc">お湯を注ぐだけで本格コーヒー。道具不要でオフィスやアウトドアでも手軽に楽しめます。</div>
+        </div>
+      </div>
+      <div class="recipe-detail" id="detail-bag">
+        <div class="recipe-detail-inner">
+          <div>
+            <div class="detail-section-title">INGREDIENTS — 材料（1杯分）</div>
+            <ul class="ingredient-list">
+              <li><span>珈琲バッグ</span><span>1袋</span></li>
+              <li><span>お湯（90〜95℃）</span><span>150〜200ml</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="detail-section-title">STEPS — 手順</div>
+            <ol class="steps-list">
+              <li>珈琲バッグをカップにセットする</li>
+              <li>お湯（90〜95℃）を静かに注ぐ</li>
+              <li>3分間待つ（お好みで時間調整）</li>
+              <li>バッグを軽く押してから取り出す</li>
+              <li>そのまま飲む。アイスにする場合は氷を加える</li>
+            </ol>
+            <div class="close-detail" onclick="toggleRecipe('bag')">▲ 閉じる</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TIPS -->
+<div class="tips-section">
+  <div class="tips-inner reveal">
+    <p class="section-label">TIPS</p>
+    <h2 class="section-title">美味しく淹れるコツ</h2>
+    <div class="tips-grid">
+      <div class="tip-item">
+        <div class="tip-num">01</div>
+        <div class="tip-title">お湯の温度は92〜93℃</div>
+        <div class="tip-desc">沸騰したお湯を少し冷ますのがポイント。高すぎると苦みが出やすくなります。</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">02</div>
+        <div class="tip-title">挽きたてが一番</div>
+        <div class="tip-desc">豆は飲む直前に挽くのが理想。挽いた状態では香りと鮮度が急速に落ちます。</div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">03</div>
+        <div class="tip-title">保存は冷暗所で</div>
+        <div class="tip-desc">豆は直射日光・高温・湿気を避けて保存。開封後は2週間以内に飲みきるのがおすすめです。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta reveal">
+  <h2 class="cta-title">さっそく豆を選んでみませんか。</h2>
+  <p class="cta-desc">スペシャルティコーヒーを自宅で。<br>お好みの豆を見つけてください。</p>
+  <a href="beans.html" class="btn-cta">豆を見る →</a>
+</div>
+
+<div class="footer-mini">
+  <div class="footer-mini-logo">DREAMERS COFFEE</div>
+  <div class="footer-mini-copy">© 2026 DREAMERS COFFEE. All rights reserved.</div>
+</div>
+
+<script>
+function toggleRecipe(id) {
+  const el = document.getElementById('detail-' + id);
+  el.classList.toggle('open');
+}
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
