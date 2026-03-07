@@ -579,7 +579,7 @@ img { display: block; width: 100%; }
   width: 100%;
   aspect-ratio: 4/3;
   object-fit: cover;
-  max-height: 200px;
+  max-height: 120px;
 }
 
 .sub-stripe-badge {
@@ -605,47 +605,75 @@ img { display: block; width: 100%; }
   letter-spacing: 0.05em;
 }
 
-/* ── BLOG ── */
-.blog-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 1.5rem;
+/* ── BLOG SLIDER ── */
+.blog-slider-wrap {
+  overflow: hidden;
+  position: relative;
 }
-
-.blog-card { cursor: pointer; }
-
+.blog-grid {
+  display: flex;
+  gap: 1.5rem;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+.blog-card {
+  cursor: pointer;
+  flex: 0 0 calc(33.333% - 1rem);
+  min-width: 0;
+}
 .blog-card-img-wrap {
   overflow: hidden;
   margin-bottom: 1rem;
   background: var(--brown-mist);
 }
-
 .blog-card-img-wrap img {
   width: 100%;
+  aspect-ratio: 4/3;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
-
 .blog-card:hover .blog-card-img-wrap img { transform: scale(1.04); }
-
-.blog-card:first-child .blog-card-img-wrap img { aspect-ratio: 16/9; }
-.blog-card:not(:first-child) .blog-card-img-wrap img { aspect-ratio: 4/3; }
-
 .blog-date {
-  font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 11px;
   letter-spacing: 0.15em;
   color: var(--text-light);
   margin-bottom: 0.5rem;
 }
-
 .blog-title {
-  font-size: 17px;
+  font-size: 14px;
   color: var(--text);
   line-height: 1.7;
 }
-
-.blog-card:first-child .blog-title { font-size: 17px; }
+.blog-slider-nav {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  justify-content: flex-end;
+}
+.blog-slider-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brown);
+  transition: all 0.2s;
+}
+.blog-slider-btn:hover {
+  background: var(--brown);
+  color: white;
+  border-color: var(--brown);
+}
+.blog-slider-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+@media(max-width:768px) {
+  .blog-card { flex: 0 0 80%; }
+}
 
 /* ── INFO SECTION ── */
 .info-section {
@@ -1046,17 +1074,14 @@ footer {
       <div class="section-title-ja">RECIPE</div>
     </div>
   </div>
-  <div class="recipe-grid-wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
-    <!-- レシピ大カード -->
-    <div>
-      <a href="recipe.html" class="blog-card" style="display:block;">
-        <div class="blog-card-img-wrap">
-          <img src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?w=700&q=80" alt="">
-        </div>
-        <div class="blog-date">RECIPE</div>
-        <div class="blog-title" style="font-size:16px;">自宅で楽しむ、美味しいスペシャルティコーヒーの淹れ方ガイド</div>
-      </a>
-      <a href="recipe.html" style="display:inline-block;margin-top:1.2rem;font-size:11px;letter-spacing:.15em;color:var(--white);background:var(--brown);padding:10px 24px;">レシピを見る</a>
+  <div class="about-layout">
+    <img class="about-img" src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?w=800&q=80" alt="RECIPE">
+    <div class="about-text">
+      <p style="font-size:15px;color:var(--text-mid);line-height:2.1;">
+        ハンドドリップ・アイスコーヒー・フレンチプレス・珈琲バッグ。<br>
+        自宅で美味しいスペシャルティコーヒーを楽しむための淹れ方を、わかりやすく紹介しています。
+      </p>
+      <a href="recipe.html" style="display:inline-block;margin-top:1.5rem;font-size:11px;letter-spacing:.15em;color:var(--white);background:var(--brown);padding:10px 24px;">レシピを見る</a>
     </div>
   </div>
 </section>
@@ -1069,30 +1094,63 @@ footer {
     </div>
     <a href="blog.html" class="view-all">記事一覧 →</a>
   </div>
-  <div class="blog-grid">
-    <a href="osusume-handle-coffee-mill.html" class="blog-card">
-      <div class="blog-card-img-wrap">
-        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=700&q=80" alt="バリスタがおすすめの手動コーヒーミル5選">
-      </div>
-      <div class="blog-date">2026.03.07</div>
-      <div class="blog-title">バリスタがおすすめの手動コーヒーミル5選</div>
-    </a>
-    <a href="#" class="blog-card">
-      <div class="blog-card-img-wrap">
-        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=700&q=80" alt="">
-      </div>
-      <div class="blog-date">2026.01.10</div>
-      <div class="blog-title">DREAMERS COFFEEを始めた理由</div>
-    </a>
-    <a href="#" class="blog-card">
-      <div class="blog-card-img-wrap">
-        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=700&q=80" alt="">
-      </div>
-      <div class="blog-date">2025.12.20</div>
-      <div class="blog-title">スペシャルティコーヒーって何が違うの？</div>
-    </a>
+  <div class="blog-slider-wrap">
+    <div class="blog-grid" id="blogSlider">
+      <a href="osusume-handle-coffee-mill.html" class="blog-card">
+        <div class="blog-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=700&q=80" alt="バリスタがおすすめの手動コーヒーミル5選">
+        </div>
+        <div class="blog-date">2026.03.07</div>
+        <div class="blog-title">バリスタがおすすめの手動コーヒーミル5選</div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=700&q=80" alt="">
+        </div>
+        <div class="blog-date">2026.01.10</div>
+        <div class="blog-title">DREAMERS COFFEEを始めた理由</div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=700&q=80" alt="">
+        </div>
+        <div class="blog-date">2025.12.20</div>
+        <div class="blog-title">スペシャルティコーヒーって何が違うの？</div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700&q=80" alt="">
+        </div>
+        <div class="blog-date">2025.11.15</div>
+        <div class="blog-title">珈琲豆の産地による味の違いを解説</div>
+      </a>
+    </div>
+  </div>
+  <div class="blog-slider-nav">
+    <button class="blog-slider-btn" id="blogPrev" onclick="blogSlide(-1)" disabled>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="blog-slider-btn" id="blogNext" onclick="blogSlide(1)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
   </div>
 </section>
+<script>
+(function() {
+  var current = 0;
+  window.blogSlide = function(dir) {
+    var slider = document.getElementById('blogSlider');
+    var cards = slider.querySelectorAll('.blog-card');
+    var visible = window.innerWidth <= 768 ? 1 : 3;
+    var max = cards.length - visible;
+    current = Math.max(0, Math.min(current + dir, max));
+    var cardWidth = cards[0].offsetWidth + 24; // gap=1.5rem=24px
+    slider.style.transform = 'translateX(-' + (current * cardWidth) + 'px)';
+    document.getElementById('blogPrev').disabled = current === 0;
+    document.getElementById('blogNext').disabled = current >= max;
+  };
+})();
+</script>
 
 <!-- ABOUT / PROFILE -->
 <div id="profile" style="background:var(--brown-mist); border-top:1px solid var(--border);">
