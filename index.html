@@ -171,7 +171,9 @@ img { display: block; width: 100%; }
   width: 100%;
   height: 520px;
   object-fit: cover;
+  background: var(--brown-mid) url('IMG_7463.jpg') center/cover no-repeat;
 }
+.hero-slide-img img { display: none; }
 
 .hero-slide-content {
   display: flex;
@@ -1012,9 +1014,7 @@ footer {
 <section class="hero-slider">
   <div class="hero-slide active">
     <div class="hero-slide-inner">
-      <img class="hero-slide-img"
-        src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=900&q=80"
-        alt="DREAMERS COFFEE">
+      <div class="hero-slide-img"></div>
       <div class="hero-slide-content">
         <p class="hero-tag">SPECIALTY COFFEE — TOYODA, AICHI</p>
         <h1 class="hero-title">珈琲が運ぶ、<br>心の<br>ゆとり。</h1>
