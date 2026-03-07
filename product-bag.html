@@ -26,6 +26,14 @@ img{display:block;width:100%;}
 .product-detail{margin-bottom:2rem;}
 .product-detail-title{font-size:10px;letter-spacing:0.2em;color:var(--text-light);margin-bottom:0.8rem;border-bottom:1px solid var(--border);padding-bottom:0.5rem;}
 .product-detail-item{display:flex;justify-content:space-between;font-size:12px;color:var(--text-mid);padding:0.5rem 0;border-bottom:1px dashed var(--border);}
+/* 種類選択 */
+.variety-section{margin-bottom:2rem;}
+.variety-label{font-size:10px;letter-spacing:0.2em;color:var(--text-light);margin-bottom:0.8rem;border-bottom:1px solid var(--border);padding-bottom:0.5rem;}
+.variety-selected{font-size:12px;color:var(--brown);margin-bottom:0.8rem;}
+.variety-grid{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.variety-btn{border:1px solid var(--border);background:none;padding:7px 14px;font-size:11px;font-family:var(--font-sans);color:var(--text-mid);cursor:pointer;transition:all 0.2s;letter-spacing:0.05em;}
+.variety-btn:hover{border-color:var(--brown);color:var(--brown);}
+.variety-btn.active{border-color:var(--brown-deep);background:var(--brown-deep);color:white;}
 .btn-buy{display:block;width:100%;background:var(--brown-deep);color:white;font-size:12px;letter-spacing:0.2em;padding:16px;text-align:center;margin-top:2rem;transition:background 0.3s;border:none;cursor:pointer;}
 .btn-buy:hover{background:var(--brown);}
 .related{background:var(--brown-mist);border-top:1px solid var(--border);}
@@ -66,7 +74,20 @@ img{display:block;width:100%;}
       <div class="product-detail-item"><span>抽出時間</span><span>約3分</span></div>
       <div class="product-detail-item"><span>賞味期限</span><span>製造日より60日</span></div>
     </div>
-    <a href="#" class="btn-buy">購入する →</a>
+        <div class="variety-section">
+      <div class="variety-label">種類を選ぶ</div>
+      
+      <div class="variety-grid">
+        <button class="variety-btn" onclick="selectVariety(this, 'グアテマラ')">グアテマラ</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'メキシコ')">メキシコ</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'パプアニューギニア')">パプアニューギニア</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'ペルー')">ペルー</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'ミャンマー')">ミャンマー</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'インドネシア')">インドネシア</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'デカフェ')">デカフェ</button>
+      </div>
+    </div>
+    <a href="#" class="btn-buy">購入する</a>
   </div>
 </div>
 <div class="related">
@@ -92,5 +113,12 @@ img{display:block;width:100%;}
   <div class="footer-mini-logo">DREAMERS COFFEE</div>
   <div class="footer-mini-copy">© 2026 DREAMERS COFFEE. All rights reserved.</div>
 </div>
+<script>
+function selectVariety(btn, name) {
+  document.querySelectorAll(".variety-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("selected-variety").textContent = name;
+}
+</script>
 </body>
 </html>
