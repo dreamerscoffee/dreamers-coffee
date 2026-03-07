@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DREAMERS COFFEE — Online Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --white: #FFFFFF;
+  --brown-deep: #2C1A0E;
+  --brown: #5C3A1E;
+  --brown-mid: #8B5E3C;
+  --brown-light: #C49A6C;
+  --brown-pale: #E8D5BE;
+  --brown-mist: #F2EAE0;
+  --text: #2C1A0E;
+  --text-mid: #7A5C47;
+  --text-light: #A8937E;
+  --border: #E0D0BC;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-display: 'Noto Sans JP', sans-serif;
+  --font-sans: 'Noto Sans JP', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; }
+
+/* ── TOP BAR ── */
+.topbar {
+  background: var(--brown-deep);
+  color: rgba(255,255,255,0.75);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 9px;
+}
+
+/* ── NAV ── */
+.nav-wrap {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 2rem;
+  height: 64px;
+}
+
+.nav-logo {
+  grid-column: 2;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.3em;
+  color: var(--brown-deep);
+  white-space: nowrap;
+}
+
+.nav-right {
+  grid-column: 3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.nav-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--brown);
+  font-size: 13px;
+  font-family: var(--font-display);
+  letter-spacing: 0.15em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+}
+
+.nav-icon-btn svg { width: 18px; height: 18px; stroke: var(--brown); fill: none; stroke-width: 1.5; }
+
+.nav-cart-count {
+  background: var(--brown);
+  color: white;
+  border-radius: 50%;
+  width: 18px; height: 18px;
+  font-size: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+}
+
+/* ── CATEGORY NAV ── */
+.cat-nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.cat-nav-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cat-nav-inner::-webkit-scrollbar { display: none; }
+
+.cat-nav-item {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--text-mid);
+  padding: 14px 18px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  cursor: pointer;
+  font-family: var(--font-display);
+}
+
+.cat-nav-item:hover, .cat-nav-item.active {
+  color: var(--brown);
+  border-bottom-color: var(--brown);
+}
+
+/* ── HERO SLIDER ── */
+.hero-slider {
+  position: relative;
+  overflow: hidden;
+  background: var(--brown-mist);
+}
+
+.hero-slide {
+  display: none;
+  position: relative;
+}
+
+.hero-slide.active { display: block; }
+
+.hero-slide-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+}
+
+.hero-slide-img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+}
+
+.hero-slide-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 5rem;
+  background: var(--brown-mist);
+}
+
+.hero-tag {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--brown-mid);
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 3.6rem;
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--brown-deep);
+  margin-bottom: 1.5rem;
+}
+
+.hero-title em { font-style: italic; }
+
+.hero-desc {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+  max-width: 340px;
+}
+
+.btn-shop {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--brown-deep);
+  color: white;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  padding: 14px 32px;
+  transition: background 0.3s;
+  align-self: flex-start;
+}
+
+.btn-shop:hover { background: var(--brown); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid var(--brown);
+  color: var(--brown);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  padding: 13px 32px;
+  transition: all 0.3s;
+  align-self: flex-start;
+  margin-top: 0.8rem;
+}
+
+.btn-outline:hover { background: var(--brown); color: white; }
+
+.slider-dots {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  display: flex;
+  gap: 8px;
+}
+
+.slider-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--brown-pale);
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+}
+
+.slider-dot.active { background: var(--brown); }
+
+/* ── SECTION COMMON ── */
+.section {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+.section-title-ja {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--brown-deep);
+}
+
+.section-title-en {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--text-light);
+  margin-top: 0.3rem;
+}
+
+.view-all {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--brown-mid);
+  border-bottom: 1px solid var(--brown-pale);
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+
+.view-all:hover { color: var(--brown); }
+
+/* ── PRODUCT GRID ── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.product-card {
+  cursor: pointer;
+}
+
+.product-card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  background: var(--brown-mist);
+  aspect-ratio: 1/1.1;
+}
+
+.product-card-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-card-img-wrap img {
+  transform: scale(1.04);
+}
+
+.product-card-img-sub {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s;
+  object-fit: cover;
+}
+
+.product-card:hover .product-card-img-sub { opacity: 1; }
+
+.product-badge {
+  position: absolute;
+  top: 12px; left: 12px;
+  background: var(--brown-deep);
+  color: white;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 3px 10px;
+  font-family: var(--font-display);
+}
+
+.product-badge.new { background: var(--brown-mid); }
+.product-badge.sold { background: #999; }
+
+.product-card-add {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(44,26,14,0.85);
+  color: white;
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  padding: 13px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+}
+
+.product-card:hover .product-card-add { transform: translateY(0); }
+
+.product-card-body {
+  padding: 0.9rem 0 0;
+}
+
+.product-card-name {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+.product-card-price {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--brown);
+}
+
+/* ── BESTSELLER RANK ── */
+.bestseller-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.bs-rank {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--brown-pale);
+  min-width: 3rem;
+  text-align: center;
+  line-height: 1;
+}
+
+.bs-img {
+  width: 70px; height: 70px;
+  object-fit: cover;
+  background: var(--brown-mist);
+  flex-shrink: 0;
+}
+
+.bs-info { flex: 1; }
+.bs-name { font-size: 13px; color: var(--text); margin-bottom: 0.3rem; }
+.bs-price { font-family: var(--font-serif); font-size: 14px; color: var(--brown); }
+
+/* ── CATEGORY SECTION ── */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+
+.category-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--brown-mist);
+}
+
+.category-card img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.category-card:hover img { transform: scale(1.04); }
+
+.category-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(44,26,14,0.6) 0%, transparent 55%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.8rem;
+}
+
+.category-card-name-ja {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 2px;
+}
+
+.category-card-name-en {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  color: white;
+}
+
+/* ── SUBSCRIPTION BANNER ── */
+.sub-banner {
+  background: var(--brown-deep);
+  color: white;
+}
+
+.sub-banner-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.sub-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+}
+
+.sub-title em { font-style: italic; color: var(--brown-light); }
+
+.sub-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 2;
+  margin-bottom: 2rem;
+}
+
+.sub-features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.sub-features-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+}
+
+.sub-check {
+  width: 20px; height: 20px;
+  border: 1px solid var(--brown-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--brown-light);
+  font-size: 10px;
+}
+
+.btn-sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--brown-light);
+  color: var(--brown-deep);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  padding: 14px 32px;
+  transition: background 0.3s;
+  font-weight: 500;
+}
+
+.btn-sub:hover { background: #D4AA80; }
+
+.sub-img-wrap {
+  position: relative;
+}
+
+.sub-img-main {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.sub-stripe-badge {
+  position: absolute;
+  bottom: -1px; right: -1px;
+  background: white;
+  padding: 0.9rem 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.sub-stripe-badge span {
+  font-size: 10px;
+  color: var(--text-light);
+  letter-spacing: 0.1em;
+  font-family: var(--font-display);
+}
+
+.sub-stripe-badge strong {
+  font-size: 13px;
+  color: #635BFF;
+  letter-spacing: 0.05em;
+}
+
+/* ── BLOG ── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.blog-card { cursor: pointer; }
+
+.blog-card-img-wrap {
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: var(--brown-mist);
+}
+
+.blog-card-img-wrap img {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-card-img-wrap img { transform: scale(1.04); }
+
+.blog-card:first-child .blog-card-img-wrap img { aspect-ratio: 16/9; }
+.blog-card:not(:first-child) .blog-card-img-wrap img { aspect-ratio: 4/3; }
+
+.blog-date {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
+.blog-title {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.blog-card:first-child .blog-title { font-size: 15px; }
+
+/* ── INFO SECTION ── */
+.info-section {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.info-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.info-title {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--brown);
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.7rem;
+}
+
+.info-list { list-style: none; }
+.info-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.info-list .info-date {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+
+.info-list .info-cat {
+  font-size: 10px;
+  background: var(--brown-pale);
+  color: var(--brown);
+  padding: 1px 8px;
+  white-space: nowrap;
+}
+
+.info-list .info-text {
+  font-size: 12px;
+  color: var(--text);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--brown-deep);
+  color: rgba(255,255,255,0.6);
+}
+
+.footer-top {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-brand-logo {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  color: var(--brown-light);
+  margin-bottom: 1rem;
+}
+
+.footer-brand-desc {
+  font-size: 11px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.4);
+  max-width: 240px;
+}
+
+.footer-newsletter {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0;
+}
+
+.footer-newsletter input {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-right: none;
+  color: white;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  padding: 9px 14px;
+  outline: none;
+}
+
+.footer-newsletter input::placeholder { color: rgba(255,255,255,0.3); }
+
+.footer-newsletter button {
+  background: var(--brown-light);
+  border: none;
+  color: var(--brown-deep);
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  padding: 9px 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.footer-col-title {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--brown-light);
+  margin-bottom: 1.2rem;
+}
+
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 0.6rem; }
+.footer-links a {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: rgba(255,255,255,0.85); }
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.footer-social a {
+  width: 34px; height: 34px;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s;
+}
+
+.footer-social a:hover { border-color: var(--brown-light); }
+.footer-social svg { width: 14px; height: 14px; stroke: rgba(255,255,255,0.5); fill: none; stroke-width: 1.5; }
+
+.footer-bottom {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.05em;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.footer-legal a {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  transition: color 0.2s;
+}
+
+.footer-legal a:hover { color: rgba(255,255,255,0.6); }
+
+/* ── CART DRAWER ── */
+.cart-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.cart-overlay.open { opacity: 1; pointer-events: all; }
+
+.cart-drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 380px;
+  background: white;
+  z-index: 600;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-drawer.open { transform: translateX(0); }
+
+.cart-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-header-title {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: var(--brown-deep);
+}
+
+.cart-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-mid);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 2rem;
+}
+
+.cart-empty {
+  text-align: center;
+  padding: 4rem 0;
+  color: var(--text-light);
+  font-size: 13px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-item-img {
+  width: 72px; height: 72px;
+  object-fit: cover;
+  background: var(--brown-mist);
+  flex-shrink: 0;
+}
+
+.cart-item-info { flex: 1; }
+.cart-item-name { font-size: 12px; color: var(--text); margin-bottom: 0.4rem; }
+.cart-item-price { font-family: var(--font-serif); font-size: 14px; color: var(--brown); }
+
+.cart-qty {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+}
+
+.cart-qty button {
+  width: 24px; height: 24px;
+  border: 1px solid var(--border);
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-qty span { font-size: 13px; min-width: 20px; text-align: center; }
+
+.cart-footer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  font-size: 14px;
+}
+
+.cart-total strong { font-family: var(--font-serif); font-size: 18px; color: var(--brown); }
+
+.btn-checkout {
+  display: block;
+  width: 100%;
+  background: var(--brown-deep);
+  color: white;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  padding: 16px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-checkout:hover { background: var(--brown); }
+
+.cart-stripe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 11px;
+  color: var(--text-light);
+}
+
+.cart-stripe strong { color: #635BFF; }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .hero-slide-inner { grid-template-columns: 1fr; }
+  .hero-slide-img { height: 260px; }
+  .hero-slide-content { padding: 2.5rem 1.5rem; }
+  .hero-title { font-size: 2.4rem; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .blog-grid { grid-template-columns: 1fr; }
+  .sub-banner-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .info-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .cart-drawer { width: 100%; }
+  .nav-inner { padding: 0 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">合計3,000円以上のご購入で送料無料</div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">DREAMERS COFFEE</a>
+    <div class="nav-right">
+      <button class="nav-icon-btn" onclick="toggleSearch()">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>SEARCH</span>
+      </button>
+      <button class="nav-icon-btn" onclick="toggleCart()">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span>CART</span>
+        <span class="nav-cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORY NAV -->
+<nav class="cat-nav">
+  <div class="cat-nav-inner">
+    <span class="cat-nav-item active">珈琲豆</span>
+    <span class="cat-nav-item">定期便</span>
+    <span class="cat-nav-item">レシピ</span>
+    <span class="cat-nav-item">ブログ</span>
+    <span class="cat-nav-item">プロフィール</span>
+    <span class="cat-nav-item">コンタクト</span>
+  </div>
+</nav>
+
+<!-- HERO SLIDER -->
+<section class="hero-slider">
+  <!-- Slide 1 -->
+  <div class="hero-slide active">
+    <div class="hero-slide-inner">
+      <img class="hero-slide-img"
+        src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=900&q=80"
+        alt="DREAMERS COFFEE">
+      <div class="hero-slide-content">
+        <p class="hero-tag">SPECIALTY COFFEE — TOYODA, AICHI</p>
+        <h1 class="hero-title">珈琲が運ぶ、<br><em>心の<br>ゆとり。</em></h1>
+        <p class="hero-desc">DREAMERS COFFEEは、愛知県豊田市発のスペシャルティコーヒー専門店。一杯一杯に「ゆとり・彩り・つながり」を込めてお届けします。</p>
+        <a href="#products" class="btn-shop">SHOP NOW</a>
+      </div>
+    </div>
+  </div>
+  <!-- Slide 2 -->
+  <div class="hero-slide">
+    <div class="hero-slide-inner">
+      <img class="hero-slide-img"
+        src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&q=80"
+        alt="定期便">
+      <div class="hero-slide-content">
+        <p class="hero-tag">SUBSCRIPTION — 毎月お届け</p>
+        <h1 class="hero-title">毎月届く、<br><em>特別な<br>一杯。</em></h1>
+        <p class="hero-desc">定期便で毎月厳選したスペシャルティコーヒーをお届け。縛りなし、いつでも変更・解約OK。</p>
+        <a href="#subscription" class="btn-shop">定期便を見る</a>
+      </div>
+    </div>
+  </div>
+  <!-- Slide 3 -->
+  <div class="hero-slide">
+    <div class="hero-slide-inner">
+      <img class="hero-slide-img"
+        src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=900&q=80"
+        alt="珈琲バッグ">
+      <div class="hero-slide-content">
+        <p class="hero-tag">DRIP BAGS — 手軽においしく</p>
+        <h1 class="hero-title">どこでも<br><em>カフェの<br>味を。</em></h1>
+        <p class="hero-desc">珈琲バッグなら、どこでも手軽にスペシャルティコーヒーの風味を楽しめます。</p>
+        <a href="#products" class="btn-shop">珈琲バッグを見る</a>
+      </div>
+    </div>
+  </div>
+  <div class="slider-dots">
+    <button class="slider-dot active" onclick="goSlide(0)"></button>
+    <button class="slider-dot" onclick="goSlide(1)"></button>
+    <button class="slider-dot" onclick="goSlide(2)"></button>
+  </div>
+</section>
+
+<!-- INFO -->
+<div class="info-section">
+  <div class="info-inner reveal">
+    <div>
+      <div class="info-title">INFORMATION</div>
+      <ul class="info-list">
+        <li>
+          <span class="info-date">2026.02.15</span>
+          <span class="info-cat">お知らせ</span>
+          <span class="info-text">3月の出店スケジュールを更新しました</span>
+        </li>
+        <li>
+          <span class="info-date">2026.01.20</span>
+          <span class="info-cat">お知らせ</span>
+          <span class="info-text">定期便の受付を再開しました</span>
+        </li>
+        <li>
+          <span class="info-date">2025.12.01</span>
+          <span class="info-cat">お知らせ</span>
+          <span class="info-text">年末年始の発送スケジュールについて</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="section reveal" id="products">
+  <div class="section-head">
+    <div>
+      <div class="section-title-ja">商品一覧</div>
+      <div class="section-title-en">PRODUCTS</div>
+    </div>
+    <a href="#" class="view-all">続きを見る →</a>
+  </div>
+  <div class="product-grid">
+    <div class="product-card" onclick="addToCart('珈琲豆 100g', 980)">
+      <div class="product-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=500&q=80" alt="珈琲豆 100g">
+        <img class="product-card-img-sub" src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&q=80" alt="">
+        <span class="product-badge new">NEW</span>
+        <button class="product-card-add">カートに追加</button>
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-name">珈琲豆 100g</div>
+        <div class="product-card-price">¥980〜</div>
+      </div>
+    </div>
+    <div class="product-card" onclick="addToCart('珈琲豆 150g', 1380)">
+      <div class="product-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&q=80" alt="珈琲豆 150g">
+        <img class="product-card-img-sub" src="https://images.unsplash.com/photo-1551030173-122aabc4489c?w=500&q=80" alt="">
+        <button class="product-card-add">カートに追加</button>
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-name">珈琲豆 150g</div>
+        <div class="product-card-price">¥1,380〜</div>
+      </div>
+    </div>
+    <div class="product-card" onclick="addToCart('珈琲バッグ 5袋セット', 1200)">
+      <div class="product-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&q=80" alt="珈琲バッグ">
+        <img class="product-card-img-sub" src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13?w=500&q=80" alt="">
+        <span class="product-badge">人気</span>
+        <button class="product-card-add">カートに追加</button>
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-name">珈琲バッグ 5袋セット</div>
+        <div class="product-card-price">¥1,200</div>
+      </div>
+    </div>
+    <div class="product-card" onclick="addToCart('お試しセット', 2500)">
+      <div class="product-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=500&q=80" alt="お試しセット">
+        <img class="product-card-img-sub" src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=500&q=80" alt="">
+        <span class="product-badge new">おすすめ</span>
+        <button class="product-card-add">カートに追加</button>
+      </div>
+      <div class="product-card-body">
+        <div class="product-card-name">お試しセット（豆100g + バッグ3袋）</div>
+        <div class="product-card-price">¥2,500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BESTSELLER -->
+<section style="background: var(--brown-mist); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="section reveal">
+    <div class="section-head">
+      <div>
+        <div class="section-title-ja">ベストセラー</div>
+        <div class="section-title-en">BESTSELLERS</div>
+      </div>
+      <a href="#" class="view-all">続きを見る →</a>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 3rem;">
+      <div>
+        <div class="bestseller-item"><div class="bs-rank">1</div><img class="bs-img" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=200&q=80" alt=""><div class="bs-info"><div class="bs-name">珈琲バッグ 5袋セット</div><div class="bs-price">¥1,200</div></div></div>
+        <div class="bestseller-item"><div class="bs-rank">2</div><img class="bs-img" src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=200&q=80" alt=""><div class="bs-info"><div class="bs-name">珈琲豆 100g（シングルオリジン）</div><div class="bs-price">¥980〜</div></div></div>
+        <div class="bestseller-item"><div class="bs-rank">3</div><img class="bs-img" src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=200&q=80" alt=""><div class="bs-info"><div class="bs-name">お試しセット</div><div class="bs-price">¥2,500</div></div></div>
+      </div>
+      <div>
+        <div class="bestseller-item"><div class="bs-rank">4</div><img class="bs-img" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&q=80" alt=""><div class="bs-info"><div class="bs-name">珈琲豆 150g（ブレンド）</div><div class="bs-price">¥1,380〜</div></div></div>
+        <div class="bestseller-item"><div class="bs-rank">5</div><img class="bs-img" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=200&q=80" alt=""><div class="bs-info"><div class="bs-name">【定期便】毎月珈琲豆お届けプラン</div><div class="bs-price">¥980〜 / 月</div></div></div>
+        <div class="bestseller-item"><div class="bs-rank">6</div><img class="bs-img" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=200&q=80" alt=""><div class="bs-info"><div class="bs-name">珈琲バッグ 10袋セット</div><div class="bs-price">¥2,200</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY -->
+<section class="section reveal">
+  <div class="section-head">
+    <div>
+      <div class="section-title-ja">カテゴリーから探す</div>
+      <div class="section-title-en">CATEGORY</div>
+    </div>
+  </div>
+  <div class="category-grid">
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=600&q=80" alt="珈琲豆">
+      <div class="category-card-overlay">
+        <div class="category-card-name-ja">珈琲豆</div>
+        <div class="category-card-name-en">COFFEE BEANS</div>
+      </div>
+    </div>
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80" alt="珈琲バッグ">
+      <div class="category-card-overlay">
+        <div class="category-card-name-ja">珈琲バッグ</div>
+        <div class="category-card-name-en">DRIP BAGS</div>
+      </div>
+    </div>
+    <div class="category-card">
+      <img src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=600&q=80" alt="お試しセット">
+      <div class="category-card-overlay">
+        <div class="category-card-name-ja">お試しセット</div>
+        <div class="category-card-name-en">STARTER SET</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSCRIPTION -->
+<div class="sub-banner" id="subscription">
+  <div class="sub-banner-inner reveal">
+    <div>
+      <p style="font-family:var(--font-display);font-size:10px;letter-spacing:.35em;color:var(--brown-light);margin-bottom:1rem;">SUBSCRIPTION — 定期便</p>
+      <h2 class="sub-title">毎月届く、<br><em>特別な一杯。</em></h2>
+      <p class="sub-desc">定期便なら毎月厳選したスペシャルティコーヒーをお届け。珈琲選びの手間なく、いつでも新鮮なコーヒーをお楽しみいただけます。</p>
+      <ul class="sub-features-list">
+        <li><span class="sub-check">✓</span>毎月自動でお届け（手間なし）</li>
+        <li><span class="sub-check">✓</span>いつでも変更・解約OK（縛りなし）</li>
+        <li><span class="sub-check">✓</span>送料無料</li>
+      </ul>
+      <a href="#" class="btn-sub">定期便に申し込む →</a>
+    </div>
+    <div class="sub-img-wrap reveal" style="transition-delay:.2s">
+      <img class="sub-img-main" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=700&q=80" alt="定期便">
+    </div>
+  </div>
+</div>
+
+<!-- BLOG -->
+<section class="section reveal">
+  <div class="section-head">
+    <div>
+      <div class="section-title-ja">ブログ・お知らせ</div>
+      <div class="section-title-en">JOURNAL</div>
+    </div>
+    <a href="#" class="view-all">続きを見る →</a>
+  </div>
+  <div class="blog-grid">
+    <a href="#" class="blog-card">
+      <div class="blog-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?w=700&q=80" alt="">
+      </div>
+      <div class="blog-date">2026.03.05</div>
+      <div class="blog-title">自宅で楽しむ、美味しいスペシャルティコーヒーの淹れ方ガイド</div>
+    </a>
+    <a href="#" class="blog-card">
+      <div class="blog-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=500&q=80" alt="">
+      </div>
+      <div class="blog-date">2026.02.28</div>
+      <div class="blog-title">3月の出店スケジュール</div>
+    </a>
+    <a href="#" class="blog-card">
+      <div class="blog-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=500&q=80" alt="">
+      </div>
+      <div class="blog-date">2026.01.10</div>
+      <div class="blog-title">DREAMERS COFFEEを始めた理由</div>
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div style="background:var(--brown-mist); border-top:1px solid var(--border);">
+  <div class="reveal" style="max-width:1320px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+    <div>
+      <div class="info-title">ABOUT DREAMERS COFFEE</div>
+      <p style="font-size:13px;color:var(--text-mid);line-height:2.1;margin-top:0.5rem;">
+        愛知県豊田市を拠点に活動するスペシャルティコーヒーの専門店。<br>
+        店主・Okada Koheiが「珈琲を通じてゆとり・彩り・つながりを」という想いで一杯一杯を届けています。
+      </p>
+      <div style="display:flex;gap:.8rem;margin-top:1.5rem;">
+        <a href="https://www.instagram.com/dreamers_coffee/" target="_blank" style="font-size:11px;color:var(--brown);border-bottom:1px solid var(--brown-pale);padding-bottom:2px;">INSTAGRAM</a>
+        <a href="https://x.com/_ko_hey__" target="_blank" style="font-size:11px;color:var(--brown);border-bottom:1px solid var(--brown-pale);padding-bottom:2px;">X / TWITTER</a>
+        <a href="https://note.com/dreamers_coffee" target="_blank" style="font-size:11px;color:var(--brown);border-bottom:1px solid var(--brown-pale);padding-bottom:2px;">NOTE</a>
+      </div>
+    </div>
+    <div>
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700&q=80" alt="DREAMERS COFFEE" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-logo">DREAMERS COFFEE</div>
+      <p class="footer-brand-desc">愛知県豊田市発のスペシャルティコーヒー専門店。珈琲を通じて、あなたの日常に「ゆとり・彩り・つながり」を。</p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="メールアドレスを入力">
+        <button>登録</button>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/dreamers_coffee/" target="_blank">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.5)" stroke="none"/></svg>
+        </a>
+        <a href="https://x.com/_ko_hey__" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg>
+        </a>
+        <a href="https://www.youtube.com/channel/UCCZaImDVqZxZsEf7UQ-_UKg" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M22.5 6.5s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C15.9 2.2 12 2.2 12 2.2s-3.9 0-6.3.2c-.6.1-1.9.1-3 1.3-.9.8-1.2 2.8-1.2 2.8S1.2 8.8 1.2 11v2c0 2.2.3 4.5.3 4.5s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C8 21.8 12 21.8 12 21.8s3.9 0 6.3-.3c.6-.1 1.9-.1 3-1.2.9-.8 1.2-2.8 1.2-2.8s.3-2.2.3-4.5v-2c0-2.2-.3-4.5-.3-4.5zM9.7 15.5V8.4l6.6 3.6-6.6 3.5z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">SHOP</div>
+      <ul class="footer-links">
+        <li><a href="#">すべての商品</a></li>
+        <li><a href="#">珈琲豆</a></li>
+        <li><a href="#">珈琲バッグ</a></li>
+        <li><a href="#">お試しセット</a></li>
+        <li><a href="#">定期便</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">ABOUT</div>
+      <ul class="footer-links">
+        <li><a href="#">PROFILE</a></li>
+        <li><a href="#">CONCEPT</a></li>
+        <li><a href="#">RECIPE</a></li>
+        <li><a href="#">SCHEDULE</a></li>
+        <li><a href="#">CONTACT</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">INFORMATION</div>
+      <ul class="footer-links">
+        <li><a href="#">特定商取引法に基づく表記</a></li>
+        <li><a href="#">プライバシーポリシー</a></li>
+        <li><a href="#">よくある質問</a></li>
+        <li><a href="#">送料について</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 DREAMERS COFFEE. All rights reserved.</span>
+    <ul class="footer-legal">
+      <li><a href="#">特定商取引法</a></li>
+      <li><a href="#">プライバシーポリシー</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <span class="cart-header-title">CART</span>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body">
+    <div class="cart-empty" id="cart-empty">カート内に商品がありません。</div>
+  </div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-total">
+      <span>小計</span>
+      <strong id="cart-total-price">¥0</strong>
+    </div>
+    <button class="btn-checkout">決済する →</button>
+  </div>
+</div>
+
+<script>
+// ── CART ──
+let cart = [];
+
+function toggleCart() {
+  document.getElementById('cart-drawer').classList.toggle('open');
+  document.getElementById('cart-overlay').classList.toggle('open');
+}
+
+function addToCart(name, price) {
+  const existing = cart.find(i => i.name === name);
+  if (existing) { existing.qty++; }
+  else { cart.push({ name, price, qty: 1 }); }
+  renderCart();
+  document.getElementById('cart-drawer').classList.add('open');
+  document.getElementById('cart-overlay').classList.add('open');
+}
+
+function changeQty(name, delta) {
+  const item = cart.find(i => i.name === name);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
+  renderCart();
+}
+
+function renderCart() {
+  const body = document.getElementById('cart-body');
+  const empty = document.getElementById('cart-empty');
+  const footer = document.getElementById('cart-footer');
+  const count = document.getElementById('cart-count');
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const totalCount = cart.reduce((s, i) => s + i.qty, 0);
+
+  count.textContent = totalCount;
+
+  if (cart.length === 0) {
+    empty.style.display = 'block';
+    footer.style.display = 'none';
+    // clear items
+    [...body.querySelectorAll('.cart-item')].forEach(el => el.remove());
+    return;
+  }
+
+  empty.style.display = 'none';
+  footer.style.display = 'block';
+  document.getElementById('cart-total-price').textContent = '¥' + total.toLocaleString();
+
+  // re-render items
+  [...body.querySelectorAll('.cart-item')].forEach(el => el.remove());
+  cart.forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'cart-item';
+    el.innerHTML = `
+      <div class="cart-item-img" style="background:var(--brown-mist);display:flex;align-items:center;justify-content:center;">
+        <span style="font-size:24px;">☕</span>
+      </div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">¥${item.price.toLocaleString()}</div>
+        <div class="cart-qty">
+          <button onclick="changeQty('${item.name}', -1)">−</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty('${item.name}', 1)">+</button>
+        </div>
+      </div>
+    `;
+    body.insertBefore(el, empty);
+  });
+}
+
+// ── SLIDER ──
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.slider-dot');
+
+function goSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+setInterval(() => goSlide((currentSlide + 1) % slides.length), 5000);
+
+// ── CATEGORY NAV ──
+document.querySelectorAll('.cat-nav-item').forEach(item => {
+  item.addEventListener('click', function() {
+    document.querySelectorAll('.cat-nav-item').forEach(i => i.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+function toggleSearch() { alert('検索機能（実装時はここに検索UIが入ります）'); }
+</script>
+</body>
+</html>
