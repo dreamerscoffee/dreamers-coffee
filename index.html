@@ -881,9 +881,14 @@ footer {
 @media (max-width: 768px) {
   /* NAV */
   .nav-inner { padding: 0 1rem; height: 54px; }
-  .nav-logo { font-size: 0.85rem; letter-spacing: 0.15em; }
+  .nav-logo { font-size: 1rem; letter-spacing: 0.15em; }
   .cat-nav-inner { gap: 0; justify-content: space-between; }
-  .cat-nav-item { font-size: 15px; padding: 12px 8px; letter-spacing: 0.03em; }
+  .cat-nav-item { font-size: 12px; padding: 13px 10px; letter-spacing: 0.08em; }
+  .cat-nav-item:hover, .cat-nav-item.active {
+    color: var(--brown);
+    border-bottom-color: var(--brown);
+    background: var(--brown-mist);
+  }
 
   /* HERO */
   .hero-slide-inner { grid-template-columns: 1fr; }
@@ -938,8 +943,8 @@ footer {
 /* iPhone SE (375px以下) 追加調整 */
 @media (max-width: 390px) {
   .nav-inner { height: 50px; }
-  .nav-logo { font-size: 0.75rem; letter-spacing: 0.08em; }
-  .cat-nav-item { font-size: 11px; padding: 11px 6px; }
+  .nav-logo { font-size: 0.9rem; letter-spacing: 0.08em; }
+  .cat-nav-item { font-size: 11px; padding: 11px 7px; }
   .hero-title { font-size: 1.35rem; white-space: normal; }
   .hero-slide-img { height: 450px; }
   .product-grid { gap: 0.5rem; }
