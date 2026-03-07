@@ -52,8 +52,8 @@ img { display: block; width: 100%; }
 /* ── NAV ── */
 .nav-wrap {
   position: sticky; top: 0; z-index: 200;
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
+  background: var(--brown-deep);
+  border-bottom: none;
 }
 
 .nav-inner {
@@ -70,7 +70,7 @@ img { display: block; width: 100%; }
   font-family: var(--font-display);
   font-size: 1.3rem;
   letter-spacing: 0.3em;
-  color: var(--brown-deep);
+  color: var(--brown-light);
   white-space: nowrap;
 }
 
@@ -164,6 +164,7 @@ img { display: block; width: 100%; }
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   padding: 4rem 5rem;
   background: var(--brown-mist);
 }
@@ -192,7 +193,7 @@ img { display: block; width: 100%; }
   font-size: 17px;
   color: var(--text-mid);
   line-height: 1.9;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   max-width: 340px;
 }
 
@@ -906,7 +907,7 @@ footer {
         
         <h1 class="hero-title">ホッと一息しませんか？</h1>
         <p class="hero-desc">珈琲を飲めば、ホッと落ち着き<br>心に「ゆとり」が生まれるんだよね。</p>
-        <a href="about.html" style="display:inline-block;margin-top:0.8rem;font-size:11px;letter-spacing:.15em;color:var(--white);background:var(--brown);padding:10px 20px;">DREAMERS COFFEEについて</a>
+        <a href="about.html" style="display:inline-block;margin-top:0.8rem;font-size:11px;letter-spacing:.15em;color:var(--white);background:var(--brown);padding:10px 28px;">DREAMERS COFFEEについて</a>
       </div>
     </div>
   </div>
@@ -917,7 +918,6 @@ footer {
   <div class="info-inner reveal">
     <div>
       <div class="info-title">INFORMATION</div>
-      <div class="section-title-en" style="margin-bottom:1.2rem;">お知らせ</div>
       <ul class="info-list">
         <li>
           <span class="info-date">2026.02.15</span>
@@ -941,7 +941,6 @@ footer {
   <div class="section-head">
     <div>
       <div class="section-title-ja">BEANS</div>
-      <div class="section-title-en">珈琲豆</div>
     </div>
   </div>
   <div class="product-grid">
@@ -984,7 +983,8 @@ footer {
 <div class="sub-banner" id="subscription">
   <div class="sub-banner-inner reveal">
     <div>
-      <p style="font-family:var(--font-display);font-size:13px;letter-spacing:.25em;color:var(--brown-light);margin-bottom:1rem;">SUBSCRIPTION — 定期便</p>
+      <p style="font-family:var(--font-display);font-size:13px;letter-spacing:.25em;color:var(--brown-light);margin-bottom:1rem;">SUBSCRIPTION</p>
+      <img src="IMG_7463.jpg" alt="DREAMERS COFFEE" style="width:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:2rem;">
       <h2 class="sub-title">毎月届く、<br>特別な一杯。</h2>
       <p class="sub-desc">定期便なら毎月厳選したスペシャルティコーヒーをお届け。珈琲選びの手間なく、いつでも新鮮なコーヒーをお楽しみいただけます。</p>
       <ul class="sub-features-list">
@@ -992,7 +992,6 @@ footer {
         <li><span class="sub-check">✓</span>いつでも変更・解約OK（縛りなし）</li>
         <li><span class="sub-check">✓</span>送料無料</li>
       </ul>
-      <img src="IMG_7463.jpg" alt="DREAMERS COFFEE" style="width:100%;aspect-ratio:4/3;object-fit:cover;margin:2rem 0;">
       <a href="subscription.html" class="btn-sub">定期便を申し込む</a>
     </div>
   </div>
@@ -1003,7 +1002,6 @@ footer {
   <div class="section-head">
     <div>
       <div class="section-title-ja">RECIPE</div>
-      <div class="section-title-en">レシピ</div>
     </div>
   </div>
   <div class="recipe-grid-wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
