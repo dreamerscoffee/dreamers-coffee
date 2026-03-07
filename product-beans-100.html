@@ -70,6 +70,19 @@ img{display:block;width:100%;}
     <p class="product-tag">SINGLE ORIGIN</p>
     <h1 class="product-name">珈琲豆 105g（7日分）</h1>
     <div class="product-price">¥980<span>〜（税込・送料別）</span></div>
+    <div class="variety-section">
+      <div class="variety-label">種類を選ぶ</div>
+      <div class="variety-selected">選択中：<span id="selected-variety">未選択</span></div>
+      <div class="variety-grid">
+        <button class="variety-btn" onclick="selectVariety(this, 'グアテマラ')">グアテマラ</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'メキシコ')">メキシコ</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'パプアニューギニア')">パプアニューギニア</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'ペルー')">ペルー</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'ミャンマー')">ミャンマー</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'インドネシア')">インドネシア</button>
+        <button class="variety-btn" onclick="selectVariety(this, 'デカフェ')">デカフェ</button>
+      </div>
+    </div>
     <p class="product-desc" id="bean-desc">上の種類を選ぶと、その豆のフレーバーや詳細情報が表示されます。</p>
     <div class="product-detail">
       <div class="product-detail-title">共通情報</div>
@@ -81,9 +94,7 @@ img{display:block;width:100%;}
       <div class="product-detail-title">選択中の豆の詳細</div>
       <div id="bean-table"></div>
     </div>
-        <div class="variety-section">
-      <div class="variety-label">種類を選ぶ</div>
-      <div class="variety-selected">選択中：<span id="selected-variety">未選択</span></div>
+<div class="variety-selected">選択中：<span id="selected-variety">未選択</span></div>
       <div class="variety-grid">
         <button class="variety-btn" onclick="selectVariety(this, 'グアテマラ')">グアテマラ</button>
         <button class="variety-btn" onclick="selectVariety(this, 'メキシコ')">メキシコ</button>
