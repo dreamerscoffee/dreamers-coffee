@@ -537,6 +537,7 @@ img { display: block; width: 100%; }
   width: 100%;
   aspect-ratio: 4/3;
   object-fit: cover;
+  max-height: 380px;
 }
 
 .sub-stripe-badge {
@@ -648,6 +649,20 @@ img { display: block; width: 100%; }
   color: var(--text);
   line-height: 1.7;
 }
+
+/* ── ABOUT LAYOUT ── */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.about-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+.about-text { }
 
 /* ── FOOTER ── */
 footer {
@@ -840,8 +855,8 @@ footer {
 
   /* ABOUT */
   [style*="grid-template-columns:1fr 1fr;gap:4rem"] { grid-template-columns: 1fr !important; gap: 2rem !important; padding: 2rem 1.2rem !important; }
+  .about-layout { grid-template-columns: 1fr; gap: 2rem; }
   .about-img { order: -1; }
-  .about-text { order: 1; }
 
   /* FOOTER */
   .footer-top { grid-template-columns: 1fr; gap: 2rem; }
@@ -968,7 +983,7 @@ footer {
 <div class="sub-banner" id="subscription">
   <div class="sub-banner-inner reveal">
     <div>
-      <p style="font-family:var(--font-display);font-size:15px;letter-spacing:.3em;color:var(--brown-light);margin-bottom:1rem;">SUBSCRIPTION</p>
+      <p style="font-family:var(--font-serif);font-size:2.05rem;font-weight:400;color:var(--brown-light);margin-bottom:1rem;">SUBSCRIPTION</p>
       <img src="IMG_7463.jpg" alt="DREAMERS COFFEE" style="width:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:2rem;">
       <h2 class="sub-title">毎月届く、<br>特別な一杯。</h2>
       <p class="sub-desc">定期便なら毎月厳選したスペシャルティコーヒーをお届け。珈琲選びの手間なく、いつでも新鮮なコーヒーをお楽しみいただけます。</p>
@@ -977,7 +992,7 @@ footer {
         <li><span class="sub-check">✓</span>いつでも変更・解約OK（縛りなし）</li>
         <li><span class="sub-check">✓</span>送料無料</li>
       </ul>
-      <a href="subscription.html" class="btn-sub">定期便を申し込む</a>
+      <a href="#" class="btn-sub">定期便を申し込む</a>
     </div>
   </div>
 </div>
@@ -1007,13 +1022,11 @@ footer {
 <!-- ABOUT / PROFILE -->
 <div id="profile" style="background:var(--brown-mist); border-top:1px solid var(--border);">
   <div class="reveal" style="max-width:1320px;margin:0 auto;padding:3rem 2rem;">
-    <!-- ABOUT見出し -->
-    <div class="info-title" style="margin-bottom:1.5rem;">ABOUT</div>
-    <!-- 画像（全幅） -->
-    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80" alt="DREAMERS COFFEE" style="width:100%;aspect-ratio:16/6;object-fit:cover;margin-bottom:2rem;">
-    <!-- 文章・SNS・ボタンを右寄せ -->
-    <div style="display:flex;justify-content:flex-end;">
-      <div style="max-width:480px;">
+    <div style="font-family:var(--font-serif);font-size:2.05rem;font-weight:400;color:var(--brown-deep);margin-bottom:1.5rem;">ABOUT</div>
+    <!-- 左画像・右文章の2カラム -->
+    <div class="about-layout">
+      <img class="about-img" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="DREAMERS COFFEE">
+      <div class="about-text">
         <p style="font-size:15px;color:var(--text-mid);line-height:2.1;">
           愛知県豊田市を拠点に活動するスペシャルティコーヒーの専門店。<br>
           店主・Okada Koheiが「珈琲を通じてゆとり・彩り・つながりを」という想いで一杯一杯を届けています。
