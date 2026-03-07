@@ -67,6 +67,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+sup, sub { vertical-align: baseline; font-size: inherit; }
 html { scroll-behavior: smooth; }
 
 body {
@@ -577,24 +578,10 @@ img { display: block; width: 100%; }
 
 .sub-img-main {
   width: 100%;
-  object-fit: cover;
-  max-height: 200px;
-  display: block;
-}
-
-/* SUBSCRIPTION 2カラムレイアウト */
-.sub-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-.sub-layout-img {
-  width: 100%;
   aspect-ratio: 4/3;
   object-fit: cover;
+  max-height: 200px;
 }
-.sub-layout-text {}
 
 .sub-stripe-badge {
   position: absolute;
@@ -920,7 +907,6 @@ footer {
 
   /* SUBSCRIPTION */
   .sub-banner-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-  .sub-layout { grid-template-columns: 1fr; gap: 1.5rem; }
   .sub-title { font-size: 1.85rem; }
   .sub-desc { font-size: 15px; }
   .sub-img-wrap { display: none; }
@@ -1067,19 +1053,17 @@ footer {
 <!-- SUBSCRIPTION -->
 <div class="sub-banner" id="subscription">
   <div class="sub-banner-inner reveal">
-    <p style="font-family:var(--font-serif);font-size:2.05rem;font-weight:400;color:var(--brown-light);margin-bottom:1.5rem;">SUBSCRIPTION</p>
-    <div class="sub-layout">
-      <img src="IMG_7463.jpg" alt="DREAMERS COFFEE" class="sub-layout-img">
-      <div class="sub-layout-text">
-        <h2 class="sub-title">毎月届く、<br>特別な一杯。</h2>
-        <p class="sub-desc">定期便なら毎月厳選したスペシャルティコーヒーをお届け。珈琲選びの手間なく、いつでも新鮮なコーヒーをお楽しみいただけます。</p>
-        <ul class="sub-features-list">
-          <li><span class="sub-check">✓</span>毎月自動でお届け（手間なし）</li>
-          <li><span class="sub-check">✓</span>いつでも変更・解約OK（縛りなし）</li>
-          <li><span class="sub-check">✓</span>送料無料</li>
-        </ul>
-        <a href="#" class="btn-sub">定期便を申し込む</a>
-      </div>
+    <div>
+      <p style="font-family:var(--font-serif);font-size:2.05rem;font-weight:400;color:var(--brown-light);margin-bottom:1rem;">SUBSCRIPTION</p>
+      <img src="IMG_7463.jpg" alt="DREAMERS COFFEE" style="width:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:2rem;">
+      <h2 class="sub-title">毎月届く、<br>特別な一杯。</h2>
+      <p class="sub-desc">定期便なら毎月厳選したスペシャルティコーヒーをお届け。珈琲選びの手間なく、いつでも新鮮なコーヒーをお楽しみいただけます。</p>
+      <ul class="sub-features-list">
+        <li><span class="sub-check">✓</span>毎月自動でお届け（手間なし）</li>
+        <li><span class="sub-check">✓</span>いつでも変更・解約OK（縛りなし）</li>
+        <li><span class="sub-check">✓</span>送料無料</li>
+      </ul>
+      <a href="#" class="btn-sub">定期便を申し込む</a>
     </div>
   </div>
 </div>
