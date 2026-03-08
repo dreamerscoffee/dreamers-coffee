@@ -78,7 +78,7 @@ img { display: block; width: 100%; }
 .profile-name-ja { font-size: 12px; color: var(--text-light); letter-spacing: 0.1em; margin-bottom: 2rem; }
 .profile-text { font-size: 13px; color: var(--text-mid); line-height: 2.2; margin-bottom: 1.5rem; }
 .profile-sns { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
-.sns-link { font-size: 11px; letter-spacing: 0.15em; color: var(--brown); border: 1px solid var(--border); padding: 8px 18px; transition: all 0.2s; }
+.sns-link { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); color: var(--brown); transition: all 0.2s; }
 .sns-link:hover { background: var(--brown); color: white; border-color: var(--brown); }
 
 /* CONCEPT */
@@ -133,35 +133,31 @@ img { display: block; width: 100%; }
 <body>
 
 <div class="nav-wrap">
-  <div class="nav-inner">
-    <a class="nav-back" href="index.html">← ホームに戻る</a>
-    <a class="nav-logo" href="index.html">DREAMERS COFFEE</a>
+  <div class="nav-inner" style="grid-template-columns:1fr;">
+    <a class="nav-logo" href="index.html" style="grid-column:1;text-align:center;">ABOUT</a>
   </div>
 </div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner reveal">
-    <p class="hero-tag">ABOUT — わたしたちについて</p>
-    <h1 class="hero-title">珈琲が運ぶ、<br>ゆとりとつながり。</h1>
-    <p class="hero-desc">愛知県豊田市発のスペシャルティコーヒー専門店。一杯の珈琲を通じて、あなたの日常に彩りを。</p>
-  </div>
-</section>
 
 <!-- PROFILE -->
 <div class="profile-section reveal">
   <img class="profile-img" src="dreamerscoffee-shop-about.jpg" alt="Okada Kohei">
   <div>
-    <p class="profile-label">PROFILE — 店主プロフィール</p>
-    <h2 class="profile-name">Okada Kohei</h2>
-    <p class="profile-name-ja">岡田 浩平</p>
+    <p class="profile-label">PROFILE</p>
+    <h2 class="profile-name">岡田 滉平</h2>
+    <p class="profile-name-ja">Okada Kohei</p>
     <p class="profile-text">愛知県豊田市を拠点に活動するスペシャルティコーヒーの専門家。珈琲の持つ力——人と人をつなぎ、日常に小さなゆとりをもたらす力——を信じて、一杯一杯を丁寧に届けています。</p>
     <p class="profile-text">コーヒーの産地・農園まで追跡できるスペシャルティコーヒーを厳選。飲む人の暮らしに「ゆとり・彩り・つながり」が生まれることを願いながら、日々活動しています。</p>
     <div class="profile-sns">
-      <a class="sns-link" href="https://www.instagram.com/dreamers_coffee/" target="_blank">INSTAGRAM</a>
-      <a class="sns-link" href="https://x.com/_ko_hey__" target="_blank">X / TWITTER</a>
-      <a class="sns-link" href="https://www.youtube.com/channel/UCCZaImDVqZxZsEf7UQ-_UKg" target="_blank">YOUTUBE</a>
-      <a class="sns-link" href="https://note.com/dreamers_coffee" target="_blank">NOTE</a>
+      <a class="sns-link" href="https://www.instagram.com/dreamers_coffee/" target="_blank" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="sns-link" href="https://x.com/_ko_hey__" target="_blank" aria-label="X / Twitter">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M20 4L4 20"/></svg>
+      </a>
+      <a class="sns-link" href="https://www.youtube.com/channel/UCCZaImDVqZxZsEf7UQ-_UKg" target="_blank" aria-label="YouTube">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.5 6.5s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C15.9 2.2 12 2.2 12 2.2s-3.9 0-6.3.2c-.6.1-1.9.1-3 1.3-.9.8-1.2 2.8-1.2 2.8S1.2 8.8 1.2 11v2c0 2.2.3 4.5.3 4.5s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C8 21.8 12 21.8 12 21.8s3.9 0 6.3-.3c.6-.1 1.9-.1 3-1.2.9-.8 1.2-2.8 1.2-2.8s.3-2.2.3-4.5v-2c0-2.2-.3-4.5-.3-4.5zM9.7 15.5V8.4l6.6 3.6-6.6 3.5z"/></svg>
+      </a>
+      <a class="sns-link" href="https://note.com/dreamers_coffee" target="_blank" aria-label="note" style="font-size:13px;font-weight:500;letter-spacing:0;display:flex;align-items:center;justify-content:center;">n</a>
     </div>
   </div>
 </div>
