@@ -155,16 +155,11 @@ img { display: block; width: 100%; }
 
     <!-- ドリップ -->
     <div>
-      <div class="recipe-card" onclick="toggleRecipe('drip')">
-        <div class="recipe-img-wrap" style="position:relative;aspect-ratio:16/9;overflow:hidden;background:#000;">
-          <img src="https://img.youtube.com/vi/DwoDQcWeb1k/maxresdefault.jpg" alt="HAND DRIP HOT" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
-          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-            <div style="width:52px;height:52px;background:rgba(255,255,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brown-deep)"><polygon points="6,3 20,12 6,21"/></svg>
-            </div>
-          </div>
+      <div class="recipe-card">
+        <div style="aspect-ratio:16/9;overflow:hidden;background:#000;">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/DwoDQcWeb1k" title="HAND DRIP HOT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;"></iframe>
         </div>
-        <div class="recipe-body">
+        <div class="recipe-body" onclick="toggleRecipe('drip')" style="cursor:pointer;">
           <div class="recipe-tag">BASIC</div>
           <div class="recipe-name">HAND DRIP（HOT）</div>
           <div class="recipe-meta">
@@ -186,12 +181,6 @@ img { display: block; width: 100%; }
               <li><span>お湯（95℃）</span><span>240ml</span></li>
               <li><span>ペーパーフィルター</span><span>1枚</span></li>
             </ul>
-            <div style="margin-top:1.5rem;">
-              <a href="https://youtu.be/DwoDQcWeb1k" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:11px;letter-spacing:0.15em;color:white;background:var(--brown-deep);padding:10px 20px;transition:background 0.2s;" onmouseover="this.style.background='var(--brown)'" onmouseout="this.style.background='var(--brown-deep)'">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
-                YouTube で動画を見る
-              </a>
-            </div>
           </div>
           <div>
             <div class="detail-section-title">STEPS — 手順</div>
@@ -351,9 +340,10 @@ img { display: block; width: 100%; }
 </div>
 
 <div class="cta reveal">
-  <h2 class="cta-title">さっそく豆を選んでみませんか。</h2>
-  <p class="cta-desc">スペシャルティコーヒーを自宅で。<br>お好みの豆を見つけてください。</p>
-  <a href="beans.html" class="btn-cta">豆を見る →</a>
+  <p style="font-size:12px;color:white;letter-spacing:0.1em;margin-bottom:1.2rem;font-weight:500;">＼初回20％OFFキャンペーン中／</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="subscription.html" class="btn-cta">定期便を申し込む</a>
+  </div>
 </div>
 
 <div class="footer-mini">
