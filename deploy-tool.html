@@ -223,6 +223,48 @@
     background: rgba(200,169,110,0.05);
   }
 
+  .current-html-card {
+    display: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  .current-html-card.show { display: block; }
+
+  .copy-btn {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent-dim);
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: var(--radius);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 12px;
+  }
+
+  .copy-btn:hover { background: rgba(200,169,110,0.08); }
+
+  .current-html-preview {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    max-height: 200px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+    line-height: 1.6;
+  }
+
   .token-hint {
     font-size: 11px;
     color: var(--text-muted);
@@ -284,6 +326,13 @@
 
     <button class="btn btn-secondary" onclick="loadFileList()" id="loadBtn">📁 ファイル一覧を取得</button>
     <div class="files-list" id="filesList"></div>
+  </div>
+
+  <!-- 現在のHTMLカード -->
+  <div class="current-html-card" id="currentHtmlCard">
+    <div class="card-title">📄 現在のHTML — <span id="currentFilename"></span></div>
+    <button class="copy-btn" onclick="copyCurrentHtml()">📋 全コピー（Claudeに貼り付けて修正依頼）</button>
+    <div class="current-html-preview" id="currentHtmlPreview"></div>
   </div>
 
   <!-- デプロイカード -->
@@ -354,6 +403,7 @@
           document.querySelectorAll('.file-chip').forEach(c => c.classList.remove('active'));
           chip.classList.add('active');
           document.getElementById('filename').value = f.name;
+          loadCurrentHtml(f.name);
         };
         list.appendChild(chip);
       });
@@ -363,6 +413,41 @@
 
     btn.textContent = '📁 ファイル一覧を取得';
     btn.disabled = false;
+  }
+
+  let currentHtmlContent = '';
+
+  async function loadCurrentHtml(filename) {
+    const { token, owner, repo } = getSettings();
+    const card = document.getElementById('currentHtmlCard');
+    const preview = document.getElementById('currentHtmlPreview');
+    const label = document.getElementById('currentFilename');
+
+    card.classList.add('show');
+    label.textContent = filename;
+    preview.textContent = '取得中...';
+    currentHtmlContent = '';
+
+    try {
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filename}`, {
+        headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
+      });
+      const data = await res.json();
+      const decoded = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
+      currentHtmlContent = decoded;
+      preview.textContent = decoded;
+    } catch(e) {
+      preview.textContent = '取得に失敗しました';
+    }
+  }
+
+  function copyCurrentHtml() {
+    if (!currentHtmlContent) return;
+    navigator.clipboard.writeText(currentHtmlContent).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = '✅ コピーしました！';
+      setTimeout(() => { btn.textContent = '📋 全コピー（Claudeに貼り付けて修正依頼）'; }, 2000);
+    });
   }
 
   function getSettings() {
