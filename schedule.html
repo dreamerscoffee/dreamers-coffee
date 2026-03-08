@@ -79,25 +79,26 @@ img{display:block;width:100%;}
   .schedule-wrap{padding:2rem 1.2rem 4rem;}
   .schedule-item{grid-template-columns:1fr;gap:0.4rem;}
   .schedule-date{font-size:1rem;}
+  .schedule-hero-img{max-height:500px !important;}
 }
 </style>
 </head>
 <body>
 
 <div class="nav-wrap">
-  <div class="nav-inner">
-    <a class="nav-back" href="index.html">← ホーム</a>
-    <a class="nav-logo" href="index.html">DREAMERS COFFEE</a>
+  <div class="nav-inner" style="grid-template-columns:1fr;">
+    <a class="nav-logo" style="grid-column:1;text-align:center;" href="index.html">DREAMERS COFFEE</a>
   </div>
 </div>
 
 <div class="page-header reveal">
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:11px;letter-spacing:0.15em;color:var(--text-light);margin-bottom:1.2rem;transition:color 0.2s;" onmouseover="this.style.color='var(--brown)'" onmouseout="this.style.color='var(--text-light)'">← Back</a>
   <p class="page-label">SCHEDULE</p>
   <h1 class="page-title">出店スケジュール</h1>
 </div>
 
 <div style="max-width:1000px;margin:0 auto;">
-  <img src="dreamerscoffee-shop-schedule.jpg" alt="DREAMERS COFFEE 出店の様子" style="width:100%;max-height:500px;object-fit:cover;object-position:center;">
+  <img class="schedule-hero-img" src="dreamerscoffee-shop-schedule.jpg" alt="DREAMERS COFFEE 出店の様子" style="width:100%;max-height:700px;object-fit:cover;object-position:center;">
 </div>
 
 <div class="schedule-wrap">
@@ -105,8 +106,11 @@ img{display:block;width:100%;}
   <div class="schedule-item reveal">
     <div class="schedule-date">2026.03.15</div>
     <div>
-      <div class="schedule-name">
-        <a href="https://www.instagram.com/asahi_tourism_association" target="_blank" rel="noopener" style="color:var(--brown-deep);text-decoration:underline;text-underline-offset:3px;">旭マルシェ</a>
+      <div class="schedule-name" style="display:flex;align-items:center;gap:0.6rem;">
+        旭マルシェ
+        <a href="https://www.instagram.com/asahi_tourism_association" target="_blank" rel="noopener" style="display:flex;align-items:center;color:var(--brown-light);transition:color 0.2s;" onmouseover="this.style.color='var(--brown)'" onmouseout="this.style.color='var(--brown-light)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
       </div>
       <div class="schedule-place">豊田市 旭観光協会・あさひ観光案内所<br>愛知県豊田市小渡町七升蒔13-13 旭農林会館</div>
       <span class="schedule-note">10:00〜14:00</span>
@@ -116,8 +120,11 @@ img{display:block;width:100%;}
   <div class="schedule-item reveal">
     <div class="schedule-date">2026.03.22</div>
     <div>
-      <div class="schedule-name">
-        <a href="https://www.instagram.com/shikishimano.ie" target="_blank" rel="noopener" style="color:var(--brown-deep);text-decoration:underline;text-underline-offset:3px;">ふらっと祭</a>
+      <div class="schedule-name" style="display:flex;align-items:center;gap:0.6rem;">
+        ふらっと祭
+        <a href="https://www.instagram.com/shikishimano.ie" target="_blank" rel="noopener" style="display:flex;align-items:center;color:var(--brown-light);transition:color 0.2s;" onmouseover="this.style.color='var(--brown)'" onmouseout="this.style.color='var(--brown-light)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
       </div>
       <div class="schedule-place">しきしまの家<br>愛知県豊田市杉本町三斗成1-3</div>
       <span class="schedule-note">10:00〜14:00</span>
