@@ -1211,21 +1211,39 @@ footer {
 
 <!-- FOOTER -->
 <footer style="background:#100C09;padding:2.5rem 2rem;">
-  <div style="max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;">
+  <div class="footer-main-row">
     <div style="font-family:var(--font-serif);font-size:1rem;letter-spacing:0.3em;color:var(--brown-light);">DREAMERS COFFEE</div>
-    <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
-      <span style="font-size:10px;letter-spacing:0.2em;color:rgba(255,255,255,0.3);margin-right:0.5rem;">INFORMATION</span>
-      <a href="contact.html" style="font-size:11px;color:rgba(255,255,255,0.5);transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">お問い合わせ</a>
-      <span style="color:rgba(255,255,255,0.2);font-size:10px;">|</span>
-      <a href="specified-commercial-transactions.html" style="font-size:11px;color:rgba(255,255,255,0.5);transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">特定商取引法に基づく表記</a>
-      <span style="color:rgba(255,255,255,0.2);font-size:10px;">|</span>
-      <a href="privacy-policy.html" style="font-size:11px;color:rgba(255,255,255,0.5);transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">プライバシーポリシー</a>
+    <div class="footer-links-row">
+      <span class="footer-info-label">INFORMATION</span>
+      <div class="footer-links-list">
+        <a href="contact.html" class="footer-link">お問い合わせ</a>
+        <span class="footer-sep">|</span>
+        <a href="specified-commercial-transactions.html" class="footer-link">特定商取引法に基づく表記</a>
+        <span class="footer-sep">|</span>
+        <a href="privacy-policy.html" class="footer-link">プライバシーポリシー</a>
+      </div>
     </div>
   </div>
   <div style="max-width:1320px;margin:1.5rem auto 0;text-align:center;">
     <span style="font-size:11px;color:rgba(255,255,255,0.15);">© 2026 DREAMERS COFFEE. All rights reserved.</span>
   </div>
 </footer>
+<style>
+.footer-main-row{max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+.footer-links-row{display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;}
+.footer-info-label{font-size:10px;letter-spacing:0.2em;color:rgba(255,255,255,0.3);margin-right:0.5rem;}
+.footer-links-list{display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;}
+.footer-link{font-size:11px;color:rgba(255,255,255,0.5);transition:color 0.2s;}
+.footer-link:hover{color:rgba(255,255,255,0.9);}
+.footer-sep{color:rgba(255,255,255,0.2);font-size:10px;}
+@media(max-width:768px){
+  .footer-main-row{flex-direction:column;align-items:flex-start;gap:1.2rem;}
+  .footer-links-row{flex-direction:column;align-items:flex-start;gap:0.6rem;}
+  .footer-info-label{margin-right:0;}
+  .footer-links-list{flex-direction:column;align-items:flex-start;gap:0.6rem;}
+  .footer-sep{display:none;}
+}
+</style>
 
 <script>
 // ── CATEGORY NAV ──
