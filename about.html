@@ -71,7 +71,7 @@ img { display: block; width: 100%; }
 .hero-desc { font-size: 13px; color: rgba(255,255,255,0.6); max-width: 460px; margin: 0 auto; line-height: 2; }
 
 /* PROFILE */
-.profile-section { max-width: 1000px; margin: 0 auto; padding: 6rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.profile-section { max-width: 1000px; margin: 0 auto; padding: 2rem 2rem 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .profile-img { aspect-ratio: 4/5; object-fit: cover; object-position: center top; }
 .profile-label { font-size: 10px; letter-spacing: 0.4em; color: var(--brown-light); margin-bottom: 0.8rem; }
 .profile-name { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 400; color: var(--brown-deep); margin-bottom: 0.3rem; }
@@ -133,16 +133,22 @@ img { display: block; width: 100%; }
 <body>
 
 <div class="nav-wrap">
-  <div class="nav-inner" style="grid-template-columns:1fr;">
-    <a class="nav-logo" href="index.html" style="grid-column:1;text-align:center;">DREAMERS COFFEE</a>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">DREAMERS COFFEE</a>
   </div>
+</div>
+
+<!-- PROFILE HEADER -->
+<div style="padding:4rem 2rem 0;max-width:1000px;margin:0 auto;">
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:11px;letter-spacing:0.15em;color:var(--text-light);margin-bottom:1.2rem;transition:color 0.2s;" onmouseover="this.style.color='var(--brown)'" onmouseout="this.style.color='var(--text-light)'">← Back</a>
+  <p style="font-size:10px;letter-spacing:0.4em;color:var(--brown-light);margin-bottom:0.5rem;">PROFILE</p>
+  <h1 style="font-family:var(--font-serif);font-size:2.5rem;font-weight:300;color:var(--brown-deep);margin-bottom:2rem;">プロフィール</h1>
 </div>
 
 <!-- PROFILE -->
 <div class="profile-section reveal">
   <img class="profile-img" src="dreamerscoffee-shop-about.jpg" alt="Okada Kohei">
   <div>
-    <p class="profile-label">PROFILE</p>
     <h2 class="profile-name">岡田 滉平</h2>
     <p class="profile-name-ja">Okada Kohei</p>
     <p class="profile-text">愛知県豊田市を拠点に活動するスペシャルティコーヒーの専門家。珈琲の持つ力——人と人をつなぎ、日常に小さなゆとりをもたらす力——を信じて、一杯一杯を丁寧に届けています。</p>
@@ -187,38 +193,6 @@ img { display: block; width: 100%; }
   </div>
 </section>
 
-<!-- SCHEDULE -->
-<section class="schedule-section reveal">
-  <p class="section-label">SCHEDULE — 出店スケジュール</p>
-  <h2 class="section-title">出店情報</h2>
-  <p class="section-desc">マルシェやイベントへの出店情報です。最新情報はInstagramでもお知らせしています。</p>
-  <div class="schedule-list">
-    <div class="schedule-item">
-      <div class="schedule-date">2026.03.15</div>
-      <div>
-        <div class="schedule-name">豊田市マルシェ</div>
-        <div class="schedule-place">愛知県豊田市 / 豊田スタジアム周辺</div>
-        <span class="schedule-note">10:00〜16:00</span>
-      </div>
-    </div>
-    <div class="schedule-item">
-      <div class="schedule-date">2026.03.22</div>
-      <div>
-        <div class="schedule-name">名古屋コーヒーフェスティバル</div>
-        <div class="schedule-place">愛知県名古屋市</div>
-        <span class="schedule-note">詳細はInstagramにて</span>
-      </div>
-    </div>
-    <div class="schedule-item">
-      <div class="schedule-date">2026.04.05</div>
-      <div>
-        <div class="schedule-name">春のクラフトマーケット</div>
-        <div class="schedule-place">愛知県豊田市</div>
-        <span class="schedule-note">11:00〜17:00</span>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- CTA -->
 <div class="cta reveal">
