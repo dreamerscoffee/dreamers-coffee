@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dreamers Coffee — Deploy Tool</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Mono:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0f0d0b;
+    --surface: #1a1612;
+    --border: #2e2820;
+    --accent: #c8a96e;
+    --accent-dim: #8a6f3e;
+    --text: #e8ddd0;
+    --text-muted: #7a6e63;
+    --success: #5a9e6f;
+    --error: #c06060;
+    --radius: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 24px 16px 48px;
+  }
+
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  .container {
+    position: relative; z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    padding: 40px 0 36px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 36px;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    padding: 10px 12px;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 14px;
+    -webkit-appearance: none;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--accent-dim);
+  }
+
+  input[type="password"] { letter-spacing: 0.1em; }
+
+  select option { background: #1a1612; }
+
+  textarea {
+    resize: vertical;
+    min-height: 240px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0f0d0b;
+    font-weight: 500;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background: #d4b87a;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    font-size: 11px;
+    padding: 10px;
+    margin-bottom: 14px;
+  }
+
+  .btn-secondary:hover { border-color: var(--accent-dim); color: var(--text); }
+
+  .status {
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: 16px;
+    display: none;
+  }
+
+  .status.show { display: block; }
+  .status.loading { background: rgba(200,169,110,0.08); border: 1px solid rgba(200,169,110,0.2); color: var(--accent); }
+  .status.success { background: rgba(90,158,111,0.08); border: 1px solid rgba(90,158,111,0.25); color: #7ec89a; }
+  .status.error { background: rgba(192,96,96,0.08); border: 1px solid rgba(192,96,96,0.25); color: #e08080; }
+
+  .spinner {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border: 1.5px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .files-list {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .file-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .file-chip:hover, .file-chip.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(200,169,110,0.05);
+  }
+
+  .token-hint {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: -10px;
+    margin-bottom: 14px;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+  }
+
+  .saved-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--success);
+    border: 1px solid rgba(90,158,111,0.3);
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
+    display: none;
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="container">
+
+  <header>
+    <div class="logo">Dreamers Coffee</div>
+    <div class="subtitle">Deploy Tool — GitHub Auto Push</div>
+  </header>
+
+  <!-- 設定カード -->
+  <div class="card" id="settingsCard">
+    <div class="card-title">⚙ 設定 <span class="saved-badge" id="savedBadge">保存済み</span></div>
+
+    <label>GitHub Personal Access Token</label>
+    <input type="password" id="token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+    <div class="token-hint">※ このブラウザにのみ保存されます</div>
+
+    <div class="row">
+      <div>
+        <label>ユーザー名</label>
+        <input type="text" id="owner" value="dreamerscoffee">
+      </div>
+      <div>
+        <label>リポジトリ名</label>
+        <input type="text" id="repo" value="dreamers-coffee">
+      </div>
+    </div>
+
+    <button class="btn btn-secondary" onclick="saveSettings()">設定を保存する</button>
+
+    <button class="btn btn-secondary" onclick="loadFileList()" id="loadBtn">📁 ファイル一覧を取得</button>
+    <div class="files-list" id="filesList"></div>
+  </div>
+
+  <!-- デプロイカード -->
+  <div class="card">
+    <div class="card-title">🚀 HTMLをデプロイ</div>
+
+    <label>ファイル名（例: index.html）</label>
+    <input type="text" id="filename" placeholder="index.html">
+
+    <label>HTMLコード（AIからもらったコードをペースト）</label>
+    <textarea id="htmlContent" placeholder="<!DOCTYPE html>&#10;<html>&#10;..."></textarea>
+
+    <button class="btn btn-primary" onclick="deploy()" id="deployBtn">
+      GitHubにプッシュしてデプロイ
+    </button>
+
+    <div class="status" id="status"></div>
+  </div>
+
+</div>
+
+<script>
+  // 設定の読み込み
+  window.onload = () => {
+    const saved = JSON.parse(localStorage.getItem('deploy-settings') || '{}');
+    if (saved.token) { document.getElementById('token').value = saved.token; showSavedBadge(); }
+    if (saved.owner) document.getElementById('owner').value = saved.owner;
+    if (saved.repo) document.getElementById('repo').value = saved.repo;
+  };
+
+  function saveSettings() {
+    const settings = {
+      token: document.getElementById('token').value,
+      owner: document.getElementById('owner').value,
+      repo: document.getElementById('repo').value,
+    };
+    localStorage.setItem('deploy-settings', JSON.stringify(settings));
+    showSavedBadge();
+    showStatus('設定を保存しました', 'success');
+  }
+
+  function showSavedBadge() {
+    document.getElementById('savedBadge').style.display = 'inline-block';
+  }
+
+  async function loadFileList() {
+    const { token, owner, repo } = getSettings();
+    if (!token) { showStatus('トークンを入力してください', 'error'); return; }
+
+    const btn = document.getElementById('loadBtn');
+    btn.textContent = '取得中...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/`, {
+        headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
+      });
+      const files = await res.json();
+      const htmlFiles = files.filter(f => f.name.endsWith('.html'));
+
+      const list = document.getElementById('filesList');
+      list.innerHTML = '';
+      htmlFiles.forEach(f => {
+        const chip = document.createElement('div');
+        chip.className = 'file-chip';
+        chip.textContent = f.name;
+        chip.onclick = () => {
+          document.querySelectorAll('.file-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          document.getElementById('filename').value = f.name;
+        };
+        list.appendChild(chip);
+      });
+    } catch(e) {
+      showStatus('ファイル一覧の取得に失敗しました', 'error');
+    }
+
+    btn.textContent = '📁 ファイル一覧を取得';
+    btn.disabled = false;
+  }
+
+  function getSettings() {
+    return {
+      token: document.getElementById('token').value.trim(),
+      owner: document.getElementById('owner').value.trim(),
+      repo: document.getElementById('repo').value.trim(),
+    };
+  }
+
+  async function deploy() {
+    const { token, owner, repo } = getSettings();
+    const filename = document.getElementById('filename').value.trim();
+    const content = document.getElementById('htmlContent').value;
+
+    if (!token) { showStatus('GitHubトークンを入力してください', 'error'); return; }
+    if (!filename) { showStatus('ファイル名を入力してください', 'error'); return; }
+    if (!content) { showStatus('HTMLコードを貼り付けてください', 'error'); return; }
+
+    const btn = document.getElementById('deployBtn');
+    btn.disabled = true;
+    showStatus('<span class="spinner"></span>GitHubにアップロード中...', 'loading');
+
+    try {
+      // 既存ファイルのSHAを取得（更新に必要）
+      let sha = null;
+      try {
+        const existing = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filename}`, {
+          headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
+        });
+        if (existing.ok) {
+          const data = await existing.json();
+          sha = data.sha;
+        }
+      } catch(e) {}
+
+      // Base64エンコード
+      const encoded = btoa(unescape(encodeURIComponent(content)));
+
+      const body = {
+        message: `Update ${filename} via Deploy Tool`,
+        content: encoded,
+        ...(sha ? { sha } : {})
+      };
+
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filename}`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `token ${token}`,
+          Accept: 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+
+      if (res.ok) {
+        showStatus(`✅ ${filename} をGitHubにプッシュしました！\nCloudflareが自動でデプロイを開始します（通常1〜2分）`, 'success');
+        document.getElementById('htmlContent').value = '';
+      } else {
+        const err = await res.json();
+        showStatus(`エラー: ${err.message}`, 'error');
+      }
+    } catch(e) {
+      showStatus(`通信エラー: ${e.message}`, 'error');
+    }
+
+    btn.disabled = false;
+  }
+
+  function showStatus(msg, type) {
+    const el = document.getElementById('status');
+    el.innerHTML = msg;
+    el.className = `status show ${type}`;
+  }
+</script>
+</body>
+</html>
