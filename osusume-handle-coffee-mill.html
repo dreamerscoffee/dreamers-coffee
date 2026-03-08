@@ -84,8 +84,8 @@ img{display:block;width:100%;}
 
 /* NAV */
 .nav-wrap{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);}
-.nav-inner{max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 2rem;height:64px;}
-.nav-logo{grid-column:2;font-size:1rem;letter-spacing:0.3em;color:var(--brown-deep);font-weight:400;}
+.nav-inner{max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr;align-items:center;padding:0 2rem;height:64px;}
+.nav-logo{text-align:center;grid-column:1;font-size:1rem;letter-spacing:0.3em;color:var(--brown-deep);font-weight:400;}
 .nav-back{grid-column:1;font-size:11px;letter-spacing:0.1em;color:var(--text-light);display:flex;align-items:center;gap:0.4rem;transition:color 0.2s;}
 .nav-back:hover{color:var(--brown);}
 
@@ -184,7 +184,6 @@ img{display:block;width:100%;}
 
 <div class="nav-wrap">
   <div class="nav-inner">
-    <a class="nav-back" href="index.html">← ホーム</a>
     <a class="nav-logo" href="index.html">DREAMERS COFFEE</a>
   </div>
 </div>
@@ -198,7 +197,8 @@ img{display:block;width:100%;}
 <article class="article-wrap">
   <header>
     <p class="article-category">BLOG</p>
-    <h1 class="article-title">バリスタがおすすめの<br>手動コーヒーミル5選</h1>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:11px;letter-spacing:0.15em;color:var(--text-light);margin-bottom:1.2rem;transition:color 0.2s;" onmouseover="this.style.color='var(--brown)'" onmouseout="this.style.color='var(--text-light)'">← Back</a>
+<h1 class="article-title">バリスタがおすすめの<br>手動コーヒーミル5選</h1>
     <div class="article-meta">
       <div class="article-author">
         <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=64&q=80" alt="Okada Kohei" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">

@@ -50,8 +50,8 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);font-we
 a{color:inherit;text-decoration:none;}
 img{display:block;width:100%;}
 .nav-wrap{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);}
-.nav-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 2rem;height:64px;}
-.nav-logo{grid-column:2;font-size:1rem;letter-spacing:0.3em;color:var(--brown-deep);font-weight:400;}
+.nav-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr;align-items:center;padding:0 2rem;height:64px;}
+.nav-logo{text-align:center;grid-column:1;font-size:1rem;letter-spacing:0.3em;color:var(--brown-deep);font-weight:400;}
 .nav-back{grid-column:1;font-size:11px;letter-spacing:0.1em;color:var(--text-light);display:flex;align-items:center;gap:0.4rem;transition:color 0.2s;}
 .nav-back:hover{color:var(--brown);}
 .product-wrap{max-width:1000px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
@@ -92,7 +92,6 @@ img{display:block;width:100%;}
 <body>
 <div class="nav-wrap">
   <div class="nav-inner">
-    <a class="nav-back" href="index.html">← 戻る</a>
     <a class="nav-logo" href="/">DREAMERS COFFEE</a>
   </div>
 </div>
@@ -100,7 +99,8 @@ img{display:block;width:100%;}
   <img class="product-img" id="product-img" src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=700&q=80" alt="珈琲豆 105g（7日分）">
   <div>
     <p class="product-tag">SINGLE ORIGIN</p>
-    <h1 class="product-name">珈琲豆 105g（7日分）</h1>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:11px;letter-spacing:0.15em;color:var(--text-light);margin-bottom:1.2rem;transition:color 0.2s;" onmouseover="this.style.color='var(--brown)'" onmouseout="this.style.color='var(--text-light)'">← Back</a>
+<h1 class="product-name">珈琲豆 105g（7日分）</h1>
     <div class="product-price">¥980<span>〜（税込・送料別）</span></div>
     <div class="variety-section">
       <div class="variety-label">種類を選ぶ</div>
