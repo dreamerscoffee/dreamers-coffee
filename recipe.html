@@ -156,17 +156,25 @@ img { display: block; width: 100%; }
     <!-- ドリップ -->
     <div>
       <div class="recipe-card" onclick="toggleRecipe('drip')">
-        <div class="recipe-img-wrap">
-          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700&q=80" alt="ドリップ">
+        <div class="recipe-img-wrap" style="position:relative;aspect-ratio:16/9;overflow:hidden;background:#000;">
+          <img src="https://img.youtube.com/vi/DwoDQcWeb1k/maxresdefault.jpg" alt="HAND DRIP HOT" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <div style="width:52px;height:52px;background:rgba(255,255,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--brown-deep)"><polygon points="6,3 20,12 6,21"/></svg>
+            </div>
+          </div>
         </div>
         <div class="recipe-body">
           <div class="recipe-tag">BASIC</div>
-          <div class="recipe-name">ハンドドリップ</div>
+          <div class="recipe-name">HAND DRIP（HOT）</div>
           <div class="recipe-meta">
             <div class="recipe-meta-item">⏱ 約5分</div>
             <div class="recipe-meta-item">☕ 1〜2杯分</div>
           </div>
           <div class="recipe-desc">ペーパードリップで丁寧に淹れる基本のレシピ。豆の風味を最大限に引き出します。</div>
+          <div style="margin-top:1rem;">
+            <span style="display:inline-block;font-size:11px;letter-spacing:0.15em;color:var(--brown);border:1px solid var(--brown);padding:6px 16px;">レシピを見る ▼</span>
+          </div>
         </div>
       </div>
       <div class="recipe-detail" id="detail-drip">
@@ -174,19 +182,24 @@ img { display: block; width: 100%; }
           <div>
             <div class="detail-section-title">INGREDIENTS — 材料（1杯分）</div>
             <ul class="ingredient-list">
-              <li><span>珈琲豆（中細挽き）</span><span>15g</span></li>
-              <li><span>お湯（92〜93℃）</span><span>240ml</span></li>
+              <li><span>珈琲豆（中挽き）</span><span>15g</span></li>
+              <li><span>お湯（95℃）</span><span>240ml</span></li>
               <li><span>ペーパーフィルター</span><span>1枚</span></li>
             </ul>
+            <div style="margin-top:1.5rem;">
+              <a href="https://youtu.be/DwoDQcWeb1k" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:11px;letter-spacing:0.15em;color:white;background:var(--brown-deep);padding:10px 20px;transition:background 0.2s;" onmouseover="this.style.background='var(--brown)'" onmouseout="this.style.background='var(--brown-deep)'">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
+                YouTube で動画を見る
+              </a>
+            </div>
           </div>
           <div>
             <div class="detail-section-title">STEPS — 手順</div>
             <ol class="steps-list">
-              <li>フィルターをドリッパーにセットし、お湯で温める（温めたお湯は捨てる）</li>
-              <li>挽いた豆をフィルターに入れ、表面を平らにする</li>
-              <li>お湯を少量（30ml程度）注ぎ、30秒蒸らす</li>
-              <li>中心から外側へゆっくり円を描くようにお湯を注ぐ（計240ml）</li>
-              <li>3〜4分で抽出完了。すぐに飲むのがおすすめ</li>
+              <li>お湯を40ml注ぎ、30秒間蒸らす</li>
+              <li>お湯を60ml注ぐ。落ちきるのを待つ<br><small style="color:var(--text-light);">計り：100ml ／ タイマー目安：1分10〜20秒</small></li>
+              <li>お湯を70ml注ぐ。落ちきるのを待つ<br><small style="color:var(--text-light);">計り：170ml ／ タイマー目安：1分50秒〜2分</small></li>
+              <li>お湯を70ml注ぐ。落ちきるのを待つ<br><small style="color:var(--text-light);">計り：240ml ／ タイマー目安：2分30〜45秒</small></li>
             </ol>
             <div class="close-detail" onclick="toggleRecipe('drip')">▲ 閉じる</div>
           </div>
