@@ -988,7 +988,7 @@ footer {
         
         <h1 class="hero-title">ホッと一息しませんか？</h1>
         <p class="hero-desc">珈琲を飲めば、ホッと落ち着き<br>心に「ゆとり」が生まれるんだよね。</p>
-        <a href="profile.html" style="display:inline-block;margin-top:0.8rem;font-size:11px;letter-spacing:.15em;color:var(--white);background:var(--brown);padding:10px 28px;">DREAMERS COFFEEについて</a>
+        <a href="about.html" style="display:inline-block;margin-top:0.8rem;font-size:11px;letter-spacing:.15em;color:var(--white);background:var(--brown);padding:10px 28px;">DREAMERS COFFEEについて</a>
       </div>
     </div>
   </div>
@@ -1004,7 +1004,7 @@ footer {
     </div>
     <div class="info-card">
       <div class="info-card-date">2026.03.07</div>
-      <div class="info-card-text"><a href="#subscription" style="color:var(--brown-light);text-decoration:underline;text-underline-offset:3px;">定期便</a>をリニューアルしました</div>
+      <div class="info-card-text"><a href="subscription.html" style="color:var(--brown-light);text-decoration:underline;text-underline-offset:3px;">定期便</a>をリニューアルしました</div>
     </div>
   </div>
 </div>
@@ -1064,7 +1064,7 @@ footer {
   <div class="reveal" style="max-width:1320px;margin:0 auto;padding:3rem 2rem;">
     <div style="font-family:var(--font-serif);font-size:2.05rem;font-weight:400;color:var(--brown-light);margin-bottom:1.5rem;">SUBSCRIPTION</div>
     <div class="about-layout">
-      <img class="about-img" src="dreamerscoffee-shop-subscription.jpg" alt="DREAMERS COFFEE 定期便">
+      <img class="about-img" src="dreamerscoffee-shop-subscription.jpg" alt="DREAMERS COFFEE 定期便" style="aspect-ratio:auto;">
       <div class="about-text">
         <h2 class="sub-title">毎月届く、<br>特別な一杯。</h2>
         <p class="sub-desc">定期便なら毎月厳選したスペシャルティコーヒーをお届け。珈琲選びの手間なく、いつでも新鮮なコーヒーをお楽しみいただけます。</p>
@@ -1128,7 +1128,7 @@ footer {
     </a>
   </div>
   <div style="text-align:right;margin-top:1.5rem;">
-    <a href="blog.html" class="view-all">他の記事を読む →</a>
+    <a href="blog.html" class="view-all">他の記事を読む</a>
   </div>
 </section>
 
@@ -1138,7 +1138,7 @@ footer {
     <div style="font-family:var(--font-serif);font-size:2.05rem;font-weight:400;color:var(--brown-deep);margin-bottom:1.5rem;">ABOUT</div>
     <!-- 左画像・右文章の2カラム -->
     <div class="about-layout">
-      <video class="about-img" src="dreamerscoffee-shop-about.mp4" autoplay muted loop playsinline style="object-fit:cover;"></video>
+      <img class="about-img" src="dreamerscoffee-shop-about.jpg" alt="DREAMERS COFFEE">
       <div class="about-text">
         <p style="font-size:15px;color:var(--text-mid);line-height:2.1;">
           愛知県豊田市を拠点に活動する自家焙煎の珈琲屋。実店舗はないのでイベント出店とEC販売のみ。安心・安全を第一優先にし、農薬不使用や有機栽培の生豆のみを仕入れて丁寧に自家焙煎しています。
@@ -1155,7 +1155,7 @@ footer {
           </a>
           <a href="https://note.com/dreamers_coffee" target="_blank" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);color:var(--brown);font-size:13px;font-weight:500;letter-spacing:0;transition:all 0.2s;" onmouseover="this.style.background='var(--brown)';this.style.color='white'" onmouseout="this.style.background='';this.style.color='var(--brown)'">n</a>
         </div>
-        <a href="profile.html" style="display:inline-block;margin-top:1.5rem;font-size:11px;letter-spacing:.15em;color:var(--white);background:var(--brown);padding:10px 24px;">店主のプロフィールを見る</a>
+        <a href="about.html" style="display:inline-block;margin-top:1.5rem;font-size:11px;letter-spacing:.15em;color:var(--white);background:var(--brown);padding:10px 24px;">プロフィールを見る</a>
       </div>
     </div>
   </div>
@@ -1167,7 +1167,7 @@ footer {
   <div class="footer-main-row">
     <div style="font-family:var(--font-serif);font-size:1rem;letter-spacing:0.3em;color:var(--brown-light);">DREAMERS COFFEE</div>
     <div class="footer-links-row">
-      <span class="footer-info-label">INFORMATION</span>
+
       <div class="footer-links-list">
         <a href="contact.html" class="footer-link">お問い合わせ</a>
         <span class="footer-sep">|</span>
@@ -1212,6 +1212,48 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<!-- TOP に戻るボタン（スマホのみ） -->
+<a id="back-to-top" href="#" aria-label="トップへ戻る" style="
+  display:none;
+  position:fixed;
+  bottom:1.5rem;
+  right:1.5rem;
+  z-index:999;
+  width:44px;
+  height:44px;
+  background:var(--brown-deep);
+  color:white;
+  border:1px solid rgba(255,255,255,0.15);
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 2px 12px rgba(0,0,0,0.25);
+  transition:opacity 0.3s, background 0.2s;
+  text-decoration:none;
+">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</a>
+
+<style>
+@media(min-width:769px){#back-to-top{display:none!important;}}
+</style>
+
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 300){
+      btn.style.display = 'flex';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
 </script>
 </body>
 </html>
