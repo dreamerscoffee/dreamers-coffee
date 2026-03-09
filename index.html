@@ -930,6 +930,7 @@ footer {
   /* ABOUT */
   [style*="grid-template-columns:1fr 1fr;gap:4rem"] { grid-template-columns: 1fr !important; gap: 2rem !important; padding: 2rem 1.2rem !important; }
   .about-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .sub-layout-wrap.about-layout { gap: 0; }
   .about-img { order: -1; }
 
   /* FOOTER */
@@ -1067,7 +1068,7 @@ footer {
       <div class="sub-img-col" style="overflow:hidden;line-height:0;">
         <img src="dreamerscoffee-shop-subscription.jpg" alt="DREAMERS COFFEE 定期便" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
-      <div class="about-text" style="padding:0 2rem 3rem;">
+      <div class="about-text sub-text-col" style="padding:0 2rem 3rem;">
         <h2 class="sub-title">毎月届く、<br>特別な一杯。</h2>
         <p class="sub-desc">定期便なら毎月厳選したスペシャルティコーヒーをお届け。珈琲選びの手間なく、いつでも新鮮なコーヒーをお楽しみいただけます。</p>
         <ul class="sub-features-list">
@@ -1082,8 +1083,9 @@ footer {
 </div>
 <style>
 @media(max-width:768px){
-  .sub-layout-wrap { gap: 0 !important; }
+  .sub-layout-wrap { gap: 0 !important; row-gap: 0 !important; align-items: start !important; }
   .sub-img-col { margin: 0 !important; width: 100%; }
+  .sub-text-col { padding-top: 1.5rem !important; }
 }
 @media(min-width:769px){
   .about-text[style*="padding:0 2rem"] { padding: 0 !important; }
