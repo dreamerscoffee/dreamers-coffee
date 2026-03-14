@@ -378,7 +378,7 @@ async function startCheckout() {
 
   try {
     // ★ここのURLを自分のCloudflare WorkerのURLに変更してください
-    const WORKER_URL = 'https://dreamers-checkout.YOUR_SUBDOMAIN.workers.dev';
+    const WORKER_URL = 'https://dreamers-checkout.dreamerscoffee-shop.workers.dev';
 
     const res = await fetch(`${WORKER_URL}/create-checkout`, {
       method: 'POST',
