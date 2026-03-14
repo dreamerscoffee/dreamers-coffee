@@ -218,17 +218,26 @@ function selectVariety(btn, name) {
     imgEl.style.opacity = '1';
   }, 200);
 
-  // ボタンのStripeリンクを設定
-  if (data.stripe) {
-    buyBtn.href = data.stripe;
+  // カートに追加
+  buyBtn.onclick = null;
+  if (data.flavor !== null || data.stripe !== null) {
     buyBtn.classList.remove('disabled');
-    buyBtn.textContent = '購入する';
+    buyBtn.textContent = 'カートに追加';
+    buyBtn.onclick = function(e) {
+      e.preventDefault();
+      Cart.addItem({
+        id: 'beans100',
+        name: '珈琲豆 105g（7日分）',
+        variant: name,
+        price: name === 'デカフェ' ? 1080 : 980,
+        image: data.image,
+      });
+    };
   } else {
     buyBtn.href = '#';
     buyBtn.classList.add('disabled');
     buyBtn.textContent = '準備中';
   }
-
   // フレーバー・詳細
   if (!data.flavor) {
     detailBox.style.display = 'none';
