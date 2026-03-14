@@ -6,7 +6,6 @@
   <title>DREAMERS COFFEE — スペシャルティコーヒー通販｜愛知県豊田市</title>
   <meta name="description" content="愛知県豊田市発のスペシャルティコーヒー専門店。珈琲豆・珈琲バッグ・定期便を通販でお届け。ゆとり・彩り・つながりをテーマに、一杯一杯を丁寧に届けています。">
   <link rel="canonical" href="https://dreamerscoffee.shop/">
-  <!-- OGP -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="DREAMERS COFFEE — スペシャルティコーヒー通販｜愛知県豊田市">
   <meta property="og:description" content="愛知県豊田市発のスペシャルティコーヒー専門店。珈琲豆・珈琲バッグ・定期便を通販でお届け。ゆとり・彩り・つながりをテーマに、一杯一杯を丁寧に届けています。">
@@ -14,13 +13,11 @@
   <meta property="og:image" content="https://dreamerscoffee.shop/ogp.jpg">
   <meta property="og:site_name" content="DREAMERS COFFEE">
   <meta property="og:locale" content="ja_JP">
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@_ko_hey__">
   <meta name="twitter:title" content="DREAMERS COFFEE — スペシャルティコーヒー通販｜愛知県豊田市">
   <meta name="twitter:description" content="愛知県豊田市発のスペシャルティコーヒー専門店。珈琲豆・珈琲バッグ・定期便を通販でお届け。ゆとり・彩り・つながりをテーマに、一杯一杯を丁寧に届けています。">
   <meta name="twitter:image" content="https://dreamerscoffee.shop/ogp.jpg">
-  <!-- 構造化データ -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -82,7 +79,6 @@ body {
 a { color: inherit; text-decoration: none; }
 img { display: block; width: 100%; }
 
-/* ── TOP BAR ── */
 .topbar {
   background: var(--brown-deep);
   color: rgba(255,255,255,0.75);
@@ -92,7 +88,6 @@ img { display: block; width: 100%; }
   padding: 9px;
 }
 
-/* ── NAV ── */
 .nav-wrap {
   position: sticky; top: 0; z-index: 200;
   background: var(--brown-deep);
@@ -107,6 +102,7 @@ img { display: block; width: 100%; }
   align-items: center;
   padding: 0 2rem;
   height: 64px;
+  position: relative;
 }
 
 .nav-logo {
@@ -117,31 +113,34 @@ img { display: block; width: 100%; }
   white-space: nowrap;
 }
 
-.nav-right {
-  grid-column: 3;
+/* カートアイコン */
+.nav-cart {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  gap: 1.4rem;
-}
-
-.nav-icon-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--brown);
-  font-size: 17px;
-  font-family: var(--font-display);
+  gap: 6px;
+  font-size: 11px;
   letter-spacing: 0.15em;
-  display: flex;
+  color: var(--brown-light);
+  text-decoration: none;
+}
+.nav-cart svg { stroke: var(--brown-light); }
+.nav-cart-badge {
+  display: none;
+  background: var(--brown-light);
+  color: var(--brown-deep);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0;
+  justify-content: center;
+  font-weight: 700;
 }
 
-.nav-icon-btn svg { width: 18px; height: 18px; stroke: var(--brown); fill: none; stroke-width: 1.5; }
-
-/* ── CATEGORY NAV ── */
 .cat-nav {
   background: var(--white);
   border-bottom: 1px solid var(--border);
@@ -178,7 +177,6 @@ img { display: block; width: 100%; }
   border-bottom-color: var(--brown);
 }
 
-/* ── HERO SLIDER ── */
 .hero-slider {
   position: relative;
   overflow: hidden;
@@ -292,7 +290,6 @@ img { display: block; width: 100%; }
 
 .slider-dot.active { background: var(--brown); }
 
-/* ── SECTION COMMON ── */
 .section {
   max-width: 1320px;
   margin: 0 auto;
@@ -333,7 +330,6 @@ img { display: block; width: 100%; }
 
 .view-all:hover { color: var(--brown); }
 
-/* ── PRODUCT GRID ── */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -420,7 +416,6 @@ img { display: block; width: 100%; }
   color: var(--brown);
 }
 
-/* ── BESTSELLER RANK ── */
 .bestseller-item {
   display: flex;
   align-items: center;
@@ -450,7 +445,6 @@ img { display: block; width: 100%; }
 .bs-name { font-size: 17px; color: var(--text); margin-bottom: 0.3rem; }
 .bs-price { font-family: var(--font-serif); font-size: 18px; color: var(--brown); }
 
-/* ── CATEGORY SECTION ── */
 .category-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -497,7 +491,6 @@ img { display: block; width: 100%; }
   color: white;
 }
 
-/* ── SUBSCRIPTION BANNER ── */
 .sub-banner {
   background: var(--brown-deep);
   color: white;
@@ -604,7 +597,6 @@ img { display: block; width: 100%; }
   letter-spacing: 0.05em;
 }
 
-/* ── BLOG SLIDER ── */
 .blog-slider-wrap {
   overflow: hidden;
   position: relative;
@@ -674,7 +666,6 @@ img { display: block; width: 100%; }
   .blog-card { width: 100%; }
 }
 
-/* ── INFO SECTION ── */
 .info-section {
   background: var(--white);
   border-top: 1px solid var(--border);
@@ -719,7 +710,6 @@ img { display: block; width: 100%; }
   line-height: 1.7;
 }
 
-/* ── ABOUT LAYOUT ── */
 .about-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -733,7 +723,6 @@ img { display: block; width: 100%; }
 }
 .about-text { }
 
-/* ── FOOTER ── */
 footer {
   background: var(--brown-deep);
   color: rgba(255,255,255,0.6);
@@ -860,8 +849,6 @@ footer {
 
 .footer-legal a:hover { color: rgba(255,255,255,0.6); }
 
-
-/* ── SCROLL REVEAL ── */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -870,16 +857,15 @@ footer {
 
 .reveal.visible { opacity: 1; transform: none; }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .product-grid { grid-template-columns: repeat(3, 1fr); }
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
-  /* NAV */
   .nav-inner { padding: 0 1rem; height: 54px; }
   .nav-logo { font-size: 1rem; letter-spacing: 0.15em; }
+  .nav-cart { right: 1rem; }
   .cat-nav-inner { gap: 0; justify-content: space-between; }
   .cat-nav-item { font-size: 12px; padding: 13px 10px; letter-spacing: 0.08em; }
   .cat-nav-item:hover, .cat-nav-item.active {
@@ -887,8 +873,6 @@ footer {
     border-bottom-color: var(--brown);
     background: var(--brown-mist);
   }
-
-  /* HERO */
   .hero-slide-inner { grid-template-columns: 1fr; }
   .hero-slide-img { height: 450px; }
   .hero-slide-content { padding: 1.8rem 1.2rem; background: var(--brown-mist); }
@@ -896,50 +880,35 @@ footer {
   .hero-desc { font-size: 15px; line-height: 1.9; }
   .hero-tag { font-size: 11px; }
   .hero-slide-content a { display: inline-block !important; width: auto !important; max-width: fit-content !important; }
-
-  /* SECTION */
   .section { padding: 2.5rem 1.2rem; }
   .section-head { margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.8rem; }
   .section-title-ja { font-size: 1.55rem; }
-
-  /* PRODUCTS */
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
   .product-card-body { padding: 0.7rem; }
   .product-card-name { font-size: 17px; }
   .product-card-price { font-size: 17px; }
-
-  /* SUBSCRIPTION */
   .sub-banner-inner { grid-template-columns: 1fr; gap: 1.5rem; }
   .sub-title { font-size: 1.85rem; }
   .sub-desc { font-size: 15px; }
   .sub-img-wrap { display: none; }
   .sub-banner { padding: 3rem 1.2rem; }
-
-  /* INFO */
   .info-inner { grid-template-columns: 1fr; gap: 1.5rem; }
   .info-section { padding: 2rem 1.2rem; }
   .info-list li { flex-wrap: wrap; gap: 0.3rem; }
   .info-date { font-size: 17px; min-width: auto; }
   .info-text { font-size: 15px; }
-
-  /* RECIPE/BLOG inline grid */
   [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
   [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
   [style*="grid-template-columns:100px 1fr"] { grid-template-columns: 80px 1fr !important; }
-
-  /* ABOUT */
   [style*="grid-template-columns:1fr 1fr;gap:4rem"] { grid-template-columns: 1fr !important; gap: 2rem !important; padding: 2rem 1.2rem !important; }
   .about-layout { grid-template-columns: 1fr; gap: 2rem; }
   .sub-layout-wrap.about-layout { gap: 0; }
   .about-img { order: -1; }
-
-  /* FOOTER */
   .footer-top { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
   .footer-legal { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
 
-/* iPhone SE (375px以下) 追加調整 */
 @media (max-width: 390px) {
   .nav-inner { height: 50px; }
   .nav-logo { font-size: 0.9rem; letter-spacing: 0.08em; }
@@ -956,20 +925,27 @@ footer {
   #blog > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
 }
 </style>
+<script src="/cart.js" defer></script>
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar" style="display:none">合計3,000円以上のご購入で送料無料</div>
 
-<!-- NAV -->
 <div class="nav-wrap">
   <div class="nav-inner">
     <a class="nav-logo" href="/">DREAMERS COFFEE</a>
+    <a href="/cart.html" class="nav-cart" id="nav-cart-link">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      CART
+      <span id="cart-badge" class="nav-cart-badge">0</span>
+    </a>
   </div>
 </div>
 
-<!-- CATEGORY NAV -->
 <nav class="cat-nav">
   <div class="cat-nav-inner">
     <a class="cat-nav-item active" href="#products">BEANS</a>
@@ -980,13 +956,11 @@ footer {
   </div>
 </nav>
 
-<!-- HERO SLIDER -->
 <section class="hero-slider">
   <div class="hero-slide active">
     <div class="hero-slide-inner">
       <div class="hero-slide-img"></div>
       <div class="hero-slide-content">
-        
         <h1 class="hero-title">ホッと一息しませんか？</h1>
         <p class="hero-desc">珈琲を飲めば、ホッと落ち着き<br>心に「ゆとり」が生まれるんだよね。</p>
         <a href="about.html" style="display:inline-block;margin-top:0.8rem;font-size:11px;letter-spacing:.15em;color:var(--white);background:var(--brown);padding:10px 28px;">DREAMERS COFFEEについて</a>
@@ -995,7 +969,6 @@ footer {
   </div>
 </section>
 
-<!-- INFO -->
 <div class="info-section">
   <div class="info-title">INFORMATION</div>
   <div class="info-scroll">
@@ -1010,7 +983,6 @@ footer {
   </div>
 </div>
 
-<!-- PRODUCTS -->
 <section class="section reveal" id="products">
   <div class="section-head">
     <div>
@@ -1060,17 +1032,13 @@ footer {
   </div>
 </section>
 
-<!-- SUBSCRIPTION -->
 <div id="subscription" style="background:var(--brown-deep);border-top:1px solid var(--border);">
   <div class="reveal" style="max-width:1320px;margin:0 auto;">
     <div style="padding:3rem 2rem 1.5rem;font-family:var(--font-serif);font-size:2.05rem;font-weight:400;color:var(--brown-light);">SUBSCRIPTION</div>
-    <!-- PC: 2カラム / スマホ: 縦並び -->
     <div class="sub-grid">
-      <!-- 左：画像 -->
       <div class="sub-grid-img">
         <img src="dreamerscoffee-shop-subscription.jpg" alt="DREAMERS COFFEE 定期便" style="width:100%;display:block;object-fit:cover;">
       </div>
-      <!-- 右：テキスト -->
       <div class="sub-grid-text">
         <h2 class="sub-title">毎月届く、<br>特別な一杯。</h2>
         <p class="sub-desc">定期便なら毎月厳選したスペシャルティコーヒーをお届け。珈琲選びの手間なく、いつでも新鮮なコーヒーをお楽しみいただけます。</p>
@@ -1093,7 +1061,6 @@ footer {
 }
 </style>
 
-<!-- RECIPE -->
 <section class="section reveal" id="recipe">
   <div class="section-head">
     <div>
@@ -1111,7 +1078,6 @@ footer {
   </div>
 </section>
 
-<!-- BLOG -->
 <section class="section reveal" id="blog" style="border-top:1px solid var(--border);">
   <div class="section-head">
     <div>
@@ -1146,11 +1112,9 @@ footer {
   </div>
 </section>
 
-<!-- ABOUT / PROFILE -->
 <div id="profile" style="background:var(--brown-mist); border-top:1px solid var(--border);">
   <div class="reveal" style="max-width:1320px;margin:0 auto;padding:3rem 2rem;">
     <div style="font-family:var(--font-serif);font-size:2.05rem;font-weight:400;color:var(--brown-deep);margin-bottom:1.5rem;">ABOUT</div>
-    <!-- 左画像・右文章の2カラム -->
     <div class="about-layout">
       <video class="about-img" src="dreamerscoffee-shop-about.mp4" autoplay muted loop playsinline style="object-fit:cover;"></video>
       <div class="about-text">
@@ -1175,13 +1139,10 @@ footer {
   </div>
 </div>
 
-
-<!-- FOOTER -->
 <footer style="background:#100C09;padding:2.5rem 2rem;">
   <div class="footer-main-row">
     <div style="font-family:var(--font-serif);font-size:1rem;letter-spacing:0.3em;color:var(--brown-light);">DREAMERS COFFEE</div>
     <div class="footer-links-row">
-
       <div class="footer-links-list">
         <a href="contact.html" class="footer-link">お問い合わせ</a>
         <span class="footer-sep">|</span>
@@ -1213,7 +1174,6 @@ footer {
 </style>
 
 <script>
-// ── CATEGORY NAV ──
 document.querySelectorAll('.cat-nav-item').forEach(item => {
   item.addEventListener('click', function() {
     document.querySelectorAll('.cat-nav-item').forEach(i => i.classList.remove('active'));
@@ -1221,14 +1181,12 @@ document.querySelectorAll('.cat-nav-item').forEach(item => {
   });
 });
 
-// ── SCROLL REVEAL ──
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
-<!-- TOP に戻るボタン（スマホのみ） -->
 <a id="back-to-top" href="#" aria-label="トップへ戻る" style="
   display:none;
   position:fixed;
