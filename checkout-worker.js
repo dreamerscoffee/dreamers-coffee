@@ -21,14 +21,14 @@
 // ============================================================
 const PRICE_MAP = {
   // 珈琲豆 105g
-  'beans100_グアテマラ':         'price_XXXXXXXXXXXXXXXXXX',
-  'beans100_メキシコ':           'price_1T8E2FR1w8hlThY3SU5eyztZ',
+    'beans100_グアテマラ':         'price_XXXXXXXXXXXXXXXXXX',
+  'beans100_メキシコ':           'price_1TAqWvJr0eClExPq5Lub3LYJ',
   'beans100_パプアニューギニア': 'price_XXXXXXXXXXXXXXXXXX',
-  'beans100_ペルー':             'price_1TAppdR1w8hlThY39Od1kAl9',
+  'beans100_ペルー':             'price_1TAqXWJr0eClExPqBfV6i8SJ',
   'beans100_ミャンマー':         'price_XXXXXXXXXXXXXXXXXX',
   'beans100_インドネシア':       'price_XXXXXXXXXXXXXXXXXX',
   'beans100_デカフェ':           'price_XXXXXXXXXXXXXXXXXX',
-
+  
   // 珈琲豆 210g
   'beans210_グアテマラ':         'price_XXXXXXXXXXXXXXXXXX',
   'beans210_メキシコ':           'price_XXXXXXXXXXXXXXXXXX',
