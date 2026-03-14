@@ -24,7 +24,7 @@ const PRICE_MAP = {
   'beans100_グアテマラ':         'price_XXXXXXXXXXXXXXXXXX',
   'beans100_メキシコ':           'price_1T8E2FR1w8hlThY3SU5eyztZ',
   'beans100_パプアニューギニア': 'price_XXXXXXXXXXXXXXXXXX',
-  'beans100_ペルー':             'price_XXXXXXXXXXXXXXXXXX',
+  'beans100_ペルー':             'price_1TAppdR1w8hlThY39Od1kAl9',
   'beans100_ミャンマー':         'price_XXXXXXXXXXXXXXXXXX',
   'beans100_インドネシア':       'price_XXXXXXXXXXXXXXXXXX',
   'beans100_デカフェ':           'price_XXXXXXXXXXXXXXXXXX',
