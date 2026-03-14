@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ご注文ありがとうございます — DREAMERS COFFEE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: #faf7f4;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 20px 40px;
+      border-bottom: 1px solid #e8e0d8;
+    }
+    header a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: #1a1a1a;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .icon {
+      width: 64px;
+      height: 64px;
+      background: #6b4f3a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+    }
+    p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.9;
+      margin-bottom: 8px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 36px;
+      padding: 14px 40px;
+      background: #6b4f3a;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/">DREAMERS COFFEE</a>
+  </header>
+  <main>
+    <div class="icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+        stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <h1>ORDER COMPLETE</h1>
+    <p>ご注文ありがとうございます。</p>
+    <p>ご登録のメールアドレスに確認メールをお送りしました。<br>
+    焙煎が完了次第、発送いたします。</p>
+    <p style="font-size:12px; color:#aaa; margin-top:16px;">
+      発送まで通常3〜5営業日いただいております。
+    </p>
+    <a href="/" class="btn">トップページに戻る</a>
+  </main>
+  <script>
+    // 注文完了後にカートを空にする
+    localStorage.removeItem('dc_cart');
+  </script>
+</body>
+</html>

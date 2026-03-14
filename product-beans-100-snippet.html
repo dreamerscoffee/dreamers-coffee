@@ -1,0 +1,106 @@
+<!-- ============================================================
+  product-beans-100.html への追加コード
+  （既存の「購入する」ボタンがある場所を置き換え）
+  ============================================================ -->
+
+<!-- ① <head> に追加 -->
+<script src="/cart.js" defer></script>
+
+
+<!-- ② 豆の種類選択と「カートに追加」ボタン（既存のフォーム部分と置き換え）-->
+<div class="product-form">
+
+  <p style="margin-bottom: 8px; font-size: 13px;">種類を選ぶ</p>
+
+  <select id="variant-select" style="
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e8e0d8;
+    background: #faf7f4;
+    font-size: 14px;
+    font-family: inherit;
+    margin-bottom: 4px;
+    appearance: none;
+    cursor: pointer;
+  ">
+    <option value="">-- 選択してください --</option>
+    <option value="グアテマラ" data-price="980">グアテマラ ¥980</option>
+    <option value="メキシコ" data-price="980">メキシコ ¥980</option>
+    <option value="パプアニューギニア" data-price="980">パプアニューギニア ¥980</option>
+    <option value="ペルー" data-price="980">ペルー ¥980</option>
+    <option value="ミャンマー" data-price="980">ミャンマー ¥980</option>
+    <option value="インドネシア" data-price="980">インドネシア ¥980</option>
+    <option value="デカフェ" data-price="1080">デカフェ ¥1,080</option>
+  </select>
+
+  <div id="variant-detail" style="
+    font-size: 13px;
+    color: #888;
+    min-height: 20px;
+    margin-bottom: 20px;
+    margin-top: 4px;
+  "></div>
+
+  <button id="add-to-cart-btn" onclick="addToCart()" style="
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: #6b4f3a;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+  "
+  onmouseover="this.style.background='#5a3f2c'"
+  onmouseout="this.style.background='#6b4f3a'">
+    カートに追加
+  </button>
+
+  <a href="/cart.html" style="
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #888;
+    text-decoration: underline;
+  ">カートを見る</a>
+
+</div>
+
+<script>
+// 豆のフレーバー説明（任意で追加してください）
+const variantDetails = {
+  'グアテマラ': 'チョコレートとナッツの甘い余韻。ミディアムロースト。',
+  'メキシコ': 'なめらかな口当たりとキャラメルの風味。',
+  'パプアニューギニア': 'フルーティーで複雑な甘み。',
+  'ペルー': 'クリーンでバランスの取れた一杯。',
+  'ミャンマー': '独特の花のような香りと甘さ。',
+  'インドネシア': '深いコクとスモーキーなフレーバー。',
+  'デカフェ': 'カフェインを99%除去。風味はそのまま。',
+};
+
+document.getElementById('variant-select').addEventListener('change', function() {
+  const detail = variantDetails[this.value] || '';
+  document.getElementById('variant-detail').textContent = detail;
+});
+
+function addToCart() {
+  const select = document.getElementById('variant-select');
+  const variant = select.value;
+  if (!variant) {
+    alert('種類を選択してください');
+    return;
+  }
+  const price = parseInt(select.selectedOptions[0].dataset.price);
+  Cart.addItem({
+    id: 'beans100',
+    name: '珈琲豆 105g（7日分）',
+    variant: variant,
+    price: price,
+    image: 'https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=200&q=80',
+  });
+}
+</script>

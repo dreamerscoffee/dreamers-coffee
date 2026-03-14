@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カート — DREAMERS COFFEE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="/cart.js" defer></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brown: #6b4f3a;
+      --brown-light: #9c7a5c;
+      --cream: #faf7f4;
+      --text: #1a1a1a;
+      --text-muted: #888;
+      --border: #e8e0d8;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ヘッダー（既存サイトと同じスタイル） */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--border);
+      background: var(--cream);
+    }
+    header a { text-decoration: none; color: var(--text); }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      letter-spacing: 0.1em;
+    }
+    nav { display: flex; gap: 24px; align-items: center; font-size: 13px; letter-spacing: 0.08em; }
+    nav a { color: var(--text); text-decoration: none; }
+    nav a:hover { color: var(--brown); }
+
+    /* メインコンテンツ */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      margin-bottom: 40px;
+    }
+
+    /* 空カート */
+    .empty-cart {
+      text-align: center;
+      padding: 80px 0;
+      color: var(--text-muted);
+    }
+    .empty-cart svg { margin-bottom: 20px; opacity: 0.3; }
+    .empty-cart p { margin-bottom: 24px; font-size: 15px; }
+    .btn-back {
+      display: inline-block;
+      padding: 12px 32px;
+      border: 1px solid var(--brown);
+      color: var(--brown);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      transition: all 0.2s;
+    }
+    .btn-back:hover { background: var(--brown); color: #fff; }
+
+    /* カートテーブル */
+    .cart-items { border-top: 1px solid var(--border); }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cart-item img {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+    }
+
+    .item-info h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .item-info .variant {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .item-info .unit-price {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .item-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .item-price {
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+    .qty-btn {
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .qty-btn:hover { background: var(--border); }
+    .qty-num {
+      width: 40px;
+      text-align: center;
+      font-size: 14px;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      line-height: 32px;
+    }
+
+    .remove-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: underline;
+      padding: 0;
+    }
+    .remove-btn:hover { color: #c00; }
+
+    /* 送料メッセージ */
+    .shipping-note {
+      margin: 24px 0;
+      padding: 14px 18px;
+      background: #fff;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .shipping-note .free { color: #4a7c4e; font-weight: 500; }
+
+    /* 合計 */
+    .cart-summary {
+      margin-top: 8px;
+      padding: 28px 0;
+      border-top: 2px solid var(--text);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      font-weight: 500;
+      margin-top: 16px;
+    }
+    .summary-total .label {
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: 0.08em;
+    }
+
+    /* 決済ボタン */
+    .btn-checkout {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      margin-top: 28px;
+      background: var(--brown);
+      color: #fff;
+      border: none;
+      font-size: 15px;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      font-family: 'Cormorant Garamond', serif;
+      transition: background 0.2s;
+    }
+    .btn-checkout:hover:not(:disabled) { background: #5a3f2c; }
+    .btn-checkout:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .checkout-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 600px) {
+      header { padding: 16px 20px; }
+      main { padding: 40px 16px 60px; }
+      .cart-item { grid-template-columns: 60px 1fr; }
+      .item-controls {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">DREAMERS COFFEE</a>
+  <nav>
+    <a href="/#products">BEANS</a>
+    <a href="/#subscription">SUBSCRIPTION</a>
+    <a href="/about.html">ABOUT</a>
+  </nav>
+</header>
+
+<main>
+  <h1>CART</h1>
+
+  <div id="cart-content">
+    <!-- JavaScriptで描画 -->
+  </div>
+</main>
+
+<script>
+// ============================================================
+// カートページのレンダリング
+// ============================================================
+function formatPrice(n) {
+  return '¥' + n.toLocaleString();
+}
+
+function render() {
+  const items = Cart.getItems();
+  const container = document.getElementById('cart-content');
+
+  if (items.length === 0) {
+    container.innerHTML = `
+      <div class="empty-cart">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+          stroke="#6b4f3a" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <p>カートに商品がありません</p>
+        <a href="/" class="btn-back">商品を見る</a>
+      </div>
+    `;
+    return;
+  }
+
+  const total = Cart.getTotal();
+  const shippingFree = total >= 3000;
+  const remaining = 3000 - total;
+
+  let itemsHTML = '';
+  for (const item of items) {
+    itemsHTML += `
+      <div class="cart-item" data-key="${item.key}">
+        <img src="${item.image}" alt="${item.name}" loading="lazy">
+        <div class="item-info">
+          <h3>${item.name}</h3>
+          <div class="variant">${item.variant}</div>
+          <div class="unit-price">${formatPrice(item.price)} × ${item.qty}</div>
+        </div>
+        <div class="item-controls">
+          <div class="item-price">${formatPrice(item.price * item.qty)}</div>
+          <div class="qty-control">
+            <button class="qty-btn" onclick="changeQty('${item.key}', ${item.qty - 1})">−</button>
+            <div class="qty-num">${item.qty}</div>
+            <button class="qty-btn" onclick="changeQty('${item.key}', ${item.qty + 1})">+</button>
+          </div>
+          <button class="remove-btn" onclick="removeItem('${item.key}')">削除</button>
+        </div>
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <div class="cart-items">${itemsHTML}</div>
+
+    <div class="shipping-note">
+      ${shippingFree
+        ? `<span class="free">✓ 送料無料</span>（3,000円以上のご購入）`
+        : `あと <strong>${formatPrice(remaining)}</strong> で送料無料になります`
+      }
+    </div>
+
+    <div class="cart-summary">
+      <div class="summary-row">
+        <span>小計（${items.reduce((s,i)=>s+i.qty,0)}点）</span>
+        <span>${formatPrice(total)}</span>
+      </div>
+      <div class="summary-row">
+        <span>送料</span>
+        <span>${shippingFree ? '<span class="free">無料</span>' : '別途計算'}</span>
+      </div>
+      <div class="summary-total">
+        <span class="label">TOTAL</span>
+        <span>${formatPrice(total)}</span>
+      </div>
+    </div>
+
+    <button class="btn-checkout" id="checkout-btn" onclick="startCheckout()">
+      決済に進む
+    </button>
+    <p class="checkout-note">
+      クレジットカード・Apple Pay・Google Pay に対応<br>
+      SSL暗号化通信で安全にお支払いいただけます
+    </p>
+  `;
+}
+
+function changeQty(key, qty) {
+  Cart.updateQty(key, qty);
+  render();
+}
+
+function removeItem(key) {
+  Cart.removeItem(key);
+  render();
+}
+
+// ============================================================
+// Stripe Checkout セッション作成 → リダイレクト
+// Cloudflare Worker のURLを設定してください
+// ============================================================
+async function startCheckout() {
+  const btn = document.getElementById('checkout-btn');
+  btn.disabled = true;
+  btn.textContent = '処理中...';
+
+  const items = Cart.getItems();
+
+  try {
+    // ★ここのURLを自分のCloudflare WorkerのURLに変更してください
+    const WORKER_URL = 'https://dreamers-checkout.YOUR_SUBDOMAIN.workers.dev';
+
+    const res = await fetch(`${WORKER_URL}/create-checkout`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items })
+    });
+
+    if (!res.ok) throw new Error('決済セッションの作成に失敗しました');
+
+    const { url } = await res.json();
+    // Stripeの決済ページにリダイレクト
+    window.location.href = url;
+
+  } catch (e) {
+    alert('エラーが発生しました。もう一度お試しください。\n' + e.message);
+    btn.disabled = false;
+    btn.textContent = '決済に進む';
+  }
+}
+
+// 初期レンダリング
+document.addEventListener('DOMContentLoaded', render);
+</script>
+
+</body>
+</html>
