@@ -25,12 +25,14 @@
     .catalog-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:2.5rem; }
 
     /* Card Style */
-    .product-card { background:var(--white); border:1px solid var(--border); transition:transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+    .product-card { background:var(--white); border:1px solid var(--border); transition:transform 0.3s, box-shadow 0.3s; cursor:pointer; position: relative; }
     .product-card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.05); }
     .product-card img { width:100%; aspect-ratio:1; object-fit:cover; display:block; }
+    .product-card.coming-soon img { opacity: 0.6; filter: grayscale(1); }
     .card-body { padding:1.5rem; text-align:center; }
     .card-name { font-size:1rem; color:var(--brown-deep); margin-bottom:0.5rem; font-weight:400; }
     .card-price { font-size:0.9rem; color:var(--brown-light); font-family:var(--font-serif); }
+    .status-badge { position: absolute; top: 10px; right: 10px; background: rgba(44, 26, 14, 0.8); color: white; font-size: 10px; padding: 4px 8px; letter-spacing: 0.1em; }
 
     /* Modal Style */
     .modal-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:none; z-index:1000; justify-content:center; align-items:center; backdrop-filter:blur(4px); padding:1rem; }
@@ -44,7 +46,7 @@
     .modal-desc { font-size:13px; color:var(--text-mid); line-height:2; margin-bottom:2rem; border-top:1px solid var(--border); padding-top:1.5rem; }
     .detail-item { display:flex; justify-content:space-between; font-size:12px; color:var(--text-mid); padding:0.5rem 0; border-bottom:1px dashed var(--border); }
     .btn-buy { width:100%; background:var(--brown-deep); color:white; font-size:12px; letter-spacing:0.2em; padding:16px; text-align:center; margin-top:2rem; border:none; cursor:pointer; transition:0.3s; }
-    .btn-buy:hover { background:var(--brown); }
+    .btn-buy:hover:not(.disabled) { background:var(--brown); }
     .btn-buy.disabled { background:#bbb; cursor:not-allowed; }
 
     /* Responsive */
@@ -104,6 +106,15 @@ const BEANS = {
     image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=700&q=80',
     available: true
   },
+  'パプアニューギニア': {
+    flavor: null,
+    producer: 'シグリ農園',
+    region: 'ワギ・バレー',
+    altitude: '1,500m',
+    process: 'ウォッシュト',
+    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700&q=80',
+    available: false
+  },
   'ペルー': {
     flavor: 'いちごみたいな柔らかい酸味や焼きりんごの甘酸っぱさとほろ苦さがバランスの良いティーライクな珈琲に仕上げています。',
     producer: 'TUNKIMAYU COFFEE',
@@ -112,6 +123,24 @@ const BEANS = {
     process: '72時間発酵',
     image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=700&q=80',
     available: true
+  },
+  'ミャンマー': {
+    flavor: null,
+    producer: '小規模農家組合',
+    region: 'ユアンガン',
+    altitude: '1,400m〜',
+    process: 'ナチュラル',
+    image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=700&q=80',
+    available: false
+  },
+  'インドネシア': {
+    flavor: null,
+    producer: 'リントン地区農家',
+    region: 'スマトラ島',
+    altitude: '1,200〜1,500m',
+    process: 'スマトラ式',
+    image: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=700&q=80',
+    available: false
   },
   'デカフェ': {
     flavor: 'カフェインを99%除去しながらも、豆本来の甘みとコクをしっかり残した一杯に仕上げています。',
@@ -129,8 +158,12 @@ function renderCatalog() {
   const container = document.getElementById('catalog-container');
   container.innerHTML = Object.entries(BEANS).map(([name, data]) => {
     const price = name === 'デカフェ' ? '1,080' : '980';
+    const comingSoonClass = data.available ? '' : 'coming-soon';
+    const badge = data.available ? '' : '<div class="status-badge">PREPARING</div>';
+    
     return `
-      <div class="product-card" onclick="openModal('${name}')">
+      <div class="product-card ${comingSoonClass}" onclick="openModal('${name}')">
+        ${badge}
         <img src="${data.image}" alt="${name}">
         <div class="card-body">
           <div class="card-name">${name} 105g</div>
@@ -148,8 +181,8 @@ function openModal(name) {
   
   document.getElementById('modal-img').src = data.image;
   document.getElementById('modal-title').textContent = name;
-  document.getElementById('modal-price').textContent = `¥${price.toLocaleString()} (税込)`;
-  document.getElementById('modal-desc').textContent = data.flavor;
+  document.getElementById('modal-price').textContent = data.available ? `¥${price.toLocaleString()} (税込)` : 'COMING SOON';
+  document.getElementById('modal-desc').textContent = data.flavor || "この豆の詳細は現在準備中です。近日公開予定ですので楽しみにお待ちください。";
 
   const specs = [
     ['生産者', data.producer],
@@ -163,10 +196,18 @@ function openModal(name) {
   `).join('');
 
   const btn = document.getElementById('modal-buy-btn');
-  btn.onclick = () => {
-    alert(`${name}をカートに追加しました。`);
-    closeModal();
-  };
+  if (data.available) {
+    btn.classList.remove('disabled');
+    btn.textContent = 'カートに追加する';
+    btn.onclick = () => {
+      alert(`${name}をカートに追加しました。`);
+      closeModal();
+    };
+  } else {
+    btn.classList.add('disabled');
+    btn.textContent = '準備中';
+    btn.onclick = null;
+  }
 
   document.getElementById('modal-overlay').style.display = 'flex';
   document.body.style.overflow = 'hidden';
