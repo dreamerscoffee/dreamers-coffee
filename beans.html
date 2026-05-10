@@ -101,6 +101,16 @@ img { display: block; width: 100%; }
 .footer-mini-logo { font-size: 0.9rem; letter-spacing: 0.3em; color: var(--brown-light); margin-bottom: 0.8rem; }
 .footer-mini-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
 
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-6px); }
+  40%  { transform: translateX(6px); }
+  60%  { transform: translateX(-4px); }
+  80%  { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+.btn-shake { animation: shake 0.4s ease; }
+
 #cart-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--brown-deep); color: white; padding: 12px 24px; font-size: 13px; z-index: 9999; opacity: 0; transition: opacity 0.3s; white-space: nowrap; pointer-events: none; }
 
 @media (max-width: 768px) {
@@ -258,7 +268,7 @@ function renderGrid() {
               <button class="gram-btn active" onclick="selectGram(this,'${bean.id}','100g')">100g</button>
               <button class="gram-btn" onclick="selectGram(this,'${bean.id}','150g')">150g</button>
             </div>
-            <p class="gram-label" style="margin-top:0.8rem;">挽き方を選ぶ</p>
+            <p class="gram-label" style="margin-top:0.8rem;">状態を選ぶ</p>
             <div class="gram-btns">
               <button class="grind-btn active" onclick="selectGrind(this,'${bean.id}','豆のまま')">豆のまま</button>
               <button class="grind-btn" onclick="selectGrind(this,'${bean.id}','粉に挽く')">粉に挽く</button>
@@ -309,6 +319,15 @@ function addToCart(beanId) {
   });
   document.getElementById(`cart-link-${beanId}`).style.display = 'block';
   showToast(`${bean.name} ${gram} をカートに追加しました`);
+
+  // ボタンをプルプル
+  const btn = document.querySelector(`[onclick="addToCart('${beanId}')"]`);
+  if (btn) {
+    btn.classList.remove('btn-shake');
+    void btn.offsetWidth; // リフロー強制
+    btn.classList.add('btn-shake');
+    setTimeout(() => btn.classList.remove('btn-shake'), 400);
+  }
 }
 
 function showToast(msg) {
