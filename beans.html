@@ -134,6 +134,16 @@ img { display: block; width: 100%; }
   <h1 class="page-title">珈琲豆</h1>
 </div>
 
+<div style="max-width:1200px;margin:0 auto;padding:1.5rem 2rem;border-bottom:1px solid var(--border);">
+  <p style="font-size:10px;letter-spacing:0.2em;color:var(--text-light);margin-bottom:0.8rem;">販売中の珈琲豆</p>
+  <div style="display:flex;flex-wrap:wrap;gap:0.6rem;">
+    <a href="#bean-mexico"    style="font-size:12px;color:var(--brown);border:1px solid var(--border);padding:4px 14px;transition:background 0.2s;" onmouseover="this.style.background='var(--brown-mist)'" onmouseout="this.style.background='transparent'">メキシコ</a>
+    <a href="#bean-peru"      style="font-size:12px;color:var(--brown);border:1px solid var(--border);padding:4px 14px;transition:background 0.2s;" onmouseover="this.style.background='var(--brown-mist)'" onmouseout="this.style.background='transparent'">ペルー</a>
+    <a href="#bean-indonesia" style="font-size:12px;color:var(--brown);border:1px solid var(--border);padding:4px 14px;transition:background 0.2s;" onmouseover="this.style.background='var(--brown-mist)'" onmouseout="this.style.background='transparent'">インドネシア</a>
+    <a href="#bean-decaf"     style="font-size:12px;color:var(--brown);border:1px solid var(--border);padding:4px 14px;transition:background 0.2s;" onmouseover="this.style.background='var(--brown-mist)'" onmouseout="this.style.background='transparent'">カフェインレス（メキシコ）</a>
+  </div>
+</div>
+
 <div class="beans-section">
   <div class="beans-grid" id="beans-grid"></div>
 </div>
@@ -224,7 +234,7 @@ function renderGrid() {
     const defaultPrice = bean.prices['100g'];
 
     return `
-      <div class="bean-card">
+      <div class="bean-card" id="bean-${bean.id}">
         <div class="bean-card-img">
           ${bean.image
             ? `<img src="${bean.image}" alt="${bean.name}" loading="lazy">`
