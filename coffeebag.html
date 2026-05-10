@@ -196,9 +196,9 @@ function addToCart(bagId) {
   if (typeof Cart === 'undefined') return;
   const bag = BAGS.find(b => b.id === bagId);
   Cart.addItem({
-    id: `coffee-bag_${bag.name}`,
+    id: `coffee-bag`,
     name: `珈琲バッグ（${bag.name}）`,
-    variant: '5袋セット',
+    variant: bag.name,
     price: bag.price,
     image: bag.image || ''
   });
