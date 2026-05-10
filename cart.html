@@ -386,9 +386,10 @@ async function startCheckout() {
       body: JSON.stringify({ items })
     });
 
-    if (!res.ok) throw new Error('決済セッションの作成に失敗しました');
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || '決済セッションの作成に失敗しました');
 
-    const { url } = await res.json();
+    const { url } = data;
     // Stripeの決済ページにリダイレクト
     window.location.href = url;
 
