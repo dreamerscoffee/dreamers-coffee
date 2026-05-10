@@ -935,12 +935,6 @@ footer {
 </head>
 <body>
 
-<!-- SPLASH SCREEN -->
-<div id="splash">
-  <p class="splash-text" id="splashText">珈琲を通じて「ゆとり・彩り・つながり」を。</p>
-</div>
-
-
 <div class="topbar" style="display:none">合計3,000円以上のご購入で送料無料</div>
 
 <div class="nav-wrap">
@@ -1239,26 +1233,5 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   });
 })();
 </script>
-
-<script>
-(function() {
-  if (sessionStorage.getItem('splashSeen')) return;
-  sessionStorage.setItem('splashSeen', '1');
-
-  const splash = document.getElementById('splash');
-  const text = document.getElementById('splashText');
-  if (!splash) return;
-
-  // テキストフェードイン
-  setTimeout(() => { text.classList.add('visible'); }, 200);
-
-  // フェードアウト開始
-  setTimeout(() => { splash.classList.add('hide'); }, 2000);
-
-  // 完全非表示
-  setTimeout(() => { splash.classList.add('gone'); }, 3000);
-})();
-</script>
-
 </body>
 </html>
