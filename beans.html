@@ -238,9 +238,9 @@ function renderGrid() {
     const fields = [
       ['生産者', bean.producer],
       ['栽培品種', bean.variety],
-      ['認証', bean.note],
       ['精製', bean.process],
-      ['標高', bean.altitude]
+      ['標高', bean.altitude],
+      ['認証', bean.note]
     ].filter(([, v]) => v);
 
     const detailRows = fields.map(([k, v]) =>
