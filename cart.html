@@ -165,17 +165,7 @@
     }
     .remove-btn:hover { color: #c00; }
 
-    /* 送料メッセージ */
-    .shipping-note {
-      margin: 24px 0;
-      padding: 14px 18px;
-      background: #fff;
-      border: 1px solid var(--border);
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-    .shipping-note .free { color: #4a7c4e; font-weight: 500; }
+
 
     /* 合計 */
     .cart-summary {
@@ -294,8 +284,6 @@ function render() {
   }
 
   const total = Cart.getTotal();
-  const shippingFree = total >= 3000;
-  const remaining = 3000 - total;
 
   let itemsHTML = '';
   for (const item of items) {
@@ -323,13 +311,6 @@ function render() {
   container.innerHTML = `
     <div class="cart-items">${itemsHTML}</div>
 
-    <div class="shipping-note">
-      ${shippingFree
-        ? `<span class="free">✓ 送料無料</span>（3,000円以上のご購入）`
-        : `あと <strong>${formatPrice(remaining)}</strong> で送料無料になります`
-      }
-    </div>
-
     <div class="cart-summary">
       <div class="summary-row">
         <span>小計（${items.reduce((s,i)=>s+i.qty,0)}点）</span>
@@ -337,7 +318,7 @@ function render() {
       </div>
       <div class="summary-row">
         <span>送料</span>
-        <span>${shippingFree ? '<span class="free">無料</span>' : '別途計算'}</span>
+        <span>別途計算</span>
       </div>
       <div class="summary-total">
         <span class="label">TOTAL</span>
