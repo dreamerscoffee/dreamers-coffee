@@ -1278,7 +1278,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // 外部からのアクセス → 毎回表示
   splash.classList.add('active');
-  setTimeout(function() { text.classList.add('visible'); }, 100);
+  setTimeout(function() { text.querySelectorAll('.splash-text').forEach(function(el){ el.classList.add('visible'); }); }, 100);
   setTimeout(function() { splash.classList.add('hide'); }, 2000);
   setTimeout(function() {
     if (splash.parentNode) splash.parentNode.removeChild(splash);
