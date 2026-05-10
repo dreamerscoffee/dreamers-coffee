@@ -98,11 +98,10 @@ img { display: block; width: 100%; }
   max-width: 1320px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 0 2rem;
   height: 64px;
-  position: relative;
 }
 
 .nav-logo {
@@ -936,14 +935,14 @@ footer {
   inset: 0;
   z-index: 9999;
   background: #FAFAF7;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   pointer-events: all;
   transition: opacity 0.9s ease;
 }
+#splash.active { display: flex; }
 #splash.hide { opacity: 0; }
-#splash.gone { display: none; }
 .splash-text {
   writing-mode: vertical-rl;
   font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -1267,14 +1266,27 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 <script>
 (function() {
-  if (sessionStorage.getItem('splashSeen')) return;
+  var splash = document.getElementById('splash');
+  var text = document.getElementById('splashText');
+  if (!splash || !text) return;
+
+  if (sessionStorage.getItem('splashSeen')) {
+    splash.parentNode.removeChild(splash);
+    return;
+  }
   sessionStorage.setItem('splashSeen', '1');
-  const splash = document.getElementById('splash');
-  const text = document.getElementById('splashText');
-  if (!splash) return;
-  setTimeout(() => { text.classList.add('visible'); }, 200);
-  setTimeout(() => { splash.classList.add('hide'); }, 2000);
-  setTimeout(() => { splash.classList.add('gone'); }, 3000);
+
+  // 表示開始
+  splash.classList.add('active');
+  setTimeout(function() { text.classList.add('visible'); }, 100);
+
+  // フェードアウト
+  setTimeout(function() { splash.classList.add('hide'); }, 2000);
+
+  // DOM削除
+  setTimeout(function() {
+    if (splash.parentNode) splash.parentNode.removeChild(splash);
+  }, 3000);
 })();
 </script>
 
