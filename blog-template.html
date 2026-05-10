@@ -92,13 +92,13 @@
 </script>
 <!-- ===== SEOここまで ===== -->
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:#FAFAF7;--white:#FFFFFF;--brown-deep:#2C1A0E;--brown:#5C3A1E;--brown-mid:#8B5E3C;
   --brown-light:#C49A6C;--brown-pale:#E8D5BE;--brown-mist:#F2EAE0;
   --text:#2C1A0E;--text-mid:#7A5C47;--text-light:#A8937E;--border:#E0D0BC;
-  --font-serif:'Cormorant Garamond',serif;--font-sans:'Noto Sans JP',sans-serif;
+  --font-serif: 'M PLUS Rounded 1c', sans-serif;--font-sans:'M PLUS Rounded 1c',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -170,6 +170,12 @@ img{display:block;width:100%;}
   .article-title{font-size:1.8rem;}
   .author-box{flex-direction:column;gap:1rem;}
   .related-grid{grid-template-columns:1fr;}
+}
+
+/* === font override: numbers → M PLUS Rounded 1c === */
+.product-price, .plan-price, .bs-price,
+.schedule-date, .tip-num {
+  font-family: 'M PLUS Rounded 1c', sans-serif !important;
 }
 </style>
 </head>
