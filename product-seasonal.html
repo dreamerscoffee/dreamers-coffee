@@ -18,7 +18,7 @@
 <meta name="twitter:title" content="季節限定 珈琲バッグ — DREAMERS COFFEE">
 <meta name="twitter:description" content="水出し・ミルク出し珈琲バッグの季節限定商品。25g×4袋セット ¥1,000。">
 <meta name="twitter:image" content="https://dreamerscoffee.shop/ogp.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#FAFAF7;--white:#FFFFFF;
@@ -26,8 +26,8 @@
   --brown-light:#C49A6C;--brown-pale:#E8D5BE;--brown-mist:#F2EAE0;
   --text:#2C1A0E;--text-mid:#7A5C47;--text-light:#A8937E;
   --border:#E0D0BC;
-  --font-serif:'Cormorant Garamond',serif;
-  --font-sans:'Noto Sans JP',sans-serif;
+  --font-serif: 'M PLUS Rounded 1c', sans-serif;
+  --font-sans:'M PLUS Rounded 1c',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 sup,sub{vertical-align:baseline;font-size:inherit;}
@@ -87,6 +87,12 @@ img{display:block;width:100%;}
   .product-block{grid-template-columns:1fr;gap:2rem;}
   .hero-title{font-size:2rem;}
   .product-name{font-size:1.8rem;}
+}
+
+/* === font override: numbers → M PLUS Rounded 1c === */
+.product-price, .plan-price, .bs-price,
+.schedule-date, .tip-num {
+  font-family: 'M PLUS Rounded 1c', sans-serif !important;
 }
 </style>
 </head>
