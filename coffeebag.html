@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>珈琲バッグ — DREAMERS COFFEE</title>
+<meta name="description" content="お湯を注ぐだけで本格スペシャルティコーヒー。道具不要の珈琲バッグ5袋セット。オフィス・アウトドアにも。税込¥1,200。DREAMERS COFFEE。">
+<link rel="canonical" href="https://dreamerscoffee.shop/coffeebag.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="珈琲バッグ — DREAMERS COFFEE">
+<meta property="og:url" content="https://dreamerscoffee.shop/coffeebag.html">
+<meta property="og:image" content="https://dreamerscoffee.shop/ogp.jpg">
+<meta property="og:site_name" content="DREAMERS COFFEE">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@_ko_hey__">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7; --white: #FFFFFF;
+  --brown-deep: #2C1A0E; --brown: #5C3A1E; --brown-mid: #8B5E3C;
+  --brown-light: #C49A6C; --brown-pale: #E8D5BE; --brown-mist: #F2EAE0;
+  --text: #2C1A0E; --text-mid: #7A5C47; --text-light: #A8937E;
+  --border: #E0D0BC;
+  --font: 'M PLUS Rounded 1c', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); font-weight: 300; font-size: 14px; line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+img { display: block; width: 100%; }
+
+.nav-wrap { position: sticky; top: 0; z-index: 200; background: var(--brown-deep); }
+.nav-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 2rem; height: 64px; }
+.nav-logo { grid-column: 2; text-align: center; font-size: 1rem; letter-spacing: 0.3em; color: var(--brown-light); font-weight: 400; }
+.nav-cart { grid-column: 3; justify-self: end; display: flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: 0.15em; color: var(--brown-light); }
+.nav-cart svg { stroke: var(--brown-light); }
+.nav-cart-badge { display: none; background: var(--brown-light); color: var(--brown-deep); border-radius: 50%; width: 18px; height: 18px; font-size: 10px; align-items: center; justify-content: center; font-weight: 700; }
+
+.page-header { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 2rem; border-bottom: 1px solid var(--border); }
+.page-header-back { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 11px; letter-spacing: 0.15em; color: var(--text-light); margin-bottom: 1.2rem; transition: color 0.2s; }
+.page-header-back:hover { color: var(--brown); }
+.page-tag { font-size: 10px; letter-spacing: 0.4em; color: var(--brown-light); margin-bottom: 0.5rem; }
+.page-title { font-size: 2.5rem; font-weight: 400; color: var(--brown-deep); }
+
+.bags-section { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+.bags-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+
+.bag-card { background: var(--white); border: 1px solid var(--border); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
+.bag-card-img { position: relative; aspect-ratio: 1; overflow: hidden; background: var(--brown-mist); }
+.bag-card-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.bag-body { padding: 1.8rem; display: flex; flex-direction: column; gap: 0.8rem; }
+.bag-name { font-size: 1.3rem; font-weight: 500; color: var(--brown-deep); line-height: 1.3; }
+.bag-desc { font-size: 12px; color: var(--text-mid); line-height: 1.9; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 0.2rem; }
+
+.bag-details { border-top: 1px solid var(--border); padding-top: 0.8rem; display: flex; flex-direction: column; }
+.bag-detail-row { display: flex; flex-direction: column; font-size: 13px; padding: 0.5rem 0; gap: 0.2rem; }
+.bag-detail-row span:first-child { font-size: 10px; letter-spacing: 0.1em; color: var(--text-light); }
+.bag-detail-row span:last-child { color: var(--text-mid); }
+
+.bag-price { font-size: 1.2rem; color: var(--brown); }
+.bag-price span { font-size: 11px; color: var(--text-light); }
+
+.btn-add-cart { display: block; width: 100%; background: var(--brown-deep); color: white; font-size: 11px; letter-spacing: 0.2em; padding: 13px; text-align: center; border: none; cursor: pointer; font-family: var(--font); transition: background 0.3s; margin-top: auto; }
+.btn-add-cart:hover { background: var(--brown); }
+.btn-view-cart { display: none; text-align: center; font-size: 11px; color: var(--text-light); text-decoration: underline; cursor: pointer; margin-top: 6px; }
+
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-6px); }
+  40%  { transform: translateX(6px); }
+  60%  { transform: translateX(-4px); }
+  80%  { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+.btn-shake { animation: shake 0.4s ease; }
+
+.footer-mini { background: #100C09; padding: 2rem; text-align: center; }
+.footer-mini-logo { font-size: 0.9rem; letter-spacing: 0.3em; color: var(--brown-light); margin-bottom: 0.8rem; }
+.footer-mini-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+#cart-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--brown-deep); color: white; padding: 12px 24px; font-size: 13px; z-index: 9999; opacity: 0; transition: opacity 0.3s; white-space: nowrap; pointer-events: none; }
+
+@media (max-width: 768px) {
+  .bags-grid { grid-template-columns: 1fr; }
+  .bag-card { grid-template-columns: 1fr; }
+  .bag-card-img { aspect-ratio: 1/1; }
+}
+</style>
+<script src="/cart.js" defer></script>
+</head>
+<body>
+
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">DREAMERS COFFEE</a>
+    <a href="/cart.html" class="nav-cart" id="nav-cart-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/>
+      </svg>
+      CART
+      <span id="cart-badge" class="nav-cart-badge">0</span>
+    </a>
+  </div>
+</div>
+
+<div class="page-header">
+  <a href="index.html" class="page-header-back">← Back</a>
+  <p class="page-tag">COFFEE BAG</p>
+  <h1 class="page-title">珈琲バッグ</h1>
+</div>
+
+<div class="bags-section">
+  <div class="bags-grid" id="bags-grid"></div>
+</div>
+
+<div class="footer-mini">
+  <div class="footer-mini-logo">DREAMERS COFFEE</div>
+  <div class="footer-mini-copy">© 2026 DREAMERS COFFEE. All rights reserved.</div>
+</div>
+
+<div id="cart-toast"></div>
+
+<script>
+const BAGS = [
+  {
+    id: 'mexico',
+    name: 'メキシコ',
+    desc: 'ライムやグリーンアップルの爽やかな酸味とカカオ・ナッツのようなコク。',
+    image: 'dreamerscoffee-beans-mexico.png',
+    price: 1200
+  },
+  {
+    id: 'peru',
+    name: 'ペルー',
+    desc: 'いちごのような柔らかい酸味と焼きりんごの甘酸っぱさ。バランスの良いティーライク。',
+    image: null,
+    price: 1200
+  },
+  {
+    id: 'indonesia',
+    name: 'インドネシア',
+    desc: 'どっしりとしたコクと低い酸味、アーシーな風味が特徴のフルボディな一杯。',
+    image: null,
+    price: 1200
+  },
+  {
+    id: 'decaf',
+    name: 'カフェインレス（メキシコ）',
+    desc: '焦がしキャラメルのようなコクとプラムのような甘酸っぱさ、マンゴーっぽい優しい甘さが感じられる珈琲。',
+    image: 'dreamerscoffee-beans-decaf-mexico.png',
+    price: 1200
+  }
+];
+
+const details = [
+  { label: '内容量', value: '5袋（1袋あたり約15g）' },
+  { label: '抽出方法', value: 'バッグをカップに入れてお湯を注ぐだけ' },
+  { label: 'お湯の量', value: '150〜200ml' },
+  { label: '抽出時間', value: '約3分' },
+  { label: '賞味期限', value: '製造日より60日' },
+];
+
+function renderGrid() {
+  const detailHTML = details.map(d =>
+    `<div class="bag-detail-row"><span>${d.label}</span><span>${d.value}</span></div>`
+  ).join('');
+
+  document.getElementById('bags-grid').innerHTML = BAGS.map(bag => {
+    const imgHTML = bag.image
+      ? `<img src="${bag.image}" alt="${bag.name}" loading="lazy">`
+      : `<div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--brown-mist);gap:0.5rem;">
+          <span style="font-size:20px;">📷</span>
+          <span style="font-size:10px;letter-spacing:0.1em;color:var(--text-light);text-align:center;">写真は準備中です…</span>
+        </div>`;
+
+    return `
+      <div class="bag-card">
+        <div class="bag-card-img">${imgHTML}</div>
+        <div class="bag-body">
+          <div>
+            <h2 class="bag-name">${bag.name}</h2>
+            <div class="bag-details">${detailHTML}</div>
+          </div>
+          <p class="bag-desc">${bag.desc}</p>
+          <div class="bag-price">¥${bag.price.toLocaleString()}<span>（税込・送料別）</span></div>
+          <button class="btn-add-cart" onclick="addToCart('${bag.id}')">カートに追加</button>
+          <a href="/cart.html" class="btn-view-cart" id="cart-link-${bag.id}">カートを見る →</a>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function addToCart(bagId) {
+  if (typeof Cart === 'undefined') return;
+  const bag = BAGS.find(b => b.id === bagId);
+  Cart.addItem({
+    id: `coffee-bag_${bag.name}`,
+    name: `珈琲バッグ（${bag.name}）`,
+    variant: '5袋セット',
+    price: bag.price,
+    image: bag.image || ''
+  });
+  document.getElementById(`cart-link-${bagId}`).style.display = 'block';
+  showToast(`珈琲バッグ（${bag.name}）をカートに追加しました`);
+
+  const btn = document.querySelector(`[onclick="addToCart('${bagId}')"]`);
+  if (btn) {
+    btn.classList.remove('btn-shake');
+    void btn.offsetWidth;
+    btn.classList.add('btn-shake');
+    setTimeout(() => btn.classList.remove('btn-shake'), 400);
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('cart-toast');
+  t.textContent = msg; t.style.opacity = '1';
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => { t.style.opacity = '0'; }, 2500);
+}
+
+renderGrid();
+</script>
+</body>
+</html>
