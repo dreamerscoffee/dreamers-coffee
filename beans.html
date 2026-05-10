@@ -285,7 +285,7 @@ function addToCart(beanId) {
   const gram = selectedGram[beanId];
   const price = bean.prices[gram];
   Cart.addItem({
-    id: `beans_${beanId}_${gram}`,
+    id: `beans_${beanId}`,
     name: `珈琲豆（${bean.name}）`,
     variant: gram,
     price,
