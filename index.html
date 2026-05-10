@@ -1270,20 +1270,22 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   var text = document.getElementById('splashText');
   if (!splash || !text) return;
 
-  if (sessionStorage.getItem('splashSeen')) {
+  // サイト内からの遷移かどうかを判定
+  // document.referrerが同じドメインならサイト内遷移 → 非表示
+  var referrer = document.referrer;
+  var ownDomain = location.hostname;
+  var isInternalNav = referrer && (referrer.indexOf(ownDomain) !== -1);
+
+  if (isInternalNav) {
+    // サイト内遷移はスプラッシュなし
     splash.parentNode.removeChild(splash);
     return;
   }
-  sessionStorage.setItem('splashSeen', '1');
 
-  // 表示開始
+  // 外部からのアクセス → 毎回表示
   splash.classList.add('active');
   setTimeout(function() { text.classList.add('visible'); }, 100);
-
-  // フェードアウト
   setTimeout(function() { splash.classList.add('hide'); }, 2000);
-
-  // DOM削除
   setTimeout(function() {
     if (splash.parentNode) splash.parentNode.removeChild(splash);
   }, 3000);
