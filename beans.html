@@ -86,16 +86,7 @@ img { display: block; width: 100%; }
 .btn-view-cart:hover { color: var(--brown); }
 
 /* RELATED */
-.related { background: var(--brown-mist); border-top: 1px solid var(--border); }
-.related-inner { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
-.related-title { font-size: 10px; letter-spacing: 0.3em; color: var(--brown-light); margin-bottom: 1.5rem; }
-.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.related-card { background: var(--white); border: 1px solid var(--border); overflow: hidden; transition: transform 0.3s; }
-.related-card:hover { transform: translateY(-3px); }
-.related-card img { aspect-ratio: 1; object-fit: cover; }
-.related-card-body { padding: 1rem; }
-.related-card-name { font-size: 13px; color: var(--brown-deep); margin-bottom: 0.3rem; }
-.related-card-price { font-size: 12px; color: var(--brown-light); }
+
 
 .footer-mini { background: #100C09; padding: 2rem; text-align: center; }
 .footer-mini-logo { font-size: 0.9rem; letter-spacing: 0.3em; color: var(--brown-light); margin-bottom: 0.8rem; }
@@ -117,8 +108,7 @@ img { display: block; width: 100%; }
   .beans-grid { grid-template-columns: 1fr; }
   .bean-card { grid-template-columns: 1fr; }
   .bean-card-img { aspect-ratio: 1/1; }
-  .related-grid { grid-template-columns: 1fr 1fr; }
-}
+  }
 </style>
 <script src="/cart.js" defer></script>
 </head>
@@ -148,24 +138,7 @@ img { display: block; width: 100%; }
   <div class="beans-grid" id="beans-grid"></div>
 </div>
 
-<div class="related">
-  <div class="related-inner">
-    <div class="related-title">OTHER PRODUCTS</div>
-    <div class="related-grid">
-      <a class="related-card" href="product-bag.html">
-        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80" alt="珈琲バッグ">
-        <div class="related-card-body"><div class="related-card-name">珈琲バッグ 5袋セット</div><div class="related-card-price">¥1,200</div></div>
-      </a>
-      <a class="related-card" href="product-trial.html">
-        <img src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=400&q=80" alt="お試しセット">
-        <div class="related-card-body"><div class="related-card-name">お試しセット</div><div class="related-card-price">¥2,500</div></div>
-      </a>
-      <a class="related-card" href="subscription.html">
-        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80" alt="定期便">
-        <div class="related-card-body"><div class="related-card-name">定期便</div><div class="related-card-price">¥2,980〜 / 月</div></div>
-      </a>
-    </div>
-  </div>
+
 </div>
 
 <div class="footer-mini">
