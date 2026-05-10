@@ -41,7 +41,7 @@ img { display: block; width: 100%; }
 .page-header { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 2rem; border-bottom: 1px solid var(--border); }
 .page-header-back { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 11px; letter-spacing: 0.15em; color: var(--text-light); margin-bottom: 1.2rem; transition: color 0.2s; }
 .page-header-back:hover { color: var(--brown); }
-.page-tag { font-size: 10px; letter-spacing: 0.4em; color: var(--brown-light); margin-bottom: 0.5rem; }
+.page-tag { font-size: 15px; letter-spacing: 0.3em; color: var(--brown-light); margin-bottom: 0.5rem; }
 .page-title { font-size: 2rem; font-weight: 400; color: var(--brown-deep); }
 
 /* BEANS GRID */
@@ -128,7 +128,6 @@ img { display: block; width: 100%; }
 <div class="page-header">
   <a href="index.html" class="page-header-back">← Back</a>
   <p class="page-tag">BEANS — 珈琲豆</p>
-  <h1 class="page-title">産地を選んで、あなただけの一杯を。</h1>
 </div>
 
 <div class="beans-section">
@@ -194,7 +193,12 @@ const BEANS = [
     id: 'indonesia',
     name: 'インドネシア',
     roast: '中煎り',
-    flavor: 'どっしりとしたコクと低い酸味、アーシーな風味が特徴のフルボディな一杯。',
+    flavor: 'ハーブの薬膳茶っぽさの中に何となくトロピカルフルーツのような果実感があり、温度が冷めてくると後味にバニラっぽさや黒糖のような甘さも感じられる珈琲。',
+    producer: 'クラシックビーンズ生産者組合',
+    variety: 'S288・オナンガンジャン・ラスーナ',
+    note: 'なし（栽培期間中農薬不使用）',
+    process: 'スマトラ式',
+    altitude: '1,400〜1,600m',
     image: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=700&q=80',
     prices: { '100g': 1300, '150g': 1850 }
   },
@@ -202,7 +206,12 @@ const BEANS = [
     id: 'decaf',
     name: 'カフェインレス（メキシコ）',
     roast: '中煎り',
-    flavor: 'カフェインを99%除去しながらも、豆本来の甘みとコクをしっかり残した一杯。',
+    flavor: '焦がしキャラメルのようなコクとプラムのような甘酸っぱさ、マンゴーっぽい優しい甘さが感じられる珈琲。',
+    producer: 'マヤビニック生産者協同組合',
+    variety: 'アラビカ種（ティピカ、ムンドヌーボ他）',
+    note: '有機JAS認証・フェアトレード・農薬不使用・カフェイン99.9%除去',
+    process: 'ウォッシュト',
+    altitude: '1,000〜1,700m',
     image: 'dreamerscoffee-beans-decaf-mexico.png',
     prices: { '100g': 1200, '150g': 1700 },
     isDecaf: true
@@ -215,10 +224,10 @@ function renderGrid() {
 
     const fields = [
       ['生産者', bean.producer],
-      ['標高', bean.altitude],
-      ['品種', bean.variety],
+      ['栽培品種', bean.variety],
+      ['認証', bean.note],
       ['精製', bean.process],
-      ['その他', bean.note]
+      ['標高', bean.altitude]
     ].filter(([, v]) => v);
 
     const detailRows = fields.map(([k, v]) =>
