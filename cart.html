@@ -323,10 +323,18 @@ function render() {
       </div>
     </div>
 
-    <a href="/" style="display:block;text-align:center;margin-bottom:16px;font-size:13px;color:var(--text-muted);text-decoration:underline;cursor:pointer;">← 買い物を続ける</a>
     <button class="btn-checkout" id="checkout-btn" onclick="startCheckout()">
       決済に進む
     </button>
+
+    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+      <p style="font-size:11px;letter-spacing:0.15em;color:var(--text-muted);margin-bottom:0.8rem;text-align:center;">← 買い物を続ける</p>
+      <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+        <a href="/beans.html" style="font-size:12px;color:var(--brown);border:1px solid var(--border);padding:6px 16px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#F2EAE0'" onmouseout="this.style.background='transparent'">珈琲豆</a>
+        <a href="/coffeebag.html" style="font-size:12px;color:var(--brown);border:1px solid var(--border);padding:6px 16px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#F2EAE0'" onmouseout="this.style.background='transparent'">珈琲バッグ</a>
+        <a href="/seasonal-menu.html" style="font-size:12px;color:var(--brown);border:1px solid var(--border);padding:6px 16px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#F2EAE0'" onmouseout="this.style.background='transparent'">季節限定商品</a>
+      </div>
+    </div>
   `;
 }
 
