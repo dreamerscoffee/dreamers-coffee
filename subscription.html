@@ -18,17 +18,16 @@ a{color:inherit;text-decoration:none;}
 img{display:block;width:100%;}
 
 /* NAV */
-.nav-wrap{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);}
-.nav-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr;align-items:center;padding:0 2rem;height:64px;}
-.nav-logo{text-align:center;grid-column:1;grid-column:2;font-size:1rem;letter-spacing:0.3em;color:var(--brown-deep);font-weight:400;}
-.nav-back{grid-column:1;font-size:11px;letter-spacing:0.1em;color:var(--text-light);display:flex;align-items:center;gap:0.4rem;transition:color 0.2s;}
-.nav-back:hover{color:var(--brown);}
+.nav-wrap{position:sticky;top:0;z-index:200;background:var(--brown-deep);}
+.nav-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:0 2rem;height:64px;}
+.nav-logo{grid-column:1;text-align:left;font-size:1rem;letter-spacing:0.3em;color:var(--brown-light);font-weight:400;}
 
-/* HERO */
-.hero{background:var(--brown-deep);padding:5rem 2rem;text-align:center;}
-.hero-tag{font-size:10px;letter-spacing:0.4em;color:var(--brown-light);margin-bottom:1.5rem;}
-.hero-title{font-family:var(--font-serif);font-size:3rem;font-weight:300;color:var(--white);line-height:1.3;margin-bottom:1.5rem;}
-.hero-desc{font-size:13px;color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto;line-height:2;}
+/* PAGE HEADER */
+.page-header{max-width:1200px;margin:0 auto;padding:3rem 2rem 2rem;border-bottom:1px solid var(--border);}
+.page-header-back{display:inline-flex;align-items:center;gap:0.4rem;font-size:11px;letter-spacing:0.15em;color:var(--text-light);margin-bottom:1.2rem;transition:color 0.2s;}
+.page-header-back:hover{color:var(--brown);}
+.page-tag{font-size:10px;letter-spacing:0.4em;color:var(--brown-light);margin-bottom:0.5rem;}
+.page-title{font-size:2.5rem;font-weight:400;color:var(--brown-deep);}
 
 /* FEATURES */
 .features{background:var(--brown-mist);border-bottom:1px solid var(--border);}
@@ -114,12 +113,10 @@ img{display:block;width:100%;}
   </div>
 </div>
 
-<!-- HERO -->
-<div class="hero">
-    <a href="index.html" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:11px;letter-spacing:0.15em;color:rgba(255,255,255,0.4);margin-bottom:1.2rem;transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">← Back</a>
-  <p class="hero-tag">SUBSCRIPTION — 定期便</p>
-  <h1 class="hero-title">毎月届く、<br>特別な一杯。</h1>
-  <p class="hero-desc">定期便なら毎月厳選したスペシャルティコーヒーをお届け。珈琲選びの手間なく、いつでも新鮮なコーヒーをお楽しみいただけます。</p>
+<div class="page-header">
+  <a href="index.html" class="page-header-back">← Back</a>
+  <p class="page-tag">SUBSCRIPTION</p>
+  <h1 class="page-title">定期便</h1>
 </div>
 
 <!-- HERO IMAGE -->
