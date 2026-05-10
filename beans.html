@@ -211,9 +211,7 @@ const BEANS = [
 
 function renderGrid() {
   document.getElementById('beans-grid').innerHTML = BEANS.map(bean => {
-    const badge = bean.isDecaf
-      ? `<span class="bean-badge decaf">DECAF</span>`
-      : `<span class="bean-badge instock">IN STOCK</span>`;
+    const badge = '';
 
     const fields = [
       ['生産者', bean.producer],
