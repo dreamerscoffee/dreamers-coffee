@@ -111,6 +111,16 @@ img { display: block; width: 100%; }
   <h1 class="page-title">珈琲バッグ5袋</h1>
 </div>
 
+<div style="max-width:1200px;margin:0 auto;padding:1.5rem 2rem;border-bottom:1px solid var(--border);">
+  <p style="font-size:10px;letter-spacing:0.2em;color:var(--text-light);margin-bottom:0.8rem;">販売中の珈琲バッグ</p>
+  <div style="display:flex;flex-wrap:wrap;gap:0.6rem;">
+    <a href="#bag-mexico"    style="font-size:12px;color:var(--brown);border:1px solid var(--border);padding:4px 14px;transition:background 0.2s;" onmouseover="this.style.background='var(--brown-mist)'" onmouseout="this.style.background='transparent'">メキシコ</a>
+    <a href="#bag-peru"      style="font-size:12px;color:var(--brown);border:1px solid var(--border);padding:4px 14px;transition:background 0.2s;" onmouseover="this.style.background='var(--brown-mist)'" onmouseout="this.style.background='transparent'">ペルー</a>
+    <a href="#bag-indonesia" style="font-size:12px;color:var(--brown);border:1px solid var(--border);padding:4px 14px;transition:background 0.2s;" onmouseover="this.style.background='var(--brown-mist)'" onmouseout="this.style.background='transparent'">インドネシア</a>
+    <a href="#bag-decaf"     style="font-size:12px;color:var(--brown);border:1px solid var(--border);padding:4px 14px;transition:background 0.2s;" onmouseover="this.style.background='var(--brown-mist)'" onmouseout="this.style.background='transparent'">カフェインレス（メキシコ）</a>
+  </div>
+</div>
+
 <div class="bags-section">
   <div class="bags-grid" id="bags-grid"></div>
 </div>
@@ -176,7 +186,7 @@ function renderGrid() {
         </div>`;
 
     return `
-      <div class="bag-card">
+      <div class="bag-card" id="bag-${bag.id}">
         <div class="bag-card-img">${imgHTML}</div>
         <div class="bag-body">
           <div>
