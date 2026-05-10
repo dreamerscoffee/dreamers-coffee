@@ -943,6 +943,11 @@ footer {
 }
 #splash.active { display: flex; }
 #splash.hide { opacity: 0; }
+.splash-inner {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 2rem;
+}
 .splash-text {
   writing-mode: vertical-rl;
   font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -950,11 +955,11 @@ footer {
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   line-height: 2.2;
   letter-spacing: 0.15em;
-  color: rgba(44, 26, 14, 0);
+  color: rgba(140, 90, 50, 0);
   transition: color 1.1s ease;
   white-space: nowrap;
 }
-.splash-text.visible { color: #2C1A0E; }
+.splash-text.visible { color: #8B5E3C; }
 /* ===== END SPLASH ===== */
 </style>
 <script src="/cart.js" defer></script>
@@ -963,7 +968,10 @@ footer {
 
 <!-- SPLASH SCREEN -->
 <div id="splash">
-  <p class="splash-text" id="splashText">珈琲を通じて「ゆとり・彩り・つながり」を。</p>
+  <div class="splash-inner" id="splashText">
+    <p class="splash-text">珈琲を通じて</p>
+    <p class="splash-text">「ゆとり・彩り・つながり」を。</p>
+  </div>
 </div>
 
 <div class="topbar" style="display:none">合計3,000円以上のご購入で送料無料</div>
