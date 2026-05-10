@@ -98,10 +98,11 @@ img { display: block; width: 100%; }
   max-width: 1320px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr;
   align-items: center;
   padding: 0 2rem;
   height: 64px;
+  position: relative;
 }
 
 .nav-logo {
@@ -928,10 +929,43 @@ footer {
 .schedule-date, .tip-num {
   font-family: 'M PLUS Rounded 1c', sans-serif !important;
 }
+
+/* ===== SPLASH SCREEN ===== */
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #FAFAF7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  transition: opacity 0.9s ease;
+}
+#splash.hide { opacity: 0; }
+#splash.gone { display: none; }
+.splash-text {
+  writing-mode: vertical-rl;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 2.2;
+  letter-spacing: 0.15em;
+  color: rgba(44, 26, 14, 0);
+  transition: color 1.1s ease;
+  white-space: nowrap;
+}
+.splash-text.visible { color: #2C1A0E; }
+/* ===== END SPLASH ===== */
 </style>
 <script src="/cart.js" defer></script>
 </head>
 <body>
+
+<!-- SPLASH SCREEN -->
+<div id="splash">
+  <p class="splash-text" id="splashText">珈琲を通じて「ゆとり・彩り・つながり」を。</p>
+</div>
 
 <div class="topbar" style="display:none">合計3,000円以上のご購入で送料無料</div>
 
@@ -939,10 +973,10 @@ footer {
   <div class="nav-inner">
     <a class="nav-logo" href="/">DREAMERS COFFEE</a>
     <a href="/cart.html" class="nav-cart" id="nav-cart-link">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <path d="M16 10a4 4 0 01-8 0"/>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="21" r="1"/>
+        <circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/>
       </svg>
       CART
       <span id="cart-badge" class="nav-cart-badge">0</span>
@@ -1231,5 +1265,18 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   });
 })();
 </script>
+<script>
+(function() {
+  if (sessionStorage.getItem('splashSeen')) return;
+  sessionStorage.setItem('splashSeen', '1');
+  const splash = document.getElementById('splash');
+  const text = document.getElementById('splashText');
+  if (!splash) return;
+  setTimeout(() => { text.classList.add('visible'); }, 200);
+  setTimeout(() => { splash.classList.add('hide'); }, 2000);
+  setTimeout(() => { splash.classList.add('gone'); }, 3000);
+})();
+</script>
+
 </body>
 </html>
