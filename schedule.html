@@ -18,7 +18,7 @@
 <meta name="twitter:title" content="出店スケジュール — DREAMERS COFFEE">
 <meta name="twitter:description" content="DREAMERS COFFEEの出店スケジュール。愛知県豊田市を中心にマルシェ・イベントへ出店中。">
 <meta name="twitter:image" content="https://dreamerscoffee.shop/ogp.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:#FAFAF7;--white:#FFFFFF;
@@ -26,8 +26,8 @@
   --brown-light:#C49A6C;--brown-pale:#E8D5BE;--brown-mist:#F2EAE0;
   --text:#2C1A0E;--text-mid:#7A5C47;--text-light:#A8937E;
   --border:#E0D0BC;
-  --font-serif:'Cormorant Garamond',serif;
-  --font-sans:'Noto Sans JP',sans-serif;
+  --font-serif: 'M PLUS Rounded 1c', sans-serif;
+  --font-sans:'M PLUS Rounded 1c',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 sup,sub{vertical-align:baseline;font-size:inherit;}
@@ -80,6 +80,12 @@ img{display:block;width:100%;}
   .schedule-item{grid-template-columns:1fr;gap:0.4rem;}
   .schedule-date{font-size:1rem;}
   .schedule-hero-img{max-height:500px !important;}
+}
+
+/* === font override: numbers → M PLUS Rounded 1c === */
+.product-price, .plan-price, .bs-price,
+.schedule-date, .tip-num {
+  font-family: 'M PLUS Rounded 1c', sans-serif !important;
 }
 </style>
 </head>
